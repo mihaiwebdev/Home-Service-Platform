@@ -9,23 +9,27 @@ const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const hpp = require('hpp');
 const errorHandler = require('./middleware/error');
-const PORT = process.env.PORT || 8000;
-const NODE_ENV = process.env.NODE_ENV;
+
 require('colors');
 require('dotenv').config({path: './config/config.env'});
+const PORT = process.env.PORT || 8000;
+const NODE_ENV = process.env.NODE_ENV;
+
 connectDB();
 
-const app = express();
 // Route files
 const auth = require('./routes/auth');
 
+const app = express();
+
 // middlewares
-if (NODE_ENV === 'development') {
-    app.use(morgan('dev'));
-};
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
+
+if (NODE_ENV === 'development')
+    app.use(morgan('dev'));
+
 app.use(mongoSanitize());
 app.use(helmet());
 app.use(xss());

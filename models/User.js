@@ -38,7 +38,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 // Encrypt password using bcrypt
-UserSchema.pre('save', async function(req, res, next) {
+UserSchema.pre('save', async function(next) {
     if (!this.isModified('password')) {
         next();
     };
@@ -51,7 +51,7 @@ UserSchema.pre('save', async function(req, res, next) {
 })
 
 // Create JWT token
-UserSchema.methods.getSignedJwtToken = async function() {
+UserSchema.methods.getSignedJwtToken = function() {
     return jwt.sign({id: this._id}, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRE
     });
