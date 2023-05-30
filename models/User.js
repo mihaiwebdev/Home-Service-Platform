@@ -48,7 +48,15 @@ UserSchema.pre('save', async function(next) {
     this.password = hashedPassword;
 
     next();
-})
+});
+
+UserSchema.pre('deleteOne', { document: true }, async function(next) {
+    if (this.role === 'client') {
+        await this.model('House').deleteMany({ client: this._id});
+    };
+
+    next();
+});
 
 // Create JWT token
 UserSchema.methods.getSignedJwtToken = function() {

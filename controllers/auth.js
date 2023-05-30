@@ -8,8 +8,8 @@ const User = require('../models/User');
 // @route   POST /api/v1/auth/register
 // @access  Public
 exports.register = asyncHandler(async (req, res, next) => {
-    const user = await User.create(req.body);
-
+    let user = await User.create(req.body);
+    
     sendTokenResponse(user, 201, res);
 });
 
