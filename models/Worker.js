@@ -62,10 +62,16 @@ const WorkerSchema = mongoose.Schema({
                 'Please add a valid number']
     },
 
-    services: {
-        type: [mongoose.Schema.ObjectId],
-        ref: 'Service',
-    }
+    services: [{
+        service: {
+            type: String,
+            required: [true, 'Please select a service']
+        },
+        price: {
+            type: Number,
+            required: [true, 'Please add a price']
+        },
+    }]
 });
 
 module.exports = mongoose.model('Worker', WorkerSchema);

@@ -5,16 +5,8 @@ const asyncHandler = require('express-async-handler');
 // @desc    Get workers
 // @route   GET /api/v1/workers
 // @access  Public
-exports.getWorkers = asyncHandler(async(req, res, next) => {
-    const workers = await Worker.find().populate({
-        path: 'services',
-        select: 'name'
-    }).populate({
-        path: 'user',
-        select: 'name'
-    });
-
-    res.status(200).json({success: true, data: workers});
+exports.getWorkers = asyncHandler(async(req, res, next) => {    
+    res.status(200).json(res.filteredResult);
 });
 
 // @desc    Get single worker
