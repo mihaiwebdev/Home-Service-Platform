@@ -1,0 +1,49 @@
+require('dotenv').config({path: './config/config.env'});
+require('colors');
+const mongoose = require('mongoose');
+const fs = require('fs');
+const path = require('path');
+
+const User = require('./models/User');
+const Worker = require('./models/Worker');
+
+mongoose.connect(process.env.MONGO_URI);
+
+const users = JSON.parse(fs.readFileSync(path.join(`${__dirname}/_data/users.json`), 'utf-8'));
+const workers = JSON.parse(fs.readFileSync(path.join(`${__dirname}/_data/workers.json`), 'utf-8'));
+
+const importData = async () => {
+    try {
+        await User.create(users);
+        await Worker.create(workers);
+
+        console.log('Data imported...'.green.inverse);
+        process.exit();
+
+    } catch (error) {
+        console.log(error);
+        process.exit();
+    }
+};
+
+const deleteData = async () => {
+    try {
+        await User.deleteMany();
+        await Worker.deleteMany();
+
+        console.log(`Data destroied`.red.inverse);
+        process.exit();
+
+    } catch (error) {
+        console.log(error);
+        process.exit();
+    }
+};
+
+if (process.argv[2] === '-i') {
+    importData();
+};
+
+if (process.argv[2] === '-d') {
+    deleteData();
+};

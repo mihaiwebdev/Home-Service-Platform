@@ -9,6 +9,13 @@ exports.getWorkers = asyncHandler(async(req, res, next) => {
     res.status(200).json(res.filteredResult);
 });
 
+// @desc    Get workers within a radius
+// @route   GET /api/v1/workers/radius/:zipcode/:countryCode
+// @access  Public
+exports.getWorkersByRadius = asyncHandler(async(req, res, next) => {    
+    res.status(200).json(res.filteredResult);
+});
+
 // @desc    Get single worker
 // @route   GET /api/v1/workers/:workerId
 // @access  Public
@@ -29,7 +36,7 @@ exports.createWorker = asyncHandler(async(req, res, next) => {
     req.body._id = req.user._id;
     
     const worker = await Worker.create(req.body);
-
+    
     res.status(201).json({success: true, data: worker});
 });
 

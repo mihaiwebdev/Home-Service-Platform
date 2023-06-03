@@ -1,32 +1,43 @@
-const Service = require('../models/Service');
+const geocoder = require('../utils/geocoder');
 
-const filteredResult = (model, populateOne, populateTwo) => async (req, res, next) => {
+const filteredResult = (model, populate) => async (req, res, next) => {
     let query;
-    const reqQuery = {...req.query};
+    let loc;
+    let lat;
+    let long;
 
+    const reqQuery = {...req.query};
+    const { zipcode, countryCode } = req.params;
+
+    if (zipcode && countryCode) {
+        const locationQuery = `${zipcode} ${countryCode}`;
+        
+        loc = await geocoder.geocode(locationQuery);
+        
+        lat = loc[0].latitude;
+        long = loc[0].longitude;
+    };
+    
+    const radius = 20 / 6378;
+
+    reqQuery.location = { $geoWithin: { $centerSphere: [ [long, lat], radius ]}};
+    
     const removeFields = ['sort', 'limit', 'page'];
     removeFields.map(field => delete reqQuery[field]);
 
-    // change in reqQuery obj the service slug value with id
-    // let serviceQuery = reqQuery['services'];
-    // if (serviceQuery) {
-    //     const service = await Service.findOne({slug: serviceQuery.in})
-    //     reqQuery.services.in = service._id
-    // };
-    console.log(reqQuery);
-
     let queryStr = JSON.stringify(reqQuery);
-    queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
+    queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in|elemMatch)\b/g, match => `$${match}`);
 
-    // query = model.find(JSON.parse(queryStr))
-    query = model.find({'services.type' : 'curatenie'})
+    query = model.find(JSON.parse(queryStr));
 
-    if (populateOne)
-        query.populate(populateOne);
+    if (req.query.sort) {
+        const sortBy = req.query.sort.replace(',', ' ');
+        query.sort(sortBy);
+    };
+
+    if (populate)
+        query.populate(populate);
     
-    if (populateTwo)
-        query.populate(populateTwo);
-
     const page = +req.query.page || 1;
     const limit = +req.query.limit || 10;
     const startIndex = (page - 1) * limit;

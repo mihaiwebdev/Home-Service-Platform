@@ -20,8 +20,8 @@ connectDB();
 // Route files
 const auth = require('./routes/auth');
 const clients = require('./routes/clients');
-const services = require('./routes/services');
 const workers = require('./routes/workers');
+const services = require('./routes/services');
 
 const app = express();
 
@@ -49,8 +49,8 @@ app.use(hpp());
 // Mount Routers
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/clients', clients);
-app.use('/api/v1/services', services);
 app.use('/api/v1/workers', workers);
+app.use('/api/v1/services', services);
 
 app.use(errorHandler);
 

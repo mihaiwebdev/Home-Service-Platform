@@ -21,12 +21,12 @@ ServiceSchema.pre('save', function(next) {
 ServiceSchema.pre('deleteOne', { document: true }, async function(next) {
     const workers = await this.model('Worker').find(
         {
-            services: { $in: this._id}
+            services: { $elemMatch: { service: this.slug }}
         }
     );
 
     workers.map(async worker => {    
-        worker.services = worker.services.filter(service => service.toString() !== this._id.toString());
+        worker.services = worker.services.filter(obj => obj.service !== this.slug);
         await worker.save();
     });
 

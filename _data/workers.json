@@ -1,0 +1,82 @@
+[
+    {
+        "_id": "5d7a514b5d2c12c7449be042",
+        "user": "5d7a514b5d2c12c7449be042",
+        "description": "O persoană meticuloasă și eficientă, specializată în păstrarea unui mediu curat și igienic. Abordează fiecare detaliu cu atenție și asigură că fiecare colțișor strălucește.",
+        "address": "Strada Decebal 12, Targu-Mures",
+        "services": [{"service":"curatenie", "price": 65}],
+        "phone": "0734562123"
+    },
+
+    {
+        "_id": "5d7a514b5d2c12c7449be043",
+        "user": "5d7a514b5d2c12c7449be043",
+        "description": " Un îngrijitor de copii empatic și plin de energie, capabil să creeze o atmosferă sigură și distractivă. Își folosește creativitatea pentru a organiza activități potrivite pentru vârsta fiecărui copil, punând accent pe dezvoltarea lor armonioasă.",
+        "address": "Strada Aleea Hateg 25, Targu-Mures",
+        "services": [{"service":"babysitting", "price": 100}],
+        "phone": "0734262123"
+    },
+
+    {
+        "_id": "5d7a514b5d2c12c7449be044",
+        "user": "5d7a514b5d2c12c7449be044",
+        "description": "Un profesionist responsabil și eficient, care abordează sarcinile de curățenie cu abilitate și atenție la detalii. Indiferent de provocarea întâlnită, reușește întotdeauna să obțină un rezultat impecabil.",
+        "address": "Strada Furnicilor 5 Targu-Mures",
+        "services": [{"service":"curatenie", "price": 88}],
+        "phone": "0734262133"
+    },
+
+    {
+        "_id": "5d7a514b5d2c12c7449be045",
+        "user": "5d7a514b5d2c12c7449be045",
+        "description": "Un expert în sistemul de încălzire și răcire al clădirilor, cu cunoștințe solide în domeniul tehnicii și al eficienței energetice. Găsește întotdeauna soluții inovatoare și sigure pentru a menține un climat confortabil în orice mediu.",
+        "address": "Bulevardul 1 Decembrie 1918 Targu-Mures",
+        "services": [{"service":"instalatii-termice", "price": 150}],
+        "phone": "0731262133"
+    },
+
+    {
+        "_id": "5d7a514b5d2c12c7449be046",
+        "user": "5d7a514b5d2c12c7449be046",
+        "description": "Un pasionat al plantelor și al naturii, cu o experiență bogată în amenajarea spațiilor verzi. Transformă grădinile în oaze de frumusețe și liniște, având abilitatea de a combina armonios plantele, culorile și texturile.",
+        "address": "Strada Aleea Carpati 30 Targu-Mures",
+        "services": [{"service":"gradinarit", "price": 99}],
+        "phone": "0731262139"
+    },
+
+    {
+        "_id": "5c8a1d5b0190b214360dc031",
+        "user": "5c8a1d5b0190b214360dc031",
+        "description": "O persoană afectuoasă și răbdătoare, cu o pasiune pentru copii și o înțelegere profundă a nevoilor lor. Își folosește abilitățile de comunicare și ascultare activă pentru a crea o relație de încredere cu cei mici și a le oferi sprijinul necesar.",
+        "address": "Strada Sobarilor 38 Cluj-Napoca",
+        "services": [{"service":"babysitting", "price": 100}],
+        "phone": "0759417923"
+    },
+
+    {
+        "_id": "5c8a1d5b0190b214360dc032",
+        "user": "5c8a1d5b0190b214360dc032",
+        "description": "Un tehnician priceput și inovator, care abordează problemele tehnice cu curaj și ingeniozitate. Are capacitatea de a repara și de a întreține sistemele termice cu precizie, asigurând eficiența și siguranța acestora.",
+        "address": "Strada Motilor 5, Cluj-Napoca",
+        "services": [{"service":"instalatii-termice", "price": 44}],
+        "phone": "0759467903"
+    },
+
+    {
+        "_id": "5c8a1d5b0190b214360dc033",
+        "user": "5c8a1d5b0190b214360dc033",
+        "description": "Un artist al naturii, cu abilități creative și talent în amenajarea spațiilor exterioare. Prin combinarea plantelor, pietrelor și apei, creează grădini de vis, în care fiecare colț ascunde o surpriză estetică și o conexiune cu natura.",
+        "address": "Strada Aleea Valeriu Bologa 3, Cluj-Napoca",
+        "services": [{"service":"gradinarit", "price": 56}],
+        "phone": "0752467923"
+    },
+
+    {
+        "_id": "5c8a1d5b0190b214360dc035",
+        "user": "5c8a1d5b0190b214360dc035",
+        "description": "Un profesionist dinamic și organizat, cu o atenție deosebită la detaliu și o viziune globală asupra curățeniei. Asigură o atmosferă plăcută și igienică în spațiile de",
+        "address": "Constantin Brancusi 177, Cluj-Napoca",
+        "services": [{"service":"gradinarit", "price": 85}],
+        "phone": "0599467923"
+    }
+]

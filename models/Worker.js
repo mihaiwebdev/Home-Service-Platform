@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const geocoder = require('../utils/geocoder');
 
 const WorkerSchema = mongoose.Schema({
     user: {
@@ -40,6 +41,7 @@ const WorkerSchema = mongoose.Schema({
         },
         formattedAddress: String,
         street: String,
+        streetNumber: String,
         city: String,
         state: String,
         zipcode: String,
@@ -48,11 +50,6 @@ const WorkerSchema = mongoose.Schema({
 
     idPhoto: {
         type: String,
-    },
-
-    price: {
-        type: Number,
-        required: [true, 'Please add your hourly rate']
     },
 
     phone: {
@@ -72,6 +69,23 @@ const WorkerSchema = mongoose.Schema({
             required: [true, 'Please add a price']
         },
     }]
+});
+
+WorkerSchema.pre('save', async function(next) {
+    const loc = await geocoder.geocode(this.address);
+    this.location = {
+        type: 'Point',
+        coordinates: [loc[0].longitude, loc[0].latitude],
+        formattedAddress: loc[0].formattedAddress,
+        street: loc[0].streetName,
+        city: loc[0].city,
+        country: loc[0].countryCode,
+        zipcode: loc[0].zipcode
+    };
+
+    this.address = undefined;
+
+    next();
 });
 
 module.exports = mongoose.model('Worker', WorkerSchema);
