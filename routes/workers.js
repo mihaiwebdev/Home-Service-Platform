@@ -1,22 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const Worker = require('../models/Worker');
-const { getWorkers, getWorkersByRadius, getWorker, createWorker,
+
+const { getWorkers, getAvailableWorkers, getWorker, createWorker,
     updateWorker, deleteWorker } = require('../controllers/workers');
 const { protect, authorize } = require('../middleware/auth');
-const filteredResult = require('../middleware/filteredResult');
 
 router.route('/')
-    .get(filteredResult(Worker, {
-        path: 'user',
-        select: 'name'
-    }), getWorkers)
+    .get(getWorkers)
     .post(protect, authorize('worker', 'admin'), createWorker);
 
-router.get('/radius/:zipcode/:countryCode',filteredResult(Worker, {
-    path: 'user',
-    select: 'name'
-}), getWorkersByRadius);
+router.get('/radius/:zipcode/:countryCode', getAvailableWorkers);
 
 router.route('/:workerId')
     .get(getWorker)

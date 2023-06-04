@@ -1,7 +1,7 @@
 [
     {
-        "_id": "5d7a514b5d2c12c7449be042",
-        "user": "5d7a514b5d2c12c7449be042",
+        "_id": "647b73027d12da0b8986dae0",
+        "user": "647b73027d12da0b8986dae0",
         "description": "O persoană meticuloasă și eficientă, specializată în păstrarea unui mediu curat și igienic. Abordează fiecare detaliu cu atenție și asigură că fiecare colțișor strălucește.",
         "address": "Strada Decebal 12, Targu-Mures",
         "services": [{"service":"curatenie", "price": 65}],
@@ -9,8 +9,8 @@
     },
 
     {
-        "_id": "5d7a514b5d2c12c7449be043",
-        "user": "5d7a514b5d2c12c7449be043",
+        "_id": "647b73027d12da0b8986dae1",
+        "user": "647b73027d12da0b8986dae1",
         "description": " Un îngrijitor de copii empatic și plin de energie, capabil să creeze o atmosferă sigură și distractivă. Își folosește creativitatea pentru a organiza activități potrivite pentru vârsta fiecărui copil, punând accent pe dezvoltarea lor armonioasă.",
         "address": "Strada Aleea Hateg 25, Targu-Mures",
         "services": [{"service":"babysitting", "price": 100}],
@@ -27,8 +27,8 @@
     },
 
     {
-        "_id": "5d7a514b5d2c12c7449be045",
-        "user": "5d7a514b5d2c12c7449be045",
+        "_id": "647b73027d12da0b8986dae3",
+        "user": "647b73027d12da0b8986dae3",
         "description": "Un expert în sistemul de încălzire și răcire al clădirilor, cu cunoștințe solide în domeniul tehnicii și al eficienței energetice. Găsește întotdeauna soluții inovatoare și sigure pentru a menține un climat confortabil în orice mediu.",
         "address": "Bulevardul 1 Decembrie 1918 Targu-Mures",
         "services": [{"service":"instalatii-termice", "price": 150}],

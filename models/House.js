@@ -20,22 +20,6 @@ const HouseSchema = new mongoose.Schema({
     address: {
         type: String,
         required: [true, 'Va rugam adaugati adresa locuintei']
-    },
-    location: {
-        type: {
-            type: String,
-            enum: ['Point']
-        },
-        coordinates: {
-            type: [Number],
-            index: '2dsphere'
-        },
-        formattedAddress: String,
-        street: String,
-        city: String,
-        state: String,
-        zipcode: String,
-        country: String,
     }
 });
 

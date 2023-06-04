@@ -27,7 +27,6 @@ const WorkerSchema = mongoose.Schema({
 
     address: {
         type: String,
-        required: [true, 'Please add an address']
     },
 
     location: {
@@ -68,10 +67,22 @@ const WorkerSchema = mongoose.Schema({
             type: Number,
             required: [true, 'Please add a price']
         },
-    }]
+    }],
+    
+    schedule: {
+        type: [mongoose.Schema.ObjectId],
+        ref: 'Schedule',
+    }
+}, {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
 });
 
 WorkerSchema.pre('save', async function(next) {
+    if (this.isModified('schedule')) {
+        next();
+    };
+   
     const loc = await geocoder.geocode(this.address);
     this.location = {
         type: 'Point',
