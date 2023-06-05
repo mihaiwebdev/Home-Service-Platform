@@ -45,8 +45,8 @@ exports.login = asyncHandler(async (req, res, next) => {
 // @route   GET /api/v1/auth/logout
 // @access  Private
 exports.logout = asyncHandler(async (req, res, next) => {
-    res.cookie('token', {
-        expires: new Date(Date.now() + 10 * 1000),
+    res.cookie('token', '', {
+        expires: new Date(0),
         httpOnly: true
     });
 
@@ -173,13 +173,14 @@ const sendTokenResponse = (user, statusCode, res) => {
 
     const options = {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
-        httpOnly: true        
+        httpOnly: true,
+        sameSite: 'strict'        
     };
 
     if (process.env.NODE_ENV === 'production')
         options.secure = true;
 
     res.status(statusCode).cookie('token', token, options).send({
-        success: true, token
+        success: true,
     })
 };

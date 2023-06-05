@@ -19,7 +19,7 @@ const errorHandler = (err, req, res, next) => {
     };
     
     if (err.code === 11000) {
-        const message = 'Duplicate field value entered'
+        const message = `${Object.keys(err.keyValue)} already exists`
         error = new ErrorResponse(message, 400);
     }
 

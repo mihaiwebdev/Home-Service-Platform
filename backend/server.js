@@ -13,7 +13,7 @@ const cron = require('node-cron');
 const cleanupExpiredDate = require('./utils/cleanupExpiredDate')
 
 require('colors');
-require('dotenv').config({path: './config/config.env'});
+require('dotenv').config();
 
 const PORT = process.env.PORT || 8000;
 const NODE_ENV = process.env.NODE_ENV;
@@ -21,7 +21,7 @@ const NODE_ENV = process.env.NODE_ENV;
 connectDB();
 
 // Run cleanup job every day at midnight
-// cron.schedule('0 0 * * *', cleanupExpiredDate);
+cron.schedule('0 0 * * *', cleanupExpiredDate);
 
 // Route files
 const auth = require('./routes/auth');
