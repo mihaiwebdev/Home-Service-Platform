@@ -10,6 +10,8 @@ const User = require('../models/User');
 exports.register = asyncHandler(async (req, res, next) => {
     let user = await User.create(req.body);
     
+    user = user.select('-password');
+    
     sendTokenResponse(user, 201, res);
 });
 
@@ -28,14 +30,14 @@ exports.login = asyncHandler(async (req, res, next) => {
     
     if (!user)
         return next(
-            new ErrorResponse('Invalid credentials', 400)
+            new ErrorResponse('Invalid credentials', 401)
         );
 
     const matchedPw = await user.matchPassword(password);
 
     if (!matchedPw)
         return next(
-            new ErrorResponse('Invalid credentials', 400)
+            new ErrorResponse('Invalid credentials', 401)
         );
 
     sendTokenResponse(user, 200, res);
@@ -181,6 +183,6 @@ const sendTokenResponse = (user, statusCode, res) => {
         options.secure = true;
 
     res.status(statusCode).cookie('token', token, options).send({
-        success: true,
+        user: user
     })
 };

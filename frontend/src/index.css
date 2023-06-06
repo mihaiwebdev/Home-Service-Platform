@@ -1,0 +1,11 @@
+@import './styles/hamburger.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Source Sans Pro', 'sans-serif';
+    background-color: #f8f9fa;
+    min-height: 100vh;
+   
+}
