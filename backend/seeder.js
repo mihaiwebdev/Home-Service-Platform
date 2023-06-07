@@ -1,8 +1,8 @@
-require('dotenv').config({path: './config/config.env'});
-require('colors');
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config({ path: '../.env'});
+require('colors');
 
 const User = require('./models/User');
 const Worker = require('./models/Worker');

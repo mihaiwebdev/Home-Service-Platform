@@ -8,11 +8,11 @@ const User = require('../models/User');
 // @route   POST /api/v1/auth/register
 // @access  Public
 exports.register = asyncHandler(async (req, res, next) => {
-    let user = await User.create(req.body);
+    const user = await User.create(req.body);
     
-    user = user.select('-password');
-    
-    sendTokenResponse(user, 201, res);
+    const createdUser = await User.findById(user._id).select('-password');
+
+    sendTokenResponse(createdUser, 201, res);
 });
 
 // @desc    Login User
@@ -26,7 +26,7 @@ exports.login = asyncHandler(async (req, res, next) => {
             new ErrorResponse('Please provide an email and password', 400)
         )
 
-    const user = await User.findOne({ email }).select('+password');
+    let user = await User.findOne({ email }).select('+password');
     
     if (!user)
         return next(
@@ -40,11 +40,13 @@ exports.login = asyncHandler(async (req, res, next) => {
             new ErrorResponse('Invalid credentials', 401)
         );
 
+    user = await User.findOne({ email }).select('-password');
+
     sendTokenResponse(user, 200, res);
 });
 
 // @desc    Logout
-// @route   GET /api/v1/auth/logout
+// @route   POST /api/v1/auth/logout
 // @access  Private
 exports.logout = asyncHandler(async (req, res, next) => {
     res.cookie('token', '', {
@@ -183,6 +185,6 @@ const sendTokenResponse = (user, statusCode, res) => {
         options.secure = true;
 
     res.status(statusCode).cookie('token', token, options).send({
-        user: user
+        user
     })
 };

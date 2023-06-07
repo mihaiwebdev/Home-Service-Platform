@@ -24,7 +24,7 @@ connectDB();
 cron.schedule('0 0 * * *', cleanupExpiredDate);
 
 // Route files
-const auth = require('./routes/auth');
+const users = require('./routes/users');
 const clients = require('./routes/clients');
 const workers = require('./routes/workers');
 const services = require('./routes/services');
@@ -54,7 +54,7 @@ app.use(limiter);
 app.use(hpp());
 
 // Mount Routers
-app.use('/api/v1/auth', auth);
+app.use('/api/v1/users', users);
 app.use('/api/v1/clients', clients);
 app.use('/api/v1/workers', workers);
 app.use('/api/v1/services', services);
