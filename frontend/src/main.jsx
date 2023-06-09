@@ -9,10 +9,13 @@ import {
 import store from './store'
 import { Provider } from 'react-redux'
 import App from './App.jsx'
-import LoginPage from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
-import ServicesPage from './pages/ServicesPage'
 import HomePage from './pages/HomePage.jsx'
+import LoginPage from './pages/LoginPage.jsx'
+import RegisterPage from './pages/RegisterPage.jsx'
+import PrivateRoute from './components/PrivateRoute'
+import ProfilePage from './pages/ProfilePage.jsx'
+import ServicesPage from './pages/ServicesPage.jsx'
+import SchedulePage from './pages/SchedulePage.jsx'
 import './index.css'
 
 const router = createBrowserRouter(
@@ -23,7 +26,16 @@ const router = createBrowserRouter(
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/register' element={<RegisterPage/>}/>
 
+        {/* Private Routes */}
+        <Route path='' element={<PrivateRoute />}>
+          <Route path='/profile' element={<ProfilePage/>}/>
+        </Route>
+
+        {/* Client Private Routes */}
         <Route path='/services' element={<ServicesPage/>}/>
+        <Route path='/schedule' element={<SchedulePage/>}/>
+
+        {/* Worker Private Routes */}
 
     </Route>
   )

@@ -51,15 +51,15 @@ const Navbar = () => {
             <div onClick={openNavbar} className="hamburger">
                 <div className="hamburger-line"></div>
             </div>
-            <div onClick={closeNavbar} className="hamburger-nav hide flex flex-col items-end absolute top-0 right-0 z-10">
+            <div onClick={closeNavbar} className="hamburger-nav z-20 hide flex flex-col items-end absolute top-0 right-0 z-10">
                 <div  className="nav-actions bg-white flex flex-col justify-between h-full p-5">
                     <div>
                         <i className="cursor-pointer fa-solid fa-x absolute right-5 text-red text-xl"></i>
-                        <h1 className="font-semibold text-xl">Salut {userInfo && userInfo.name}!</h1>
+                        <h1 className="font-semibold text-xl border-b border-gray pb-2">Salut {userInfo && userInfo.name}</h1>
                         <ul  className="mt-8">
                             <Link to={userInfo ? '/services' : '/'} className="font-semibold">
                                 <li>
-                                    <i className="text-dark mr-2 bg-lime mb-5 rounded-full px-2 py-1 fa-solid fa-house text-xl"></i> Acasă
+                                    <i className="text-dark mr-2 bg-lime mb-3 rounded-full px-2 py-1 fa-solid fa-house text-base"></i> Acasă
                                 </li>
                             </Link>
                         </ul>
@@ -67,59 +67,53 @@ const Navbar = () => {
                             <ul >
                                 <Link to='/login' className="font-semibold">
                                     <li>
-                                        <i className="text-dark mr-2 bg-lime mb-5 rounded-full px-2 py-1 fa-solid fa-arrow-right-to-bracket text-xl"></i> Logare
+                                        <i className="text-dark mr-2 bg-lime mb-3 rounded-full px-2 py-1 fa-solid fa-arrow-right-to-bracket text-base"></i> Logare
                                     </li>
                                 </Link>
 
                                 <Link to='/register' className="font-semibold">
                                     <li>
-                                        <i className="text-dark mr-2 bg-lime mb-5 rounded-full px-1.5 py-1 fa-solid fa-user-plus text-xl"></i> Înregistrare
+                                        <i className="text-dark mr-2 bg-lime mb-3 rounded-full px-1.5 py-1 fa-solid fa-user-plus text-base"></i> Înregistrare
                                     </li>
                                 </Link>
                             </ul>
                         ) : (
                             <ul >
-                                <Link to='/' className="font-semibold">
+                                <Link to='/profile' className="font-semibold">
                                     <li>
-                                        <i className="text-dark mr-2 bg-lime mb-5 rounded-full px-2.5 py-1 fa-solid fa-user text-xl"></i> Profil
+                                        <i className="text-dark mr-2 bg-lime mb-3 rounded-full px-2.5 py-1 fa-regular fa-user text-base"></i> Profil
                                     </li>
                                 </Link>
                                 
                                 <Link to='/' className="font-semibold">
                                     <li>
-                                        <i className="text-dark mr-2 bg-lime mb-5 rounded-full py-1 px-2 fa-solid fa-cart-shopping text-xl"></i> Comenzi
+                                        <i className="text-dark mr-2 bg-lime mb-3 rounded-full py-1 px-2 fa-solid fa-cart-shopping text-base"></i> Comenzi
                                     </li>
                                 </Link>
                                 
                                 <Link to='/' className="font-semibold">
                                     <li>
-                                        <i className="text-dark mr-2 bg-lime mb-5 rounded-full py-1 px-2 fa-solid fa-file-invoice-dollar text-xl"></i> Facturi
-                                    </li>
-                                </Link>
-
-                                <Link to='/' className="font-semibold">
-                                    <li>
-                                        <i className="text-dark mr-2 bg-lime mb-5 rounded-full px-1.5 py-1 fa-solid fa-user-xmark text-xl"></i> Șterge cont
+                                        <i className="text-dark mr-2 bg-lime mb-3 rounded-full py-1 px-2.5 fa-solid fa-file-invoice-dollar text-base"></i> Facturi
                                     </li>
                                 </Link>
 
                                 <li onClick={logoutUser} className='font-semibold'>    
-                                    <i className=" text-dark mr-2 bg-lime mb-5 rounded-full px-2 py-1 fa-solid fa-arrow-right-from-bracket text-xl"></i> Ieși din cont
+                                    <i className=" text-dark mr-2 bg-lime mb-3 rounded-full px-2 py-1 fa-solid fa-arrow-right-from-bracket text-base"></i> Ieși din cont
                                 </li>
                             </ul>
                         )}
                         
                     </div>
 
-                    <div className="border-t pt-1">
+                    <div className="border-t pt-1 border-gray">
                         <li>
-                            <Link to='/' >Termeni</Link>
+                            <Link to='/' className='opacity-70'>Termeni</Link>
                         </li>
                         <li>
-                            <Link to='/' >Confidențialitate</Link>
+                            <Link to='/' className='opacity-70' >Confidențialitate</Link>
                         </li>
                         <li>
-                            <Link to='/' >Ajutor</Link>
+                            <Link to='/' className='opacity-70' >Ajutor</Link>
                         </li>
                     </div>
 

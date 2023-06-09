@@ -4,21 +4,23 @@ module.exports = {
         "./src/App.jsx",
         "./src/pages/Homepage.jsx",
         "./src/pages/ServicesPage.jsx",
+        "./src/pages/SchedulePage.jsx",
         "./src/pages/LoginPage.jsx",
         "./src/pages/RegisterPage.jsx",
+        "./src/pages/ProfilePage.jsx",
         "./src/components/Navbar.jsx",
         "./src/components/Navigation.jsx",
+        "./src/components/UpdatePwModal.jsx",
     ],
-
     theme: {
         colors: {
-            lime: "rgba(193, 241, 50, 0.76)",
+            lime: "#cef068",
             limeMatch: "#f4f1de",
             dark: "#212529",
             gray: "#dad7cd",
             white: "#fff",
             red: "#e63946",
-            lightLime: "#fffcf2"
+            lightLime: "#faf8f3"
         },
 
         fontFamily: {
@@ -40,6 +42,7 @@ module.exports = {
 
         borderRadius: {
             'full': '9999px',
+            'sm':'7px',
             'md': '15px',
             'lg': '25px',
             '3xl': '40px'

@@ -72,7 +72,9 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 exports.updateDetails = asyncHandler(async (req, res, next) => {
     const fieldsToUpdate = {
         email: req.body.email,
-        name: req.body.name
+        name: req.body.name,
+        address: req.body.address,
+        addressDetail: req.body.addressDetail
     };
 
     let user = await User.findById(req.user._id);
@@ -185,6 +187,6 @@ const sendTokenResponse = (user, statusCode, res) => {
         options.secure = true;
 
     res.status(statusCode).cookie('token', token, options).send({
-        user
+        data: user
     })
 };

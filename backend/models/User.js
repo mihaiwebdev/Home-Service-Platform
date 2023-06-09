@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema({
         required: [true, 'Please enter a name'],
         maxlength: 100
     },
+
     email: {
         type: String,
         required: [true, 'Please enter an email'],
@@ -18,17 +19,23 @@ const UserSchema = new mongoose.Schema({
         ],
         unique: true
     },
+
     role: {
         type: String,
         enum: ['client', 'worker'],
         default: 'client'
     },
+
+    address: String,
+    addressDetail: String,
+
     password: {
         type: String,
         requried: [true, 'Please add a password'],
         minlength: 6,
         select: false,
     },
+
     resetPasswordToken: String,
     resetPasswordExpire: Date,
     createdAt: {

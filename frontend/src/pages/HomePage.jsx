@@ -26,7 +26,7 @@ const Welcomepage = () => {
                     <p className='text-center mt-4 text-xl font-sourcesanspro font-bold short2:text-base md:text-3xl'><span className='block'>Servicii de curățenie și întreținere</span> la doar un clic distanță</p>
                     <p className='hidden lg:block text-center text-xl font-sourcesanspro font-semibold short2:text-base md:text-3xl'><span className='block'>O casă curată și ordonată,</span>  un stil de viață mai bun</p>
                     <div className='flex justify-center mt-8 short:mt-2 short2:mt-4'>
-                        <Link to={userInfo ? '/search' : 'register'} className='bg-dark py-1.5 pl-3 pr-1 rounded-full short:py-0.5 short:pl-2 '>
+                        <Link to={userInfo ? '/services' : 'register'} className='bg-dark py-1.5 pl-3 pr-1 rounded-full short:py-0.5 short:pl-2 '>
                             <span className='text-white font-sourcesanspro '>Gaseste ajutor</span>
                             <div className='inline-block bg-white rounded-full ml-3 py-1.5 px-2.5 short:py-0.5 short:px-1.5'>
                                 <i className="fa-solid fa-arrow-right"></i>
