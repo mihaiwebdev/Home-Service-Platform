@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
+    "framer-motion": "^10.12.16",
     "postcss": "^8.4.24",
     "precss": "^4.0.0",
     "react": "^18.2.0",
+    "react-calendar": "^4.2.1",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.7",
     "react-router-dom": "^6.11.2",

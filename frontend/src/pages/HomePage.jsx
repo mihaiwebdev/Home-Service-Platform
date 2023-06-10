@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import busyWomanImg from '../assets/busy-woman.png'
 import cleanHouseImg from '../assets/house-cleaning.png'
+import { animate, motion } from 'framer-motion'
 
 const Welcomepage = () => {
 
@@ -11,13 +12,21 @@ const Welcomepage = () => {
     return (
         
         <div className="pt-16 short:pt-8 h-screen relative md:pt-28">
-            <h1 className='font-sourcesanspro py-5 text-center text-dark
+            <motion.h1 initial={{opacity: 0}} animate={{opacity:1}}
+            transition={{duration: 1.5}}
+             className='font-sourcesanspro py-5 text-center text-dark
                 font-extrabold px-8 text-4xl short2:text-2xl md:mb-12'>
                 Eliberează-te de sarcinile <img className='inline-block' width={40} height={40} src={cleanHouseImg} alt="clean-house" /> casnice  
                 
-            </h1>
+            </motion.h1>
 
-            <div className='h-full bg-lime shadow-3xl rounded-t-3xl pt-1 md:flex 
+            <motion.div initial={{y: 300}} animate={{y: 0}}
+             transition={{
+                type: "spring",
+                bounce: 0.4,
+                duration: 0.8
+             }}
+             className='h-full bg-lime shadow-3xl rounded-t-3xl pt-1 md:flex 
              md:flex-col-reverse md:flex-col md:pb-32 md:justify-around lg:flex-row 
              lg:justify-around lg:flex-row-reverse'>
                 <img className='mt-8 mx-auto short2:mt-2 short2:w-4/5 sm:w-2/3
@@ -26,15 +35,17 @@ const Welcomepage = () => {
                     <p className='text-center mt-4 text-xl font-sourcesanspro font-bold short2:text-base md:text-3xl'><span className='block'>Servicii de curățenie și întreținere</span> la doar un clic distanță</p>
                     <p className='hidden lg:block text-center text-xl font-sourcesanspro font-semibold short2:text-base md:text-3xl'><span className='block'>O casă curată și ordonată,</span>  un stil de viață mai bun</p>
                     <div className='flex justify-center mt-8 short:mt-2 short2:mt-4'>
-                        <Link to={userInfo ? '/services' : 'register'} className='bg-dark py-1.5 pl-3 pr-1 rounded-full short:py-0.5 short:pl-2 '>
-                            <span className='text-white font-sourcesanspro '>Gaseste ajutor</span>
-                            <div className='inline-block bg-white rounded-full ml-3 py-1.5 px-2.5 short:py-0.5 short:px-1.5'>
+                        <Link to={userInfo ? '/services' : 'register'} 
+                        className='bg-dark py-1 w-44 pl-3 pr-1 rounded-full short:py-0.5 short:pl-2 
+                        flex items-center justify-between'>
+                            <span className='ms-2 text-white font-sourcesanspro '>Gaseste ajutor</span>
+                            <div className='inline-block bg-white rounded-full  py-1.5 px-2.5 short:py-0.5 short:px-1.5'>
                                 <i className="fa-solid fa-arrow-right"></i>
                             </div>
                         </Link>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }

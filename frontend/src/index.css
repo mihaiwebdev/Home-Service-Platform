@@ -1,5 +1,6 @@
 @import './styles/hamburger.css';
 @import './styles/loader.css';
+@import './styles/calendar.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

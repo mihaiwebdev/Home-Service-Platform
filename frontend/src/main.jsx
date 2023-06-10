@@ -17,6 +17,7 @@ import ProfilePage from './pages/ProfilePage.jsx'
 import ServicesPage from './pages/ServicesPage.jsx'
 import SchedulePage from './pages/SchedulePage.jsx'
 import './index.css'
+import ChangePw from './components/ChangePw'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +29,9 @@ const router = createBrowserRouter(
 
         {/* Private Routes */}
         <Route path='' element={<PrivateRoute />}>
-          <Route path='/profile' element={<ProfilePage/>}/>
+          <Route path='/profile' element={<ProfilePage/>} />
+          
+          <Route path='/profile/changepw' element={<ChangePw />} />
         </Route>
 
         {/* Client Private Routes */}

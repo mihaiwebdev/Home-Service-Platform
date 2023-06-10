@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useUpdatePasswordMutation } from '../slices/usersApiSlice'
 import { toast } from 'react-toastify'
+import Modal from './Modal'
 import Loader from './Loader'
 
 
-const UpdatePwModal = () => {
+const ChangePw = () => {
 
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -36,12 +37,7 @@ const UpdatePwModal = () => {
     }; 
 
     return (
-
-        <div className={`${location.hash === '#changepw' ? 'show-modal' 
-         : 'hidden'} bg-white h-full pt-8 shadow-2xl rounded-t-3xl w-full 
-         flex flex-col items-center mt-6 h-3/4 short:mt-4 short2:pb-20 
-         absolute top-0 left-0 z-10`}>
-
+        <Modal >
             <div className='relative w-full mb-4'>
                 <i onClick={() => navigate(-1)} className="fa-solid
                 bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-8 "></i>
@@ -87,9 +83,9 @@ const UpdatePwModal = () => {
                 )}
             </form>
 
-        </div>
+        </Modal>
     )
 }
 
 
-export default UpdatePwModal
+export default ChangePw

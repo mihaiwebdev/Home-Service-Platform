@@ -11,6 +11,8 @@ module.exports = {
         "./src/components/Navbar.jsx",
         "./src/components/Navigation.jsx",
         "./src/components/UpdatePwModal.jsx",
+        "./src/components/Modal.jsx",
+        "./src/components/DeleteAcc.jsx",
     ],
     theme: {
         colors: {

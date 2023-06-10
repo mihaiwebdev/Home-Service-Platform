@@ -5,7 +5,7 @@ const crypto = require('crypto');
 const User = require('../models/User');
 
 // @desc    Register User
-// @route   POST /api/v1/auth/register
+// @route   POST /api/v1/users/register
 // @access  Public
 exports.register = asyncHandler(async (req, res, next) => {
     const user = await User.create(req.body);
@@ -16,7 +16,7 @@ exports.register = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Login User
-// @route   POST /api/v1/auth/login
+// @route   POST /api/v1/users/login
 // @access  Public
 exports.login = asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
@@ -46,7 +46,7 @@ exports.login = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Logout
-// @route   POST /api/v1/auth/logout
+// @route   POST /api/v1/users/logout
 // @access  Private
 exports.logout = asyncHandler(async (req, res, next) => {
     res.cookie('token', '', {
@@ -58,7 +58,7 @@ exports.logout = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Get current logged in user
-// @route   GET /api/v1/auth/me
+// @route   GET /api/v1/users/me
 // @access  Private
 exports.getMe = asyncHandler(async (req, res, next) => {
     const user = await User.findById(req.user._id);
@@ -67,7 +67,7 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Update user details
-// @route   PUT /api/v1/auth/updatedetails
+// @route   PUT /api/v1/users/updatedetails
 // @access  Private
 exports.updateDetails = asyncHandler(async (req, res, next) => {
     const fieldsToUpdate = {
@@ -88,7 +88,7 @@ exports.updateDetails = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Update user password
-// @route   PUT /api/v1/auth/updatepassword
+// @route   PUT /api/v1/users/updatepassword
 // @access  Private
 exports.updatePassword = asyncHandler(async (req, res, next) => {
     const user = await User.findById(req.user._id).select('+password');
@@ -107,8 +107,26 @@ exports.updatePassword = asyncHandler(async (req, res, next) => {
     sendTokenResponse(user, 200, res);
 });
 
+// @desc    Delete user
+// @ROUTE   DELETE /api/v1/users/deleteme
+// @access  Private
+exports.deleteMe = asyncHandler(async (req, res, next) => {    
+    const user = await User.findByIdAndDelete(req.user._id);
+
+    if (!user) {
+        return next(
+            new ErrorResponse('User not found', 404)
+        );
+    };
+
+    res.status(200).cookie('token', '', {
+        expires: new Date(0),
+        httpOnly: true
+    }).json({success: true, data: {}});
+});
+
 // @desc    Forgot password
-// @route   POST /api/v1/auth/forgotpassword
+// @route   POST /api/v1/users/forgotpassword
 // @access  Public
 exports.forgotPassword = asyncHandler(async(req, res, next) => {
     const user = await User.findOne({email: req.body.email});
@@ -122,7 +140,7 @@ exports.forgotPassword = asyncHandler(async(req, res, next) => {
     const resetToken = user.getResetPasswordToken();
     await user.save({ validateBeforeSave: false});
 
-    const url = `${req.protocol}://${req.get('host')}/api/v1/auth/resetpassword/${resetToken}`
+    const url = `${req.protocol}://${req.get('host')}/api/v1/users/resetpassword/${resetToken}`
     const message = `You are receiving this email because you (or someone else) has 
     requested the reset of a password. Please make a PUT request to: \n\n ${url}`
 
@@ -150,7 +168,7 @@ exports.forgotPassword = asyncHandler(async(req, res, next) => {
 });
 
 // @desc    Reset Password
-// @route   PUT /api/v1/auth/resetpassword/:resettoken
+// @route   PUT /api/v1/users/resetpassword/:resettoken
 // @access  Private
 exports.resetPassword = asyncHandler(async (req, res, next) => {
     const resetPasswordToken = crypto.createHash('sha256').update(req.params.resettoken).digest('hex')

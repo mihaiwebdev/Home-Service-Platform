@@ -10,7 +10,9 @@ const ServiceSchema = mongoose.Schema({
     slug: {
         type: String,
         unique: true
-    }
+    },
+    header: String,
+    photo: String
 });
 
 ServiceSchema.pre('save', function(next) {

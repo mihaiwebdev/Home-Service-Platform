@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import cleaningIcon from '../assets/housekeeping.png'
 import grassIcon from '../assets/grass-cutter.png'
 import babyIcon from '../assets/baby-girl.png'
@@ -13,19 +14,24 @@ const SearchPage = () => {
 
     useEffect(() => {
 
-        if (!userInfo) {
-            navigate('/login')
-        };
-
-    }, [userInfo])
+    }, [])
 
     return (
         <div className="pt-16 min-h-screen h-full bg-lightLime">
 
-            <img src={cleanHome} alt="clean-house" className='short:h-auto mx-auto object-cover 
-             h-72 md:max-w-3xl md:rounded-t-md md:h-auto' />
+            <motion.img initial={{opacity: 0}} animate={{opacity: 1}} 
+             transition={{duration: 1}}
+             src={cleanHome} alt="clean-house" className='short:h-auto mx-auto object-cover 
+             h-72 md:max-w-3xl md:rounded-t-md md:h-auto rounded-t-sm' />
 
-            <div className='mx-auto p-5 pb-10 max-w-3xl mt-auto bg-lightLime rounded-t-lg 
+            <motion.div  initial={{y: 500, opacity:0}}
+             animate={{y: -24, opacity: 1,}}
+             transition={{
+                type: "spring",
+                bounce: 0.4,
+                duration: 0.8
+             }}
+             className='mx-auto p-5 pb-10 max-w-3xl mt-auto bg-lightLime rounded-t-lg 
              -translate-y-6 lg:-translate-y-20'>
                 <h1 className='text-center font-bold text-lg '>Cu ce te putem ajuta?</h1>
                 <Link to='/schedule#curatenie' className='my-4 min-h-20 pb-2 cursor-pointer 
@@ -71,7 +77,7 @@ const SearchPage = () => {
                     <i className="short2:hidden fa-solid my-auto mr-2 ml-auto fa-chevron-right 
                      bg-lime rounded-full py-1 px-2.5 text-sm"></i>
                 </Link>
-            </div>
+            </motion.div>
         </div>
     )
 }
