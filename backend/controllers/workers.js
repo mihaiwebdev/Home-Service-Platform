@@ -17,19 +17,20 @@ exports.getWorkers = asyncHandler(async(req, res, next) => {
 });
 
 // @desc    Get available workers for the client request
-// @route   GET /api/v1/workers/radius/:zipcode/:countryCode
+// @route   GET /api/v1/workers/radius
 // @access  Public
 exports.getAvailableWorkers = asyncHandler(async(req, res, next) => {   
     const reqQuery = {...req.query};
-    const reqDate  = new Date(req.query.date).toDateString();
+    const reqDate  = req.query.date;
+    const reqHour = req.query.hour;
 
     // Remove fields that are not queryable
-    const removeFields = ['select', 'sort', 'page', 'date', 'hour'];
+    const removeFields = ['select', 'sort', 'page', 'date', 'hour', 'address'];
     removeFields.map(field => delete reqQuery[field]);
 
     // Set location query
-    const locationQuery = `${req.params.zipcode} ${req.params.countryCode}`;
-    const loc = await geocoder.geocode(locationQuery);
+    const loc = await geocoder.geocode(req.query.address);
+
     const lat = loc[0].latitude;
     const long = loc[0].longitude;
     const radius = 20 / 6378;
@@ -43,7 +44,7 @@ exports.getAvailableWorkers = asyncHandler(async(req, res, next) => {
         path: 'user',
         select: 'name'
     }).populate('schedule');
-
+    
     if (!filteredWorkers) {
         return next(
             new ErrorResponse('No workers found', 404)
@@ -55,8 +56,9 @@ exports.getAvailableWorkers = asyncHandler(async(req, res, next) => {
     for (let i = 0; i < filteredWorkers.length; i++) {
         
         for (let j = 0; j < filteredWorkers[i].schedule.length; j++) {
+            
             if (filteredWorkers[i].schedule[j].date.toDateString() === reqDate
-                && filteredWorkers[i].schedule[j].availability.get(req.query.hour)) 
+                && filteredWorkers[i].schedule[j].availability.get(reqHour)) 
             {
                 availableWorkers.push(filteredWorkers[i])                                        
             };

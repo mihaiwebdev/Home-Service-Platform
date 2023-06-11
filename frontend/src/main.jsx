@@ -16,6 +16,7 @@ import PrivateRoute from './components/PrivateRoute'
 import ProfilePage from './pages/ProfilePage.jsx'
 import ServicesPage from './pages/ServicesPage.jsx'
 import SchedulePage from './pages/SchedulePage.jsx'
+import WorkersResult from './pages/WorkersResult'
 import './index.css'
 import ChangePw from './components/ChangePw'
 
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
         {/* Client Private Routes */}
         <Route path='/services' element={<ServicesPage/>}/>
         <Route path='/schedule' element={<SchedulePage/>}/>
+        <Route path='/available-workers' element={<WorkersResult/>}/>
 
         {/* Worker Private Routes */}
 

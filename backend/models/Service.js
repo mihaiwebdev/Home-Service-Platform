@@ -11,7 +11,7 @@ const ServiceSchema = mongoose.Schema({
         type: String,
         unique: true
     },
-    header: String,
+    text: String,
     photo: String
 });
 

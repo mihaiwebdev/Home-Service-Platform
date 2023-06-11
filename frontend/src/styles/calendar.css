@@ -55,7 +55,3 @@ abbr:where([title]) {
     background-color: #cef068!important;
     border-radius: 5px;
 }
-
-.react-calendar__month-view__days__day--weekend {
-    color: #e63946!important;
-}

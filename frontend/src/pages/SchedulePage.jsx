@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useLocation, Link, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion'
 import Calendar from 'react-calendar'
@@ -7,13 +7,15 @@ import Calendar from 'react-calendar'
 const SchedulePage = () => {
     const [address, setAddress] = useState('');
     const [addressDetail, setAddressDetail] = useState('');
-    const [date, setDate] = useState(new Date());
-    const [hour, setHour] = useState(1);
+    const [date, setDate] = useState(new Date().toDateString());
+    const [hour, setHour] = useState('1');
     const hoursArr = Array.from({length: 24}, (x, index) => index + 1);
     
     const location = useLocation();
     const navigate = useNavigate();
+
     const { userInfo } = useSelector(state => state.auth);
+    const service = location.hash.split('#')[1];
 
     useEffect(() => {
         if (userInfo.address)
@@ -32,7 +34,7 @@ const SchedulePage = () => {
             bounce: 0.4,
             duration: 0.8
         }}
-         className="py-20 min-h-screen px-2 h-full bg-lightLime">
+         className="py-20 min-h-screen px-2 h-full">
             <div className='flex short2:flex-col short2:text-start w-full text-center'>
                 <div>
                     <i onClick={() => navigate(-1)} className="fa-solid short2:mb-6 ms-4
@@ -71,7 +73,7 @@ const SchedulePage = () => {
                 <h1 className='font-bold rounded-sm mt-10 mb-4
                 ms-2 '>Selecteaza data</h1>
                 <Calendar value={date} minDate={new Date()} showNeighboringMonth={false} view="month"
-                onChange={setDate} prev2Label={null} next2Label={null} 
+                onChange={(value) => setDate(new Date(value).toDateString())} prev2Label={null} next2Label={null} locale=''
                 />
             </div>
             
@@ -82,7 +84,7 @@ const SchedulePage = () => {
                 </label>
 
                 <select name="hour" id="hour" className='py-1.5 px-6
-                 rounded-sm shadow-md font-semibold bg-lime' size={1}
+                 rounded-sm shadow-md font-semibold bg-lime focus:outline-none' size={1}
                  onChange={(e) => setHour(e.target.value)}
                  >
                     
@@ -94,7 +96,8 @@ const SchedulePage = () => {
             </div>
             
             <div className='flex justify-center mt-10 '>
-                <Link to='/' className='bg-dark py-1 w-44 pl-3 pr-1 rounded-full short:py-0.5 short:pl-2 
+                <Link to={`/available-workers?service=${service}&address=${address}&date=${date}&hour=${hour}`}
+                className='bg-dark py-1 w-44 pl-3 pr-1 rounded-full short:py-0.5 short:pl-2 
                 flex items-center justify-between'>
                     <span className='ms-2 text-white font-sourcesanspro '>Gaseste ajutor</span>
                     <div className='inline-block bg-white rounded-full py-1.5 px-2.5 '>

@@ -9,7 +9,7 @@ router.route('/')
     .get(getWorkers)
     .post(protect, authorize('worker', 'admin'), createWorker);
 
-router.get('/radius/:zipcode/:countryCode', getAvailableWorkers);
+router.get('/radius', getAvailableWorkers);
 
 router.route('/:workerId')
     .get(getWorker)
