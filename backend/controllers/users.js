@@ -74,7 +74,8 @@ exports.updateDetails = asyncHandler(async (req, res, next) => {
         email: req.body.email,
         name: req.body.name,
         address: req.body.address,
-        addressDetail: req.body.addressDetail
+        addressDetail: req.body.addressDetail,
+        city: req.body.city
     };
 
     let user = await User.findById(req.user._id);

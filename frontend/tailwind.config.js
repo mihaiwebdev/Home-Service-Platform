@@ -8,21 +8,26 @@ module.exports = {
         "./src/pages/LoginPage.jsx",
         "./src/pages/RegisterPage.jsx",
         "./src/pages/ProfilePage.jsx",
+        "./src/pages/WorkerProfilePage.jsx",
         "./src/pages/WorkersResult.jsx",
+        "./src/pages/WorkerInfo.jsx",
         "./src/components/Navbar.jsx",
         "./src/components/Navigation.jsx",
         "./src/components/UpdatePwModal.jsx",
         "./src/components/Modal.jsx",
         "./src/components/DeleteAcc.jsx",
+        "./src/components/Reviews.jsx",
+        "./src/components/ErrorMsg.jsx",
     ],
     theme: {
         colors: {
-            lime: "#cef068",
+            lime: "#cdf161",
             limeMatch: "#f4f1de",
             dark: "#212529",
             gray: "#dad7cd",
             white: "#fff",
             red: "#e63946",
+            darkRed: "#d90429",
             lightLime: "#faf8f3"
         },
 
@@ -41,6 +46,12 @@ module.exports = {
                 '3xl': 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;',
                 'cm-md': 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;'
             },
+            height: {
+                '92%': '92%',
+            },
+            minHeight: {
+                '92%': '92%'
+            }
         },
 
         borderRadius: {

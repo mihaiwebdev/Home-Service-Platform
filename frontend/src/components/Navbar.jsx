@@ -48,7 +48,7 @@ const Navbar = () => {
             bounce: 0.4,
             duration: 0.8
         }}
-         className="navbar top-0 left-0 w-full z-20 absolute">
+         className="navbar top-0 left-0 w-full absolute">
             <div className="pt-2 ps-4 font-bold">
                 Logo <i className="fa-solid fa-broom text-2xl"></i>
             </div>
@@ -58,8 +58,8 @@ const Navbar = () => {
                     <div className="hamburger-line"></div>
                 </div>
 
-                <div className={`hamburger-nav flex flex-col
-                items-end z-20 absolute top-0 right-0 ${isOpen ? 'show' : ''}`}>
+                <div className={`hamburger-nav z-20  flex flex-col
+                items-end absolute top-0 right-0 ${isOpen ? 'show' : ''}`}>
 
                     <div  className="nav-actions bg-white flex flex-col justify-between h-full p-5">
                         <div>

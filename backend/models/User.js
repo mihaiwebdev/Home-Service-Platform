@@ -26,6 +26,7 @@ const UserSchema = new mongoose.Schema({
         default: 'client'
     },
 
+    city: String,
     address: String,
     addressDetail: String,
 

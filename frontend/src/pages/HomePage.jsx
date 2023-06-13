@@ -8,7 +8,6 @@ const Welcomepage = () => {
 
     const { userInfo } = useSelector(state => state.auth);
 
-
     return (
         
         <div className="pt-16 bg-white short:pt-8 h-screen relative md:pt-28">

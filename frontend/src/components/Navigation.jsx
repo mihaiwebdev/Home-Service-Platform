@@ -10,7 +10,7 @@ const Navigation = () => {
         return null;
 
     return (
-        <div className="p-5 w-full z-10 short2:absolute fixed bottom-0 flex justify-around items-center max-w-5xl left-2/4 -translate-x-2/4">
+        <div className="p-5 w-full z-10 absolute bottom-0 flex justify-around items-center max-w-5xl left-2/4 -translate-x-2/4">
             <Link to='/services' className="flex flex-col items-center justify-center">                
                 <i className={`text-dark fa-solid fa-house text-xl 
                     ${location.pathname === '/services' ? 'opacity-100' : 'opacity-80' }`}></i>  

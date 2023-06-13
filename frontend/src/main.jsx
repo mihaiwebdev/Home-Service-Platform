@@ -9,16 +9,20 @@ import {
 import store from './store'
 import { Provider } from 'react-redux'
 import App from './App.jsx'
-import HomePage from './pages/HomePage.jsx'
-import LoginPage from './pages/LoginPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
+import LoginPage from './pages/LoginPage.jsx'
+import HomePage from './pages/HomePage.jsx'
 import PrivateRoute from './components/PrivateRoute'
+import PrivateClientRoute from './components/PrivateClientRoute'
+import PrivateWorkerRoute from './components/PrivateWorkerRoute'
 import ProfilePage from './pages/ProfilePage.jsx'
+import ChangePw from './components/ChangePw'
 import ServicesPage from './pages/ServicesPage.jsx'
 import SchedulePage from './pages/SchedulePage.jsx'
 import WorkersResult from './pages/WorkersResult'
+import WorkerInfo from './pages/WorkerInfo'
+import WorkerProfilePage from './pages/WorkerProfilePage'
 import './index.css'
-import ChangePw from './components/ChangePw'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,14 +37,21 @@ const router = createBrowserRouter(
           <Route path='/profile' element={<ProfilePage/>} />
           
           <Route path='/profile/changepw' element={<ChangePw />} />
+          
+        </Route>
+        
+        {/* Client Private Routes */}
+        <Route path='' element={<PrivateClientRoute />} >
+          <Route path='/services' element={<ServicesPage/>}/>
+          <Route path='/schedule' element={<SchedulePage/>}/>
+          <Route path='/workers' element={<WorkersResult/>}/>
+          <Route path='/workers/:id' element={<WorkerInfo/>}/>
         </Route>
 
-        {/* Client Private Routes */}
-        <Route path='/services' element={<ServicesPage/>}/>
-        <Route path='/schedule' element={<SchedulePage/>}/>
-        <Route path='/available-workers' element={<WorkersResult/>}/>
-
         {/* Worker Private Routes */}
+        <Route path='' element={<PrivateWorkerRoute />}>
+          <Route path='worker-profile' element={<WorkerProfilePage />}/>
+        </Route>
 
     </Route>
   )

@@ -15,7 +15,7 @@ const App = () => {
 
       <Outlet />
       
-      <Navigation/>
+      {/* <Navigation/> */}
     </div>
   )
 }

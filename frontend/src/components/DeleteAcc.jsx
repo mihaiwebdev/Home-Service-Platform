@@ -38,7 +38,7 @@ const DeleteAcc = () => {
 
     return (
         <Modal extraClass={`${location.hash === '#deleteuser' ? '' : 'hidden'}
-         absolute top-0 left-0 px-8 z-10`}>
+         absolute top-0 left-0 px-8 z-10 shadow-none`}>
             <i onClick={() => navigate(-1)} className="fa-solid
                 bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-8 "></i>
             <h1 className='font-bold text-xl mb-4'>Doriti sa va stergeti contul?</h1>

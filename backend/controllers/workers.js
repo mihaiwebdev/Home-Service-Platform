@@ -23,7 +23,7 @@ exports.getAvailableWorkers = asyncHandler(async(req, res, next) => {
     const reqQuery = {...req.query};
     const reqDate  = req.query.date;
     const reqHour = req.query.hour;
-
+    console.log(reqHour)
     // Remove fields that are not queryable
     const removeFields = ['select', 'sort', 'page', 'date', 'hour', 'address'];
     removeFields.map(field => delete reqQuery[field]);
@@ -58,7 +58,7 @@ exports.getAvailableWorkers = asyncHandler(async(req, res, next) => {
         for (let j = 0; j < filteredWorkers[i].schedule.length; j++) {
             
             if (filteredWorkers[i].schedule[j].date.toDateString() === reqDate
-                && filteredWorkers[i].schedule[j].availability.get(reqHour)) 
+                && filteredWorkers[i].schedule[j].availability.get(reqHour) ) 
             {
                 availableWorkers.push(filteredWorkers[i])                                        
             };
@@ -76,6 +76,9 @@ exports.getAvailableWorkers = asyncHandler(async(req, res, next) => {
 exports.getWorker = asyncHandler(async(req, res, next) => {
     const worker = await Worker.findById(req.params.workerId).populate({
         path: 'services',
+        select: 'name'
+    }).populate({
+        path: 'user',
         select: 'name'
     });
     

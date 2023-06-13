@@ -1,7 +1,7 @@
 [ 
     {
         "worker": "5c8a1d5b0190b214360dc033",
-        "date": "2023-06-05",
+        "date": "6-13-2023",
         "availability": {
             "08": false,
             "09": false,
@@ -17,27 +17,27 @@
     },
     {
         "worker": "647b73027d12da0b8986dae0",
-        "date": "2023-06-05",
+        "date": "6-13-2023",
         "availability": {
-            "08": true,
-            "09": true,
-            "10": true,
-            "11": true,
-            "12": true,
-            "13": false,
-            "14": false,
-            "15": false,
-            "16": false,
-            "17": false
+            "08": false,
+            "09": false,
+            "10": false,
+            "11": false,
+            "12": false,
+            "13": true,
+            "14": true,
+            "15": true,
+            "16": true,
+            "17": true
         }
     },
     {
         "worker": "5d7a514b5d2c12c7449be046",
-        "date": "2023-06-05",
+        "date": "6-13-2023",
         "availability": {
-            "08": true,
-            "09": true,
-            "10": true,
+            "08": false,
+            "09": false,
+            "10": false,
             "11": false,
             "12": false,
             "13": true,
@@ -49,13 +49,13 @@
     },
     {
         "worker": "5c8a1d5b0190b214360dc035",
-        "date": "2023-06-05",
+        "date": "6-13-2023",
         "availability": {
-            "08": true,
+            "08": false,
             "09": false,
             "10": false,
-            "11": true,
-            "12": true,
+            "11": false,
+            "12": false,
             "13": true,
             "14": true,
             "15": true,
@@ -65,13 +65,13 @@
     },
     {
         "worker": "647b73027d12da0b8986dae1",
-        "date": "2023-06-05",
+        "date": "6-13-2023",
         "availability": {
-            "08": true,
-            "09": true,
+            "08": false,
+            "09": false,
             "10": false,
             "11": false,
-            "12": true,
+            "12": false,
             "13": true,
             "14": true,
             "15": true,
@@ -81,44 +81,44 @@
     },
     {
         "worker": "647b73027d12da0b8986dae3",
-        "date": "2023-06-05",
+        "date": "6-13-2023",
         "availability": {
-            "08": true,
-            "09": true,
-            "10": true,
-            "11": true,
-            "12": true,
+            "08": false,
+            "09": false,
+            "10": false,
+            "11": false,
+            "12": false,
             "13": true,
             "14": true,
             "15": true,
-            "16": false,
-            "17": false
+            "16": true,
+            "17": true
         }
     }
     ,    {
         "worker": "5c8a1d5b0190b214360dc032",
-        "date": "2023-06-05",
+        "date": "6-13-2023",
         "availability": {
-            "08": true,
-            "09": true,
-            "10": true,
-            "11": true,
+            "08": false,
+            "09": false,
+            "10": false,
+            "11": false,
             "12": false,
-            "13": false,
-            "14": false,
+            "13": true,
+            "14": true,
             "15": true,
             "16": true,
             "17": true
         }
     }, {
         "worker": "5c8a1d5b0190b214360dc031",
-        "date": "2023-06-05",
+        "date": "6-13-2023",
         "availability": {
-            "08": true,
-            "09": true,
+            "08": false,
+            "09": false,
             "10": false,
             "11": false,
-            "12": true,
+            "12": false,
             "13": true,
             "14": true,
             "15": true,
@@ -129,13 +129,13 @@
 
     {
         "worker": "5d7a514b5d2c12c7449be044",
-        "date": "2023-06-05",
+        "date": "6-13-2023",
         "availability": {
-            "08": true,
-            "09": true,
+            "08": false,
+            "09": false,
             "10": false,
             "11": false,
-            "12": true,
+            "12": false,
             "13": true,
             "14": true,
             "15": true,

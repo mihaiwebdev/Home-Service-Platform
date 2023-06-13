@@ -6,10 +6,13 @@ const workersSlice = createSlice({
     reducers: {
         setAvailableWorkers: (state, action) => {
             state.availableWorkers = action.payload.data;
+        },
+        setWorkerInfo: (state, action) => {
+            state.workerInfo = action.payload.data;
         }
     }
 });
 
-export const { setAvailableWorkers } = workersSlice.actions;
+export const { setAvailableWorkers, setWorkerInfo } = workersSlice.actions;
 
 export default workersSlice.reducer;

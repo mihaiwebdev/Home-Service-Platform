@@ -8,8 +8,15 @@ export const workersApiSlice = apiSlice.injectEndpoints({
                 url: `${WORKERS_URL}/radius?services[elemMatch][service]=${data.service}&address=${data.address}&date=${data.date}&hour=${data.hour}`,
                 method: 'GET',
             })
+        }),
+        getWorkerInfo: builder.query({
+            query: (id) => ({
+                url: `${WORKERS_URL}/${id}`,
+                method: 'GET'
+            })
         })
     })
 });
 
-export const { useGetAvailableWorkersQuery } = workersApiSlice;
+export const { useGetAvailableWorkersQuery,
+               useGetWorkerInfoQuery } = workersApiSlice;
