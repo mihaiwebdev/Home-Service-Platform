@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useGetServicesQuery } from '../slices/services/servicesApiSlice';
-import { setServices } from '../slices/services/servicesSlice';
+import { useGetServicesQuery } from '../../slices/services/servicesApiSlice';
+import { setServices } from '../../slices/services/servicesSlice';
 import { motion } from 'framer-motion';
-import ErrorMsg from '../components/ErrorMsg'
-import Loader from '../components/Loader'
-import cleanHome from '../assets/clean-home.jpg'
+import ErrorMsg from '../../components/shared/ErrorMsg'
+import Loader from '../../components/shared/Loader'
+import cleanHome from '../../assets/clean-home.jpg'
 
 const SearchPage = () => {
 

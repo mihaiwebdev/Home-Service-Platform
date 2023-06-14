@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useLogoutMutation } from '../slices/usersApiSlice'
-import { clearCredentials } from '../slices/authSlice'
+import { useLogoutMutation } from '../../slices/usersApiSlice'
+import { clearCredentials } from '../../slices/authSlice'
 import { motion } from 'framer-motion'
 import { toast } from 'react-toastify'
 

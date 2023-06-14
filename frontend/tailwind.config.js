@@ -8,7 +8,7 @@ module.exports = {
         "./src/pages/LoginPage.jsx",
         "./src/pages/RegisterPage.jsx",
         "./src/pages/ProfilePage.jsx",
-        "./src/pages/WorkerProfilePage.jsx",
+        "./src/pages/WorkerEditPage.jsx",
         "./src/pages/WorkersResult.jsx",
         "./src/pages/WorkerInfo.jsx",
         "./src/components/Navbar.jsx",

@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
-import { useGetAvailableWorkersQuery } from '../slices/workers/workersApiSlice'
-import { setAvailableWorkers } from '../slices/workers/workersSlice'
+import { useGetAvailableWorkersQuery } from '../../slices/workers/workersApiSlice'
+import { setAvailableWorkers } from '../../slices/workers/workersSlice'
 import { motion } from 'framer-motion'
-import ErrorMsg from '../components/ErrorMsg'
-import Rating from '../components/Rating'
-import Loader from '../components/Loader'
+import ErrorMsg from '../../components/shared/ErrorMsg'
+import Rating from '../../components/worker/Rating'
+import Loader from '../../components/shared/Loader'
 
 const WorkersResult = () => {
 

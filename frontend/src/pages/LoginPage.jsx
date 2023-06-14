@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLoginMutation } from '../slices/usersApiSlice'
 import { setCredentials } from '../slices/authSlice'
-import Loader from '../components/Loader'
+import Loader from '../components/shared/Loader'
 import { toast } from 'react-toastify';
 import emailIcon from '../assets/email.png'
 import padlockIcon from '../assets/padlock.png'

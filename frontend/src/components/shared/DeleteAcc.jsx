@@ -1,11 +1,11 @@
 import {useState} from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import Modal from '../components/Modal'
-import { useDeleteUserMutation } from '../slices/usersApiSlice'
-import { clearCredentials } from '../slices/authSlice'
+import Modal from './Modal'
+import { useDeleteUserMutation } from '../../slices/usersApiSlice'
+import { clearCredentials } from '../../slices/authSlice'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
-import Loader from '../components/Loader'
+import Loader from './Loader'
 
 const DeleteAcc = () => {
     const [confirm, setConfirm] = useState('')
@@ -37,8 +37,9 @@ const DeleteAcc = () => {
     };
 
     return (
+      
         <Modal extraClass={`${location.hash === '#deleteuser' ? '' : 'hidden'}
-         absolute top-0 left-0 px-8 z-10 shadow-none`}>
+         absolute top-0 left-0 px-8 z-10 shadow-none mt-0`}>
             <i onClick={() => navigate(-1)} className="fa-solid
                 bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-8 "></i>
             <h1 className='font-bold text-xl mb-4'>Doriti sa va stergeti contul?</h1>
@@ -68,6 +69,7 @@ const DeleteAcc = () => {
             </div>
 
         </Modal>
+        
     )
 }
 

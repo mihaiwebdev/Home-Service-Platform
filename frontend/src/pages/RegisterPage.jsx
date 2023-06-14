@@ -4,7 +4,7 @@ import { useRegisterMutation } from '../slices/usersApiSlice'
 import { setCredentials } from '../slices/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
-import Loader from '../components/Loader'
+import Loader from '../components/shared/Loader'
 import emailIcon from '../assets/email.png'
 import padlockIcon from '../assets/padlock.png'
 

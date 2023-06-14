@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper'
-import Rating from '../components/Rating'
+import Rating from './Rating'
 import "swiper/css";
 import 'swiper/css/pagination';
 

@@ -1,15 +1,15 @@
-import Modal from '../components/Modal'
+import Modal from '../../components/shared/Modal'
 import { useEffect } from 'react'
 import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
-import { useGetWorkerInfoQuery } from '../slices/workers/workersApiSlice'
-import { setWorkerInfo } from '../slices/workers/workersSlice'
+import { useGetWorkerInfoQuery } from '../../slices/workers/workersApiSlice'
+import { setWorkerInfo } from '../../slices/workers/workersSlice'
 import { motion } from 'framer-motion'
 import { toast } from 'react-toastify'
-import ErrorMsg from '../components/ErrorMsg'
-import Rating from '../components/Rating'
-import Reviews from '../components/Reviews'
-import Loader from '../components/Loader'
+import ErrorMsg from '../../components/shared/ErrorMsg'
+import Rating from '../../components/worker/Rating'
+import Reviews from '../../components/worker/Reviews'
+import Loader from '../../components/shared/Loader'
 
 
 const WorkerInfo = () => {
