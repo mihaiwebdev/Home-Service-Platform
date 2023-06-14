@@ -36,8 +36,7 @@ const ChangePw = () => {
     }; 
 
     return (
-        <Modal extraClass={`${location.hash === '#changepw' ? '' : 'hidden'}
-            absolute h-screen top-0 left-0 px-8 z-10 shadow-none mt-0 pb-0`}>
+        <Modal extraClass={`${location.hash === '#changepw' ? '' : 'hidden'}`}>
             <div className='relative w-full mb-4'>
                 <i onClick={() => navigate(-1)} className="fa-solid
                 bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-8 "></i>

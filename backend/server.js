@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const xss = require('xss-clean');
@@ -40,6 +41,7 @@ app.use(cookieParser());
 if (NODE_ENV === 'development')
     app.use(morgan('dev'));
 
+app.use(fileUpload());
 app.use(mongoSanitize());
 app.use(helmet());
 app.use(xss());
@@ -52,6 +54,8 @@ const limiter = rateLimit({
 
 app.use(limiter);
 app.use(hpp());
+
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // Mount Routers
 app.use('/api/v1/users', users);

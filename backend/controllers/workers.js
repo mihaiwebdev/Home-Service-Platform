@@ -1,3 +1,4 @@
+const path = require('path');
 const Worker = require('../models/Worker');
 const geocoder = require('../utils/geocoder');
 const ErrorResponse = require('../utils/errorResponse');
@@ -150,4 +151,56 @@ exports.deleteWorker = asyncHandler(async(req, res, next) => {
    await worker.deleteOne();
 
     res.status(200).json({success: true, data: { }});
+});
+
+// @desc    Upload worker photo
+// @route   PUT /ap1/v1/workers/:workerId/photo
+// @access  Private
+exports.uploadWorkerPhoto = asyncHandler(async (req, res, next) => {
+    const worker = await Worker.findById(req.params.workerId);
+
+    if (!worker) {
+        return next(
+            new ErrorResponse('User not found', 404)
+        );
+    };
+
+    if (worker._id.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
+        return next( 
+            new ErrorResponse('Not authorized', 401)
+        )
+    };
+    
+    if (!req.files) {
+        return next (
+            new ErrorResponse('Please upload an image', 400)
+        );
+    };
+
+    const file = req.files.file;
+  
+
+    if (!file.mimetype.startsWith('image')) {
+        return next (
+            new ErrorResponse('Please upload an image', 404)
+        )
+    };
+
+    file.name = `photo_${req.params.workerId}${path.parse(file.name).ext}`;
+
+    file.mv(`source-code/${process.env.FILE_UPLOAD_PATH}/${file.name}`, async err => {
+        if (err) {
+            console.log(err);
+
+            return next(
+                new ErrorResponse('Problem with file uploading', 500)
+            )
+        };
+
+       await Worker.findByIdAndUpdate(req.params.workerId, {
+            photo: file.name
+        });
+
+        res.status(200).json({success: true, data: file.name});
+    });
 });

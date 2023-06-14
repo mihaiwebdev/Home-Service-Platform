@@ -14,7 +14,7 @@ export const workersApiSlice = apiSlice.injectEndpoints({
                 url: `${WORKERS_URL}/${id}`,
                 method: 'GET'
             })
-        })
+        }),
     })
 });
 
