@@ -22,7 +22,7 @@ const WorkerInfo = () => {
     const { data, error, isLoading } = useGetWorkerInfoQuery(id)
     
     useEffect(() => {
-        if (!workerInfo || workerInfo._id !== id) {
+        if (!workerInfo || workerInfo._id !== id && data) {
             dispatch(setWorkerInfo({...data}))
         };
     
@@ -33,7 +33,7 @@ const WorkerInfo = () => {
 
     return (
         <div className='min-h-screen h-screen max-h-full flex overflow-auto'>
-            <Modal extraClass={'relative px-6 pb-20'}>
+            <Modal extraClass={'relative pb-20'}>
                 <i onClick={() => navigate(-1)} className="fa-solid
                     bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-8 "></i>
                     {isLoading ? < Loader /> : error ? <ErrorMsg message={error.data.message || error.error} />
@@ -81,7 +81,7 @@ const WorkerInfo = () => {
                                 placeholder='Scrie un mesaj cu detalii'/>
                              </div>
                             <button className='bg-lime py-2 px-12 rounded-full
-                             font-bold shadow-lg mt-4'>Propune</button>   
+                             font-bold shadow-xl mt-4 fixed z-10 bottom-10'>Propune</button>   
                         </>
                     )}
             </Modal>

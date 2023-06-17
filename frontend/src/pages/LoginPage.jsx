@@ -21,9 +21,14 @@ const LoginPage = () => {
     const { userInfo } = useSelector(state => state.auth);
 
     useEffect(() => {
-        if (userInfo) {
-            navigate('/services')
+        if (userInfo ) {
+            if (userInfo.role === 'client') {
+                navigate('/services')
+            } else {
+                navigate('/worker')
+            };
         };
+
 
     }, [navigate, userInfo]);
 
@@ -32,7 +37,6 @@ const LoginPage = () => {
         try {
             const res = await login({ email, password }).unwrap();
             dispatch(setCredentials({...res}));
-            navigate('/');
 
         } catch (err) {
             toast.error(err?.data?.message || err.error);

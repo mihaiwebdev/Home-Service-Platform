@@ -58,14 +58,6 @@ UserSchema.pre('save', async function(next) {
     next();
 });
 
-UserSchema.pre('deleteOne', { document: true }, async function(next) {
-    if (this.role === 'client') {
-        await this.model('House').deleteMany({ client: this._id});
-    };
-
-    next();
-});
-
 // Create JWT token
 UserSchema.methods.getSignedJwtToken = function() {
     return jwt.sign({id: this._id}, process.env.JWT_SECRET, {

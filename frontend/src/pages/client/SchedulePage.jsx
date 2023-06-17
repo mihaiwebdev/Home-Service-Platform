@@ -59,7 +59,7 @@ const SchedulePage = () => {
             toast.error('Te rugam sa adaugi toate informatiile')
         };
     };
-
+    
     return (
         <motion.div initial={{x: 200}} animate={{x: 0}} 
         transition={{
@@ -73,7 +73,7 @@ const SchedulePage = () => {
                     <i onClick={() => navigate(-1)} className="fa-solid short2:mb-6 ms-4
                         bg-lime rounded-full py-2 px-3 fa-chevron-left left-8 "></i>
                 </div>
-                <h1 className="ms-6 border-lime text-lg font-bold">Adauga locatia pentru curatenie</h1>
+                <h1 className="ms-6 border-lime text-lg font-bold">Adauga locatia pentru {service}</h1>
             </div>
 
             <form onSubmit={handleSubmit} className='w-full max-w-3xl flex flex-col 
@@ -122,7 +122,7 @@ const SchedulePage = () => {
                     <h1 className='font-bold rounded-sm mt-6 mb-4
                     ms-2 '>Selecteaza data</h1>
                     <Calendar value={date} minDate={new Date()} showNeighboringMonth={false} view="month"
-                    onChange={(value) => setDate(new Date(value).toDateString())} prev2Label={null} next2Label={null} locale=''
+                    onChange={(value) => setDate(new Date(value).toDateString())} prev2Label={null} next2Label={null}
                     />
                 </div>
                 

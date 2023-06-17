@@ -26,7 +26,6 @@ cron.schedule('0 0 * * *', cleanupExpiredDate);
 
 // Route files
 const users = require('./routes/users');
-const clients = require('./routes/clients');
 const workers = require('./routes/workers');
 const services = require('./routes/services');
 const schedules = require('./routes/schedules');
@@ -59,7 +58,6 @@ app.use(hpp());
 
 // Mount Routers
 app.use('/api/v1/users', users);
-app.use('/api/v1/clients', clients);
 app.use('/api/v1/workers', workers);
 app.use('/api/v1/services', services);
 app.use('/api/v1/schedules', schedules);

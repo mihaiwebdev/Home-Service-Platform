@@ -24,7 +24,7 @@ exports.getAvailableWorkers = asyncHandler(async(req, res, next) => {
     const reqQuery = {...req.query};
     const reqDate  = req.query.date;
     const reqHour = req.query.hour;
-    console.log(reqHour)
+   
     // Remove fields that are not queryable
     const removeFields = ['select', 'sort', 'page', 'date', 'hour', 'address'];
     removeFields.map(field => delete reqQuery[field]);
@@ -51,13 +51,13 @@ exports.getAvailableWorkers = asyncHandler(async(req, res, next) => {
             new ErrorResponse('No workers found', 404)
         );
     };
-    
+
     let availableWorkers = [];
 
     for (let i = 0; i < filteredWorkers.length; i++) {
         
         for (let j = 0; j < filteredWorkers[i].schedule.length; j++) {
-            
+    
             if (filteredWorkers[i].schedule[j].date.toDateString() === reqDate
                 && filteredWorkers[i].schedule[j].availability.get(reqHour) ) 
             {
@@ -92,23 +92,12 @@ exports.getWorker = asyncHandler(async(req, res, next) => {
     res.status(200).json({success: true, data: worker});
 });
 
-// @desc    Create worker profile
-// @route   POST /api/v1/workers
-// @access  Private
-exports.createWorker = asyncHandler(async(req, res, next) => {
-    req.body.user = req.user._id;
-    req.body._id = req.user._id;
-    
-    const worker = await Worker.create(req.body);
-    
-    res.status(201).json({success: true, data: worker});
-});
 
 // @desc    Update worker profile
-// @route   PUT /api/v1/workers/:workerId
+// @route   PUT /api/v1/workers
 // @acess   Private
 exports.updateWorker = asyncHandler(async(req, res, next) => {
-    let worker = await Worker.findById(req.params.workerId);
+    let worker = await Worker.findOne({user: req.user._id});
 
     if (!worker) {
         return next(
@@ -122,7 +111,7 @@ exports.updateWorker = asyncHandler(async(req, res, next) => {
         );
     };
 
-    worker = await Worker.findByIdAndUpdate(req.params.workerId, req.body, {
+    worker = await Worker.findByIdAndUpdate(worker._id, req.body, {
         new: true,
         runValidators: true
     });

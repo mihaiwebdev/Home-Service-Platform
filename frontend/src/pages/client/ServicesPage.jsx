@@ -22,7 +22,7 @@ const SearchPage = () => {
             dispatch(setServices({...data}));
         }
         
-    }, [services, data, dispatch, setServices])
+    }, [services, data, dispatch])
     
     return (
         <div className="pt-16 min-h-screen h-full">

@@ -3,12 +3,17 @@ const ErrorResponse = require('../utils/errorResponse');
 const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
 const User = require('../models/User');
+const Worker = require('../models/Worker')
 
 // @desc    Register User
 // @route   POST /api/v1/users/register
 // @access  Public
 exports.register = asyncHandler(async (req, res, next) => {
     const user = await User.create(req.body);
+    
+    if (user.role === 'worker') {
+        await Worker.create({user: user._id, _id: user._id});
+    };
     
     const createdUser = await User.findById(user._id).select('-password');
 
@@ -102,6 +107,7 @@ exports.updatePassword = asyncHandler(async (req, res, next) => {
         );
     };
 
+    
     user.password = req.body.newPassword;
     await user.save();
 

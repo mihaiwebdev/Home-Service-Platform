@@ -42,7 +42,9 @@ const RegisterPage = () => {
             try {
                 const res = await register(data).unwrap();
                 dispatch(setCredentials({...res}));
-                navigate('/');
+
+                role === 'worker' ? navigate('/worker/profile/edit')
+                 : navigate('/services');
     
             } catch (err) {
                 toast.error(err?.data?.message || err.error);

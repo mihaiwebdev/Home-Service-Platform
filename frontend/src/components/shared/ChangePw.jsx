@@ -36,7 +36,7 @@ const ChangePw = () => {
     }; 
 
     return (
-        <Modal extraClass={`${location.hash === '#changepw' ? '' : 'hidden'}`}>
+        <Modal extraClass={`${location.hash === '#changepw' ? 'h-screen' : 'hidden'}`}>
             <div className='relative w-full mb-4'>
                 <i onClick={() => navigate(-1)} className="fa-solid
                 bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-8 "></i>
@@ -45,7 +45,7 @@ const ChangePw = () => {
 
             <form onSubmit={changePassword} className='w-full max-w-3xl flex flex-col 
                 items-center mx-auto relative'>
-                <div className="flex flex-col items-start mt-6 w-5/6 short:mt-4">
+                <div className="flex flex-col items-start mt-6 w-full short:mt-4">
                     <label htmlFor="currentPassword" className="font-semibold ms-2">Parola curenta</label>
                     <div className='w-full relative'>
                         <input type="password" required value={currentPassword} 
@@ -55,7 +55,7 @@ const ChangePw = () => {
                         </div>
                 </div>  
 
-                <div className="flex flex-col items-start mt-6 w-5/6 short:mt-4">
+                <div className="flex flex-col items-start mt-6 w-full short:mt-4">
                     <label htmlFor="newPassowrd" className="font-semibold ms-2">Parola noua</label>
                     <div className='w-full relative'>
                         <input type="password" required value={newPassword}
@@ -65,7 +65,7 @@ const ChangePw = () => {
                         </div>
                 </div>  
 
-                <div className="flex flex-col items-start mt-6 w-5/6 short:mt-4">
+                <div className="flex flex-col items-start mt-6 w-full short:mt-4">
                     <label htmlFor="confirmPassword" className="font-semibold ms-2">Repeta parola</label>
                     <div className='w-full relative'>
                         <input type="password" required value={confirmPw} 

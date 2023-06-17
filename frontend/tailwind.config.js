@@ -11,6 +11,9 @@ module.exports = {
         "./src/pages/client/WorkersResult.jsx",
         "./src/pages/client/WorkerInfo.jsx",
         "./src/pages/worker/WorkerEditPage.jsx",
+        "./src/pages/worker/WorkerProfilePage.jsx",
+        "./src/pages/worker/ProgramPage.jsx",
+        "./src/pages/worker/WorkerHomePage.jsx",
         "./src/components/shared/Navbar.jsx",
         "./src/components/shared/Navigation.jsx",
         "./src/components/shared/UpdatePwModal.jsx",
@@ -18,7 +21,6 @@ module.exports = {
         "./src/components/shared/DeleteAcc.jsx",
         "./src/components/shared/ErrorMsg.jsx",
         "./src/components/worker/Reviews.jsx",
-        "./src/components/worker/WorkerProfileFields.jsx",
     ],
     theme: {
         colors: {

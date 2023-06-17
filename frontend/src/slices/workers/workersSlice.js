@@ -9,7 +9,7 @@ const workersSlice = createSlice({
         },
         setWorkerInfo: (state, action) => {
             state.workerInfo = action.payload.data;
-        }
+        },
     }
 });
 

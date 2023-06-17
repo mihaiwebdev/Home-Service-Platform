@@ -19,8 +19,7 @@ const Navbar = () => {
         try {
             await logout().unwrap();
             dispatch(clearCredentials());
-            toast.success('V-ați delogat');
-            navigate('/');
+            navigate('/login');
             
         } catch (err) {
             toast.error(err?.data?.message || err.error);
@@ -48,8 +47,8 @@ const Navbar = () => {
             bounce: 0.4,
             duration: 0.8
         }}
-         className="navbar top-0 left-0 w-full absolute">
-            <div className="pt-2 ps-4 font-bold">
+         className="top-0 z-20 left-0 w-full absolute">
+            <div className="pt-2 z-10 ps-4 font-bold absolute">
                 Logo <i className="fa-solid fa-broom text-2xl"></i>
             </div>
 
@@ -62,18 +61,21 @@ const Navbar = () => {
                 items-end absolute top-0 right-0 ${isOpen ? 'show' : ''}`}>
 
                     <div  className="nav-actions bg-white flex flex-col justify-between h-full p-5">
-                        <div>
+                        <div >
                             <i className="cursor-pointer fa-solid fa-x absolute right-5 text-red text-xl"></i>
-                            <h1 className="font-semibold text-xl border-b border-gray pb-2">Salut {userInfo && userInfo.name}</h1>
-                            <ul  className="mt-8">
-                                <Link to={userInfo ? '/services' : '/'} className="font-semibold">
+                            <h1 className="font-semibold text-xl border-b border-gray pb-2 mb-8">Salut {userInfo && userInfo.name}</h1>
+
+                            <ul >
+                                <Link to={userInfo && userInfo.role === 'worker' ? '/worker' : '/services'} className="font-semibold">
                                     <li>
                                         <i className="text-dark mr-2 bg-lime mb-3 rounded-full px-2 py-1 fa-solid fa-house text-base"></i> Acasă
                                     </li>
                                 </Link>
                             </ul>
+                         
+
                             {!userInfo ? (
-                                <ul >
+                                <ul>
                                     <Link to='/login' className="font-semibold">
                                         <li>
                                             <i className="text-dark mr-2 bg-lime mb-3 rounded-full px-2 py-1 fa-solid fa-arrow-right-to-bracket text-base"></i> Logare
@@ -87,26 +89,34 @@ const Navbar = () => {
                                     </Link>
                                 </ul>
                             ) : (
-                                <ul >
-                                    <Link to='/profile' className="font-semibold">
+                                
+                                <ul className='flex h-full flex-col'>
+                                    <Link to={userInfo.role === 'worker' ? '/worker/profile' : '/profile'}
+                                     className="font-semibold">
                                         <li>
                                             <i className="text-dark mr-2 bg-lime mb-3 rounded-full px-2.5 py-1 fa-regular fa-user text-base"></i> Profil
                                         </li>
                                     </Link>
                                     
-                                    <Link to='/' className="font-semibold">
-                                        <li>
-                                            <i className="text-dark mr-2 bg-lime mb-3 rounded-full py-1 px-2 fa-solid fa-cart-shopping text-base"></i> Comenzi
-                                        </li>
-                                    </Link>
-                                    
-                                    <Link to='/' className="font-semibold">
-                                        <li>
-                                            <i className="text-dark mr-2 bg-lime mb-3 rounded-full py-1 px-2.5 fa-solid fa-file-invoice-dollar text-base"></i> Facturi
+                                    {userInfo.role === 'worker' && (
+                                        <Link to='/worker/program' className="font-semibold">
+                                            <li>
+                                                <i className="text-dark mr-2 bg-lime mb-3 rounded-full py-1 px-2 fa-regular fa-calendar-days text-base"></i> Program
+                                            </li>
+                                        </Link>
+                                    )}
+
+                                    <Link to={userInfo.role === 'worker' ? '/worker' : '/orders'} className="font-semibold">
+                                       <li>
+                                            <i className={`text-dark mr-2 bg-lime mb-3 rounded-full py-1 px-2 fa-solid 
+                                             ${userInfo.role === 'worker' ? 'fa-file-invoice-dollar' : 'fa-cart-shopping'} text-base`}>
+                                            </i>
+
+                                            Comenzi
                                         </li>
                                     </Link>
 
-                                    <li onClick={logoutUser} className='font-semibold'>    
+                                    <li onClick={logoutUser} className='font-semibold mt-2'>    
                                         <i className=" text-dark mr-2 bg-lime mb-3 rounded-full px-2 py-1 fa-solid fa-arrow-right-from-bracket text-base"></i> Ieși din cont
                                     </li>
                                 </ul>

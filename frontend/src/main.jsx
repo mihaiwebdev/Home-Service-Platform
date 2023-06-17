@@ -20,7 +20,10 @@ import SchedulePage from './pages/client/SchedulePage.jsx'
 import WorkersResult from './pages/client/WorkersResult'
 import WorkerInfo from './pages/client/WorkerInfo'
 import PrivateWorkerRoute from './components/worker/PrivateWorkerRoute'
+import WorkerProfilePage from './pages/worker/WorkerProfilePage'
 import WorkerEditPage from './pages/worker/WorkerEditPage'
+import WorkerOrdersPage from './pages/worker/WorkerOrdersPage'
+import ProgramPage from './pages/worker/ProgramPage'
 import './index.css'
 
 const router = createBrowserRouter(
@@ -33,12 +36,12 @@ const router = createBrowserRouter(
 
         {/* Private users Routes */}
         <Route path='' element={<PrivateRoute />}>
-          <Route path='/profile' element={<ProfilePage/>} />
           
         </Route>
         
         {/* Client Private Routes */}
         <Route path='' element={<PrivateClientRoute />} >
+          <Route path='/profile' element={<ProfilePage/>} />
           <Route path='/services' element={<ServicesPage/>}/>
           <Route path='/schedule' element={<SchedulePage/>}/>
           <Route path='/workers' element={<WorkersResult/>}/>
@@ -46,8 +49,11 @@ const router = createBrowserRouter(
         </Route>
 
         {/* Worker Private Routes */}
-        <Route path='' element={<PrivateWorkerRoute />}>
-          {/* <Route path='/worker/edit' element={<WorkerEditPage />}/> */}
+        <Route path='/worker' element={<PrivateWorkerRoute />}>
+          <Route path='' element={<WorkerOrdersPage />}/>
+          <Route path='profile' element={<WorkerProfilePage />}/>
+          <Route path='profile/edit' element={<WorkerEditPage />}/>
+          <Route path='program' element={<ProgramPage />}/>
         </Route>
 
     </Route>

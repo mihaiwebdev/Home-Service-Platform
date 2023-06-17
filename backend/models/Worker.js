@@ -11,7 +11,6 @@ const WorkerSchema = mongoose.Schema({
 
     description: {
         type: String,
-        required: [true, 'Please add a description about you']
     },
 
     photo: {
@@ -53,19 +52,16 @@ const WorkerSchema = mongoose.Schema({
 
     phone: {
         type: String,
-        required: [true, 'Please add your phone number'],
         match: [/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
-                'Please add a valid number']
+                'Adauga un numar de telefon valid']
     },
 
     services: [{
         service: {
             type: String,
-            required: [true, 'Please select a service']
         },
         price: {
             type: Number,
-            required: [true, 'Please add a price']
         },
     }],
     
@@ -79,11 +75,13 @@ const WorkerSchema = mongoose.Schema({
 });
 
 WorkerSchema.pre('save', async function(next) {
-    if (this.isModified('schedule')) {
-        next();
+
+    if (!this.isModified('address')) {
+      next();
     };
-   
+
     const loc = await geocoder.geocode(this.address);
+    
     this.location = {
         type: 'Point',
         coordinates: [loc[0].longitude, loc[0].latitude],
@@ -92,11 +90,32 @@ WorkerSchema.pre('save', async function(next) {
         city: loc[0].city,
         country: loc[0].countryCode,
         zipcode: loc[0].zipcode
-    };
+    }
 
     this.address = undefined;
+});
 
-    next();
+WorkerSchema.pre('findOneAndUpdate', async function(next) {
+    
+    const updateWorker = this.getUpdate();
+
+    if (!updateWorker.address) {
+      next();
+    };
+
+    const loc = await geocoder.geocode(updateWorker.address);
+    
+    updateWorker.location = {
+        type: 'Point',
+        coordinates: [loc[0].longitude, loc[0].latitude],
+        formattedAddress: loc[0].formattedAddress,
+        street: loc[0].streetName,
+        city: loc[0].city,
+        country: loc[0].countryCode,
+        zipcode: loc[0].zipcode
+    }
+
+    updateWorker.address = undefined;
 });
 
 module.exports = mongoose.model('Worker', WorkerSchema);

@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
-const JobSchema = new mongoose.Schema({
+const ContractSchema = new mongoose.Schema({
     service: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Service',
-        required: true
+        service: String,
+        price: Number
     },
 
     client: {
@@ -24,10 +23,13 @@ const JobSchema = new mongoose.Schema({
         required: true
     },
 
+    hour: {
+        type: Number
+    },
+
     city: String,
     address: String,
     addressDetail: String,
-    price: Number,
 
     isCompleted: {
         type: Boolean,
@@ -41,4 +43,4 @@ const JobSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('Job', JobSchema);
+module.exports = mongoose.model('Contract', ContractSchema);

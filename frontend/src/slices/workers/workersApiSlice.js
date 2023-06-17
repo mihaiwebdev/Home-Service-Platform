@@ -15,8 +15,15 @@ export const workersApiSlice = apiSlice.injectEndpoints({
                 method: 'GET'
             })
         }),
+        updateWorkerInfo: builder.mutation({
+            query: (data) => ({
+                url: `${WORKERS_URL}`,
+                method: 'PUT',
+                body: data
+            })
+        })
     })
 });
 
-export const { useGetAvailableWorkersQuery,
-               useGetWorkerInfoQuery } = workersApiSlice;
+export const { useGetAvailableWorkersQuery, useGetWorkerInfoQuery,
+     useUpdateWorkerInfoMutation } = workersApiSlice;
