@@ -32,7 +32,7 @@ const pagination = (data, pageNum) => {
         data: slicedData,
     };
 
-    return  result;
+    return result;
 };
 
 module.exports = pagination;

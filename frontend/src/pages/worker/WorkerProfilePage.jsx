@@ -1,6 +1,6 @@
 import Modal from '../../components/shared/Modal'
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import { useGetWorkerInfoQuery } from '../../slices/workers/workersApiSlice'
 import { setWorkerInfo } from '../../slices/workers/workersSlice'
@@ -18,6 +18,8 @@ const WorkerProfilePage = () => {
     const { userInfo } = useSelector(state => state.auth);
     const { data, error, isLoading } = useGetWorkerInfoQuery(userInfo._id)
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         
         if (data && !workerInfo) {
@@ -31,11 +33,13 @@ const WorkerProfilePage = () => {
 
     return (
         <Modal extraClass={'relative pb-20'}>
-            
+              <i onClick={() => navigate(-1)} className="fa-solid
+                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-6"></i>
+
                 {isLoading ? < Loader /> : error ? <ErrorMsg message={error?.data?.message || error.error} />
                     : workerInfo && (
                     <>  
-                        <h1 className='font-bold text-2xl text-start w-full'>{userInfo.name}</h1> 
+                        <h1 className='font-bold text-2xl text-center mr-8 w-full'>{userInfo.name}</h1> 
                         
                         <div className='absolute top-9 right-6'>
                             <Rating value={4.5} color={"#ffea00"} />

@@ -15,7 +15,6 @@ const ContractSchema = new mongoose.Schema({
     worker: {
         type: mongoose.Schema.ObjectId,
         ref: 'Worker',
-        required: true
     },
 
     date: {
@@ -30,6 +29,11 @@ const ContractSchema = new mongoose.Schema({
     city: String,
     address: String,
     addressDetail: String,
+
+    isActive: {
+        type: Boolean,
+        default: false
+    },
 
     isCompleted: {
         type: Boolean,

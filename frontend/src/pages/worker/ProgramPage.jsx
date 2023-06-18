@@ -68,7 +68,7 @@ const ProgramPage = () => {
         try {
             await setWorkerSchedule(selectedDates).unwrap();
             toast.success('Program salvat!')
-            navigate('/worker');
+            navigate('/');
 
         } catch (err) {
             toast.error(err?.data?.message || err.error)

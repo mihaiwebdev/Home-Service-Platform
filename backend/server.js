@@ -29,6 +29,7 @@ const users = require('./routes/users');
 const workers = require('./routes/workers');
 const services = require('./routes/services');
 const schedules = require('./routes/schedules');
+const contracts = require('./routes/contracts');
 
 const app = express();
 
@@ -61,6 +62,7 @@ app.use('/api/v1/users', users);
 app.use('/api/v1/workers', workers);
 app.use('/api/v1/services', services);
 app.use('/api/v1/schedules', schedules);
+app.use('/api/v1/contracts', contracts);
 
 app.use(errorHandler);
 

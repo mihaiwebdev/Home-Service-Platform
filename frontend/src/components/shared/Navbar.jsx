@@ -109,7 +109,7 @@ const Navbar = () => {
                                     <Link to={userInfo.role === 'worker' ? '/worker' : '/orders'} className="font-semibold">
                                        <li>
                                             <i className={`text-dark mr-2 bg-lime mb-3 rounded-full py-1 px-2 fa-solid 
-                                             ${userInfo.role === 'worker' ? 'fa-file-invoice-dollar' : 'fa-cart-shopping'} text-base`}>
+                                             ${userInfo.role === 'worker' ? 'fa-file-invoice-dollar px-2.5' : 'fa-cart-shopping'} text-base`}>
                                             </i>
 
                                             Comenzi

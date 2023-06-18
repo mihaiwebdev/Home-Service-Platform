@@ -4,8 +4,8 @@ const Modal = ({children, extraClass}) => {
 
     return (
         
-        <motion.div initial={{y: 300, opacity:0}}
-            animate={{y: 0, opacity: 1,}}
+        <motion.div initial={{y: 300}}
+            animate={{y: 0}}
             transition={{
                 type: "spring",
                 bounce: 0.4,
