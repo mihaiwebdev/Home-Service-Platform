@@ -1,4 +1,5 @@
 const Schedule = require('../models/Schedule');
+const Worker = require('../models/Worker');
 const asyncHandler = require('express-async-handler');
 const ErrorResponse = require('../utils/errorResponse');
 
@@ -6,11 +7,22 @@ const ErrorResponse = require('../utils/errorResponse');
 // @route   POST /api/v1/schedules
 // @access  Private
 exports.addSchedule = asyncHandler(async (req, res, next) => {
-    req.body.worker = req.user._id;
+    const dates = [];
 
-    const schedule = await Schedule.create(req.body);
+    req.body.map(date => dates.push({
+        date,
+        worker: req.user._id
+    }));
+    
+    const worker = await Worker.findById(req.user._id);
+    worker.schedule = [];
+    await worker.save();
 
-    res.status(201).json({success: true, data: schedule});
+    await Schedule.deleteMany({worker: req.user._id});
+
+    await Schedule.create(dates);
+
+    res.status(201).json({success: true});
 });
 
 // @desc    Update schedule as a worker

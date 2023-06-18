@@ -44,7 +44,7 @@ const WorkerEditPage = () => {
 
     useEffect(() => {
 
-        if (!services) {
+        if (!services && data) {
             dispatch(setServices({...data}))
         }
 
@@ -67,7 +67,7 @@ const WorkerEditPage = () => {
             }
         }
 
-    }, [userInfo, services, data, workerInfo, workerData]);
+    }, [dispatch, userInfo, services, data, workerInfo, workerData]);
 
     const handleSelectServices = (e) => {
     
@@ -144,7 +144,7 @@ const WorkerEditPage = () => {
         <Modal extraClass={`pb-14 ${location.hash ? 'hidden' : ''}`}>
             <div className='relative w-full mb-4'>
                 <i onClick={() => navigate(-1)} className="fa-solid
-                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-8 "></i>
+                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-0 "></i>
                 <h1 className='text-center font-bold text-xl'>Editeaza Profilul</h1>
             </div>
             

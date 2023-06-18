@@ -13,6 +13,7 @@ const workersSlice = createSlice({
     }
 });
 
-export const { setAvailableWorkers, setWorkerInfo } = workersSlice.actions;
+export const { setAvailableWorkers, setWorkerInfo,
+    setWorkerAvailability } = workersSlice.actions;
 
 export default workersSlice.reducer;

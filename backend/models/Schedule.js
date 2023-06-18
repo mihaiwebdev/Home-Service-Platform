@@ -15,13 +15,34 @@ const ScheduleSchema = new mongoose.Schema({
     availability: {
         type: Map,
         of: Boolean,
-        required: [true, 'Please add your available hours'],
+        default: { 
+            "05": true,
+            "06": true,
+            "07": true,
+            "08": true,
+            "09": true,
+            "10": true,
+            "11": true,
+            "12": true,
+            "13": true,
+            "14": true,
+            "15": true,
+            "16": true,
+            "17": true,
+            "18": true,
+            "19": true,
+            "20": true,
+            "21": true,
+            "22": true,
+            "23": true,
+        },
     }
 });
 
 ScheduleSchema.pre('save', async function(next) {
     const worker = await this.model('Worker').findById(this.worker);
-    worker.schedule = worker.schedule.concat(this._id);
+    
+    worker.schedule.push(this._id);
     await worker.save();
 
     next();

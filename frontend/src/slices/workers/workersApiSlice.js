@@ -1,5 +1,6 @@
 import { apiSlice } from '../apiSlice'
 const WORKERS_URL = '/api/v1/workers'
+const SCHEDULE_URL = '/api/v1/schedules'
 
 export const workersApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -21,9 +22,23 @@ export const workersApiSlice = apiSlice.injectEndpoints({
                 method: 'PUT',
                 body: data
             })
+        }),
+        getWorkerSchedule: builder.query({
+            query: () => ({
+                url: SCHEDULE_URL,
+                method: 'GET'
+            })
+        }),
+        setWorkerSchedule: builder.mutation({
+            query: (data) => ({
+                url: SCHEDULE_URL,
+                method: 'POST',
+                body: data
+            })
         })
     })
 });
 
 export const { useGetAvailableWorkersQuery, useGetWorkerInfoQuery,
-     useUpdateWorkerInfoMutation } = workersApiSlice;
+     useUpdateWorkerInfoMutation, useGetWorkerScheduleQuery,
+    useSetWorkerScheduleMutation } = workersApiSlice;
