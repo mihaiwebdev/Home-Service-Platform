@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
 const ContractSchema = new mongoose.Schema({
-    service: {
-        service: String,
-        price: Number
-    },
+    service: String,
+
+    price: Number,
 
     client: {
         type: mongoose.Schema.ObjectId,
@@ -12,10 +11,14 @@ const ContractSchema = new mongoose.Schema({
         required: true
     },
 
+    message: String,
+    
     worker: {
         type: mongoose.Schema.ObjectId,
         ref: 'Worker',
     },
+    
+    workerPhone: String,
 
     date: {
         type: Date,
@@ -25,14 +28,12 @@ const ContractSchema = new mongoose.Schema({
     hour: {
         type: Number
     },
-
-    city: String,
     address: String,
     addressDetail: String,
 
     isActive: {
         type: Boolean,
-        default: false
+        default: true
     },
 
     isCompleted: {

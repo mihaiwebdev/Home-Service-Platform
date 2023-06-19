@@ -44,7 +44,7 @@ const SearchPage = () => {
 
                 <h1 className='text-center font-bold text-lg '>Cu ce te putem ajuta?</h1>
 
-                {isLoading ? <Loader /> : error ? <ErrorMsg message={error.data.message || error.error} /> 
+                {isLoading ? <Loader /> : error ? <ErrorMsg message={error?.data?.message || error?.error} /> 
                  : services && services.map(service => (
 
                     <Link key={service._id} to={`/schedule#${service.slug}`} className='my-4 min-h-20 pb-2 cursor-pointer 

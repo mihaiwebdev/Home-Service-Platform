@@ -28,7 +28,8 @@ const WorkersResult = () => {
         if (data) {
             dispatch(setAvailableWorkers({...data}))
         }
-    }, [data, dispatch, setAvailableWorkers]);
+        
+    }, [data, dispatch]);
 
     return (
         <motion.div initial={{x: 200}} animate={{x: 0}} 
@@ -54,10 +55,10 @@ const WorkersResult = () => {
 
             <h1 className='text-center mb-4 font-bold text-xl'>Persoane disponibile: <span className='opacity-70'>{data && data.count}</span></h1>
 
-            {isLoading ? (<div className='my-auto'><Loader /></div>) : error ? <ErrorMsg message={error.data.message || error.error} /> 
+            {isLoading ? (<div className='my-auto'><Loader /></div>) : error ? <ErrorMsg message={error?.data?.message || error?.error} /> 
              : availableWorkers && availableWorkers.map((worker,idx) => (
 
-                <Link to={`/workers/${worker._id}`}
+                <Link to={`${worker._id}`}
                     key={worker._id} className={`${idx === 0 && 'border-t'} flex p-4 py-6 border-b border-gray w-full relative`}>
                     <div className='w-24'>
                         <motion.img initial={{opacity: 0}} animate={{opacity:1}}

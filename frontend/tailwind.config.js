@@ -10,6 +10,7 @@ module.exports = {
         "./src/pages/client/ProfilePage.jsx",
         "./src/pages/client/WorkersResult.jsx",
         "./src/pages/client/WorkerInfo.jsx",
+        "./src/pages/client/ordersPage.jsx",
         "./src/pages/worker/WorkerEditPage.jsx",
         "./src/pages/worker/WorkerProfilePage.jsx",
         "./src/pages/worker/ProgramPage.jsx",

@@ -19,6 +19,7 @@ import ServicesPage from './pages/client/ServicesPage.jsx'
 import SchedulePage from './pages/client/SchedulePage.jsx'
 import WorkersResult from './pages/client/WorkersResult'
 import WorkerInfo from './pages/client/WorkerInfo'
+import OrdersPage from './pages/client/OrdersPage'
 import PrivateWorkerRoute from './components/worker/PrivateWorkerRoute'
 import WorkerProfilePage from './pages/worker/WorkerProfilePage'
 import WorkerEditPage from './pages/worker/WorkerEditPage'
@@ -45,6 +46,7 @@ const router = createBrowserRouter(
           <Route path='/profile' element={<ProfilePage/>} />
           <Route path='/services' element={<ServicesPage/>}/>
           <Route path='/schedule' element={<SchedulePage/>}/>
+          <Route path='/orders' element={<OrdersPage />}/>
           <Route path='/workers' element={<WorkersResult/>}/>
           <Route path='/workers/:id' element={<WorkerInfo/>}/>
         </Route>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useUpdateUserMutation } from '../../slices/usersApiSlice'
+import { setJobInfo } from '../../slices/contracts/contractsSlice';
 import { setCredentials } from '../../slices/authSlice'
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion'
@@ -15,7 +16,7 @@ const SchedulePage = () => {
     const [addressDetail, setAddressDetail] = useState('');
     const [saveAddress, setSaveAddress] = useState(false);
     const [date, setDate] = useState(new Date().toDateString());
-    const [hour, setHour] = useState('');
+    const [hour, setHour] = useState(0);
     const hoursArr = Array.from({length: 24}, (x, index) => index + 1);
     
     const location = useLocation();
@@ -32,9 +33,13 @@ const SchedulePage = () => {
             setAddress(userInfo.address || '')
             setAddressDetail(userInfo.addressDetail || '')
             setCity(userInfo.city || '')
-        }
+        };
+
+        if (!service) {
+            navigate('/services')
+        };
             
-    }, [userInfo, setAddress, setAddressDetail])
+    }, [userInfo, service, navigate, setAddress, setAddressDetail])
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -52,6 +57,10 @@ const SchedulePage = () => {
                     toast.error(err?.data?.message || err.error);
                 };
             };
+
+            dispatch(setJobInfo({address: fullAddress, addressDetail,
+                date, hour, service
+            }));
 
             navigate(`/workers?service=${service}&address=${fullAddress}&date=${date}&hour=${hour}`)
             
@@ -134,7 +143,7 @@ const SchedulePage = () => {
 
                     <select name="hour" id="hour" required className='py-1.5 px-6
                     rounded-sm shadow-md font-semibold bg-lime focus:outline-none' 
-                    onChange={(e) => setHour(e.target.value)} 
+                    onChange={(e) => setHour(parseInt(e.target.value))} 
                     >
                         <option value="">hh/mm</option>
                         {hoursArr.map(hour => (
