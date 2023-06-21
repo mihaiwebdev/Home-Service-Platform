@@ -1,6 +1,6 @@
 import Modal from '../../components/shared/Modal'
 import { useEffect, useState } from 'react'
-import { useLocation, useNavigate, Link } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import { useGetWorkerInfoQuery } from '../../slices/workers/workersApiSlice'
 import { useCreateContractMutation } from '../../slices/contracts/contractsApiSlice'
@@ -38,11 +38,7 @@ const WorkerInfo = () => {
             setPrice(service.price);
         }
 
-        if (!jobInfo) {
-            navigate('/services')
-        };
-
-    }, [dispatch, navigate, workerInfo, id, data, jobInfo])
+    }, [dispatch, navigate, workerInfo, id, data])
 
 
     const reviews = [{author: 'Mihai', text:'A facut luna si bec', rating: 5}, 
@@ -59,13 +55,14 @@ const WorkerInfo = () => {
         };
       
         try {
-            await createContract(contractData).unwrap();
+            const res = await createContract(contractData).unwrap();
             toast.success(`L-ai angajat pe ${workerInfo.user.name}`);
+            
             navigate('/orders');
-
         } catch (err) {
             toast.error(err?.data?.message || err.error)
         };
+
     };
 
     return (
@@ -111,16 +108,18 @@ const WorkerInfo = () => {
                             <h2 className='text-lg font-bold opacity-70 mb-2'>Review-uri:</h2>
                             <Reviews reviews={reviews}/>
                         </div>
+                        
+                        {jobInfo && (
+                            <div className='w-full mt-2'>
+                                <small className='opacity-60'>*Optional</small>
+                                <textarea className='w-full border-b border-gray p-2 shadow-sm rounded-md 
+                                bg-lightLime focus:outline-none' value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                                placeholder='Scrie un mesaj cu detalii'/>
+                            </div>
+                        )}
 
-                        <div className='w-full mt-2'>
-                            <small className='opacity-60'>*Optional</small>
-                            <textarea className='w-full border-b border-gray p-2 shadow-sm rounded-md 
-                            bg-lightLime focus:outline-none' value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            placeholder='Scrie un mesaj cu detalii'/>
-                        </div>
-
-                        {createLoading ? <Loader /> : (
+                        {createLoading ? <Loader /> : jobInfo && (
                             <button onClick={handleProposal} className='bg-lime py-2 px-12 rounded-full
                              font-bold shadow-xl mt-4 fixed z-10 bottom-10'>Angajeaza</button>   
                         )}

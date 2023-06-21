@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const connectDB = require('./config/db');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -55,14 +56,18 @@ const limiter = rateLimit({
 app.use(limiter);
 app.use(hpp());
 
-// app.use(express.static(path.join(__dirname, 'public')));
-
 // Mount Routers
 app.use('/api/v1/users', users);
 app.use('/api/v1/workers', workers);
 app.use('/api/v1/services', services);
 app.use('/api/v1/schedules', schedules);
 app.use('/api/v1/contracts', contracts);
+
+// Serve Frontend
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../frontend/dist')));
+    app.get('*', (req, res) => res.sendFile(__dirname, '../frontend/dist/index.html'));
+};
 
 app.use(errorHandler);
 

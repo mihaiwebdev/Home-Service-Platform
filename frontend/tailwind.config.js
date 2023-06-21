@@ -27,12 +27,16 @@ module.exports = {
         colors: {
             lime: "#cdf161",
             limeMatch: "#f4f1de",
+            transparent: '#00000085',
             dark: "#212529",
             gray: "#dad7cd",
             white: "#fff",
             red: "#e63946",
             darkRed: "#d90429",
-            lightLime: "#faf8f3"
+            lightLime: "#faf8f3",
+            yellow: "#e9c46a",
+            green: "#2a9d8f",
+            darkGreen: '#264653'
         },
 
         fontFamily: {

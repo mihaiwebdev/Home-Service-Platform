@@ -10,11 +10,11 @@ exports.getContracts = asyncHandler(async (req, res, next) => {
     let contracts;
 
     if (req.user.role === 'client') {
-        contracts  = await Contract.find({client: req.user._id});
+        contracts  = await Contract.find({client: req.user._id}).sort('-createdAt');
     }
 
     if (req.user.role === 'worker') {
-        contracts = await Contract.find({worker: req.user._id});
+        contracts = await Contract.find({worker: req.user._id}).sort('-createdAt');
     };
 
     if (!contracts) {
@@ -23,8 +23,9 @@ exports.getContracts = asyncHandler(async (req, res, next) => {
         );
     };
 
-    res.status(200).json({success:true, data: contracts});
-    
+    const result = pagination(contracts);
+
+    res.status(200).json(result);
 });
 
 
@@ -71,9 +72,7 @@ exports.updateContract = asyncHandler(async (req, res, next) => {
         runValidators: true
     });
 
-    const result = pagination(contract)
-
-    res.status(200).json(result);
+    res.status(200).json({success:true, data: contract});
 });
 
 // @desc    Delete contract

@@ -11,7 +11,7 @@ export const contractsApiSlice = apiSlice.injectEndpoints({
             })
         }),
         getContracts: builder.query({
-            query: (data) => ({
+            query: () => ({
                 url: CONTRACTS_URL,
                 method: 'GET'
             })

@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useGetContractsQuery } from '../../slices/contracts/contractsApiSlice'
 import { setContracts } from '../../slices/contracts/contractsSlice'
@@ -9,39 +10,61 @@ const OrdersPage = () => {
 
     const dispatch = useDispatch();
     
+    const { userInfo } = useSelector(state => state.auth);
     const { availableContracts } = useSelector(state => state.contracts);
-    const {data, isLoading, error} = useGetContractsQuery();
+    const {data, isLoading, error, refetch} = useGetContractsQuery();  
 
     useEffect(() => {
         
-        dispatch(setContracts({...data}));
+       dispatch(setContracts({...data}));
+       refetch()
 
-    }, [dispatch, data]);
-
-    console.log(availableContracts)
-
+    }, [dispatch, refetch, data]);
+   
     return (
         <div className='mt-24 px-4'>
             {isLoading ? <Loader /> : error && <ErrorMsg message={error?.data?.message || error.error} /> }
+                <h1 className='text-center font-bold text-2xl mb-8'>Comenzile tale</h1>
+
+            {availableContracts && availableContracts.length < 1 && (
+                <div className='flex flex-col w-full'>
+                    <p className='font-semibold mx-auto mb-4'>Momentan nu ai nicio comanda</p>
+                    <Link to='/services' className='rounded-sm mx-auto font-semibold bg-dark text-white p-2'>Fa o comanda</Link>
+                </div>
+            )}
 
             {availableContracts && availableContracts.map(contract => (
-                <div key={contract._id} className='mb-6 pb-4'>
+                <div key={contract._id} className='mb-6 pb-4 shadow p-1 rounded-sm'>
                     <div className='flex items-center border-b border-gray flex-wrap'>
-                        <p className='font-bold text-xl mr-4'>
+                        <p className='font-bold text-xl mr-4 text-yellow'>
                             {contract.service && 
                             contract.service[0].toUpperCase() + contract.service.slice(1)}                        
                         </p>
                         <p className='font-semibold text-lg mr-4'>{new Date(contract.date).toLocaleDateString()}</p>
                         <p className='font-semibold text-lg'>Ora {contract.hour}:00</p>
+                        <i className='fa-solid fa-edit ml-auto text-yellow'></i>
                     </div>
                     <p className='font-semibold text-lg'> Pret: {contract.price} RON / ora</p>
                     <p><span className='font-semibold'>Adresa:</span> {contract.address}</p>
                     <p><span className='font-semibold'>Detalii adresa: </span> {contract.addressDetail}</p>
                     
-                    <p className='mt-2 '><span className='text-md font-semibold'>Angajat: </span>
-                     <span className='text-xl'>Mihai</span></p>
-                     <p>Numar telefon angajat: 0759467923</p>
-                     <p>Vezi profilul angajatului</p>
+                    {userInfo.role === 'client' ? (
+                        <>
+                            <p className='mb-4'> <span className='font-semibold'>Numar telefon angajat: </span> <span className='text-lg'>{contract.workerPhone}</span></p>
+                            <Link to={`/workers/${contract.worker}`} className='bg-lime 
+                                p-2 rounded-sm font-semibold px-4 mt-2'>Vezi profilul angajatului</Link>
+                        </>
+
+                    ) : (
+                        <>
+                            <p> <span className='font-semibold'>Numar telefon client: </span> <span className='text-lg'>????</span></p>                        
+                            {contract.message && (
+                                <p className='mb-4'> <span className='font-semibold'>Mesaj: </span> <span className='text-lg'>{contract.message}</span></p>                        
+                            )}
+                        </>
+
+                    )}
+                     
                     
                 </div>
              ))}        

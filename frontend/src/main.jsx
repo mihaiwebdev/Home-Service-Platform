@@ -38,7 +38,7 @@ const router = createBrowserRouter(
 
         {/* Private users Routes */}
         <Route path='' element={<PrivateRoute />}>
-          
+          <Route path='/orders' element={<OrdersPage />}/>
         </Route>
         
         {/* Client Private Routes */}
@@ -46,7 +46,6 @@ const router = createBrowserRouter(
           <Route path='/profile' element={<ProfilePage/>} />
           <Route path='/services' element={<ServicesPage/>}/>
           <Route path='/schedule' element={<SchedulePage/>}/>
-          <Route path='/orders' element={<OrdersPage />}/>
           <Route path='/workers' element={<WorkersResult/>}/>
           <Route path='/workers/:id' element={<WorkerInfo/>}/>
         </Route>

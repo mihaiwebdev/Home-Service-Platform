@@ -259,7 +259,7 @@ const WorkerEditPage = () => {
                 </div>
        
                 <div className='w-full flex flex-col mt-14 items-center bg-dark p-4 
-                    rounded-md relative mb-14'>
+                    rounded-md relative mb-20'>
                     <h2 className='bg-lime px-10 py-1 font-bold mb-2 
                     text-sm absolute left-4 -top-4 rounded-sm'>Securitate</h2>
 
@@ -280,7 +280,7 @@ const WorkerEditPage = () => {
                  : (
                     <input type="submit" className="disabled:opacity-75 w-2/3 
                         px-3 py-2.5 tracking-wide text-sm bg-lime text-dark mt-8 fixed
-                       border border-gray bottom-10 z-10 font-bold rounded-full shadow-3xl" value={'SALVEAZA'}/> 
+                       border border-gray bottom-20 z-20 font-bold rounded-full shadow-3xl" value={'SALVEAZA'}/> 
                 )}
 
             </form>
