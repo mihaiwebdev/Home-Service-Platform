@@ -36,10 +36,10 @@ const ChangePw = () => {
     }; 
 
     return (
-        <Modal extraClass={`${location.hash === '#changepw' ? 'h-screen' : 'hidden'}`}>
+        <Modal extraClass={`${location.hash === '#changepw' ? 'h-92% overflow-hidden' : 'hidden'}`}>
             <div className='relative w-full mb-4'>
                 <i onClick={() => navigate(-1)} className="fa-solid
-                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-8 "></i>
+                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-2 "></i>
                 <h1 className='text-center font-bold text-xl'>Modifica parola </h1>
             </div>
 

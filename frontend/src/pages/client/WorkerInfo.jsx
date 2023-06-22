@@ -80,7 +80,7 @@ const WorkerInfo = () => {
                         
                         <div className='flex w-full mt-6 items-center justify-center bg-lightLime rounded-sm shadow'>
                             <div className='w-2/4'>
-                                <img src={`../src/assets/profiles/${workerInfo.photo}`} alt={workerInfo.photo} 
+                                <img src={workerInfo.photo} alt={'fotografie-profil'} 
                                 className='rounded-s h-52 w-full shadow object-cover object-top'/>
                             </div>
                         </div>
@@ -110,18 +110,17 @@ const WorkerInfo = () => {
                         </div>
                         
                         {jobInfo && (
-                            <div className='w-full mt-2'>
-                                <small className='opacity-60'>*Optional</small>
+                            <div className='w-full mt-2 mb-12'>
                                 <textarea className='w-full border-b border-gray p-2 shadow-sm rounded-md 
                                 bg-lightLime focus:outline-none' value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                placeholder='Scrie un mesaj cu detalii'/>
+                                placeholder='Adauga detalii pentru lucrator'/>
                             </div>
                         )}
 
                         {createLoading ? <Loader /> : jobInfo && (
                             <button onClick={handleProposal} className='bg-lime py-2 px-12 rounded-full
-                             font-bold shadow-xl mt-4 fixed z-10 bottom-10'>Angajeaza</button>   
+                             font-bold shadow-xl mt-4 fixed z-10 bottom-20'>Angajeaza</button>   
                         )}
                     </>
                 )}

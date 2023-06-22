@@ -46,7 +46,7 @@ const WorkerProfilePage = () => {
                         </div>
                         <div className='mt-4 mb-2 border border-lightLime rounded-md h-52
                             shadow w-full flex items-center short2:items-start'>
-                            <img src={`../src/assets/profiles/${workerInfo.photo}`} alt={workerInfo.photo} 
+                            <img src={workerInfo.photo} alt={'fotografie-profil'} 
                             className='rounded-md h-full w-2/4 shadow-lg object-cover 
                                 object-center short2:h-40'/>
 

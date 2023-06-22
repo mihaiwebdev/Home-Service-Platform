@@ -5,6 +5,16 @@ const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('express-async-handler');
 const pagination = require('../utils/pagination');
 
+const { S3Client, PutObjectCommand } =  require('@aws-sdk/client-s3');
+
+const s3Client = new S3Client({
+    credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY,
+        secretAccessKey: process.env.AWS_SECRET_KEY,
+    },
+    region: process.env.AWS_REGION,
+});
+
 // @desc    Get workers
 // @route   GET /api/v1/workers
 // @access  Public
@@ -177,19 +187,19 @@ exports.uploadWorkerPhoto = asyncHandler(async (req, res, next) => {
 
     file.name = `photo_${req.params.workerId}${path.parse(file.name).ext}`;
 
-    file.mv(`source-code/${process.env.FILE_UPLOAD_PATH}/${file.name}`, async err => {
-        if (err) {
-            console.log(err);
+    const params = {
+        Bucket: process.env.BUCKET_NAME,
+        Key: file.name,
+        body: file.data,
+        ContentType: file.mimetype,
+    };
+    
+    try {
+        const data = await s3Client.send(new PutObjectCommand(params));
+        console.log(data);
+      
+    } catch (err) {
+        console.log("Error", err);
+    }
 
-            return next(
-                new ErrorResponse('Problem with file uploading', 500)
-            )
-        };
-
-       await Worker.findByIdAndUpdate(req.params.workerId, {
-            photo: file.name
-        });
-
-        res.status(200).json({success: true, data: file.name});
-    });
 });

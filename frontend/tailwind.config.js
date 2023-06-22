@@ -10,7 +10,7 @@ module.exports = {
         "./src/pages/client/ProfilePage.jsx",
         "./src/pages/client/WorkersResult.jsx",
         "./src/pages/client/WorkerInfo.jsx",
-        "./src/pages/client/ordersPage.jsx",
+        "./src/pages/ordersPage.jsx",
         "./src/pages/worker/WorkerEditPage.jsx",
         "./src/pages/worker/WorkerProfilePage.jsx",
         "./src/pages/worker/ProgramPage.jsx",
@@ -52,13 +52,12 @@ module.exports = {
             },
             boxShadow: {
                 '3xl': 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;',
-                'cm-md': 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;'
+                'cm-md': 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;',
+                'top': 'rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;'
             },
-            height: {
-                '92%': '92%',
-            },
+
             minHeight: {
-                '92%': '92%'
+                '92%': '92vh'
             }
         },
 
@@ -68,7 +67,7 @@ module.exports = {
             'md': '15px',
             'lg': '25px',
             '3xl': '40px'
-        }
+        },
     },
 
     plugins: [

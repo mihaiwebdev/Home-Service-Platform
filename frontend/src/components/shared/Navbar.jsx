@@ -30,12 +30,14 @@ const Navbar = () => {
         
         if (e.target.className === 'hamburger' || e.target.className === 'hamburger-line') {
             setIsOpen(true);
+            document.body.classList.add('overflow-hidden');
         };
         
         if (e.target.classList.contains('hamburger-nav') || e.target.tagName === 'LI' || 
             e.target.tagName === 'I')
         {
-            setIsOpen(false)
+            setIsOpen(false);
+            document.body.classList.remove('overflow-hidden');
         };
         
     };
@@ -60,7 +62,7 @@ const Navbar = () => {
                 <div className={`hamburger-nav z-20  flex flex-col
                 items-end absolute top-0 right-0 ${isOpen ? 'show' : ''}`}>
 
-                    <div  className="nav-actions bg-white flex flex-col justify-between h-full p-5">
+                    <div  className="nav-actions bg-lightLime flex flex-col justify-between h-full p-5">
                         <div >
                             <i className="cursor-pointer fa-solid fa-x absolute right-5 text-red text-xl"></i>
                             <h1 className="font-semibold text-xl border-b border-gray pb-2 mb-8">Salut {userInfo && userInfo.name}</h1>

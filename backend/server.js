@@ -7,7 +7,6 @@ const fileUpload = require('express-fileupload');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const xss = require('xss-clean');
-const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const hpp = require('hpp');
 const errorHandler = require('./middleware/error');
@@ -48,12 +47,7 @@ app.use(helmet());
 app.use(xss());
 app.use(cors());
 
-const limiter = rateLimit({
-    windowMs: 10 * 60 * 1000,
-    max: 100
-});
 
-app.use(limiter);
 app.use(hpp());
 
 // Mount Routers
@@ -64,9 +58,12 @@ app.use('/api/v1/schedules', schedules);
 app.use('/api/v1/contracts', contracts);
 
 // Serve Frontend
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../frontend/dist')));
-    app.get('*', (req, res) => res.sendFile(__dirname, '../frontend/dist/index.html'));
+if (process.env.NODE_ENV === 'development') {
+    const __dirname = path.resolve();
+    app.use(express.static(path.join(__dirname, 'frontend/dist')));
+    app.get('*', (req, res) => res.sendFile(__dirname, 'frontend' , 'dist', 'index.html'));
+} else {
+    app.get('/', (req, res) => res.send('Server is ready'));
 };
 
 app.use(errorHandler);

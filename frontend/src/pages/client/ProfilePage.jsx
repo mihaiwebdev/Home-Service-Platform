@@ -146,8 +146,8 @@ const ProfilePage = () => {
 
                 {isLoading ? <Loader /> : (
                     <input type="submit" className="disabled:opacity-75 w-2/3 
-                        px-3 py-2.5 tracking-wide text-sm bg-lime text-dark mt-8 sticky
-                       border border-gray bottom-10 z-10 font-bold rounded-full shadow-3xl" value={'SALVEAZA'}/> 
+                        px-3 py-2.5 tracking-wide text-sm bg-lime text-dark mt-8 mb-8 
+                       border border-gray z-10 font-bold rounded-full shadow-3xl" value={'SALVEAZA'}/> 
                 )}
 
             </form>

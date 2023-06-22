@@ -49,7 +49,7 @@ const SearchPage = () => {
 
                     <Link key={service._id} to={`/schedule#${service.slug}`} className='my-4 min-h-20 pb-2 cursor-pointer 
                      border-b border-gray bg-lightLime flex items-center '>
-                        <img src={`src/assets/${service.photo}`} alt="house cleaning" className='short:py-4 h-20 p-4 
+                        <img src={service.photo} alt="house cleaning" className='short:py-4 h-20 p-4 
                             bg-lightLime w-auto rounded-md ' />
                         <div className='pr-4 p-2 short2:pr-0'>
                             <h2 className='font-semibold'>{service.name} </h2>

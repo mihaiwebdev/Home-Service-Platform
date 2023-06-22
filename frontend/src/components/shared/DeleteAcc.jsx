@@ -38,10 +38,10 @@ const DeleteAcc = () => {
     
     return (
       
-        <Modal extraClass={location.hash === '#deleteuser' ? 'h-screen' : 'hidden'}>
+        <Modal extraClass={location.hash === '#deleteuser' ? 'overflow-hidden' : 'hidden'}>
             <i onClick={() => navigate(-1)} className="fa-solid
-                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-8 "></i>
-            <h1 className='font-bold text-xl mb-4'>Doriti sa va stergeti contul?</h1>
+                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-6 short2:left-2 "></i>
+            <h1 className='font-bold text-xl mb-4 short2:px-6'>Doriti sa va stergeti contul?</h1>
             <p className='font-semibold'>Pentru a va sterge permanent contul scrie-ti in casuta de 
                 mai jos: <span className='italic'>confirm</span>
             </p>

@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { useGetContractsQuery } from '../../slices/contracts/contractsApiSlice'
-import { setContracts } from '../../slices/contracts/contractsSlice'
-import Loader from '../../components/shared/Loader'
-import ErrorMsg from '../../components/shared/ErrorMsg'
+import { useGetContractsQuery } from '../slices/contracts/contractsApiSlice'
+import { setContracts } from '../slices/contracts/contractsSlice'
+import Loader from '../components/shared/Loader'
+import ErrorMsg from '../components/shared/ErrorMsg'
 
 const OrdersPage = () => {
 
@@ -29,7 +29,12 @@ const OrdersPage = () => {
             {availableContracts && availableContracts.length < 1 && (
                 <div className='flex flex-col w-full'>
                     <p className='font-semibold mx-auto mb-4'>Momentan nu ai nicio comanda</p>
-                    <Link to='/services' className='rounded-sm mx-auto font-semibold bg-dark text-white p-2'>Fa o comanda</Link>
+                    {userInfo.role === 'client' ? (
+                        <Link to='/services' className='rounded-sm mx-auto font-semibold bg-dark text-white p-2'>Fa o comanda</Link>
+                    ) : (
+                        <Link to='/worker/program' className='rounded-sm mx-auto font-semibold bg-dark text-white p-2'>Selecteaza-ti programul</Link>                        
+                    )}
+
                 </div>
             )}
 
@@ -59,7 +64,7 @@ const OrdersPage = () => {
                         <>
                             <p> <span className='font-semibold'>Numar telefon client: </span> <span className='text-lg'>????</span></p>                        
                             {contract.message && (
-                                <p className='mb-4'> <span className='font-semibold'>Mesaj: </span> <span className='text-lg'>{contract.message}</span></p>                        
+                                <p className='mb-4'> <span className='font-semibold'>Mesaj: </span> <span className='text-sm'>{contract.message}</span></p>                        
                             )}
                         </>
 
