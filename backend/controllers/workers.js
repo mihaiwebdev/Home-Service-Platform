@@ -4,16 +4,24 @@ const geocoder = require('../utils/geocoder');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('express-async-handler');
 const pagination = require('../utils/pagination');
-
 const { S3Client, PutObjectCommand } =  require('@aws-sdk/client-s3');
+// const aws = require('aws-sdk');
 
-const s3Client = new S3Client({
+const s3Client = new S3Client({ 
     credentials: {
         accessKeyId: process.env.AWS_ACCESS_KEY,
-        secretAccessKey: process.env.AWS_SECRET_KEY,
+        secretAccessKey: process.env.AWS_SECRET_KEY
     },
-    region: process.env.AWS_REGION,
+    region: process.env.AWS_REGION 
 });
+
+// aws.config.update({
+//     credentials: {
+//         accessKeyId: process.env.AWS_ACCESS_KEY,
+//         secretAccessKey: process.env.AWS_SECRET_KEY
+//     },
+//     region: process.env.AWS_REGION 
+// });
 
 // @desc    Get workers
 // @route   GET /api/v1/workers
@@ -156,7 +164,7 @@ exports.deleteWorker = asyncHandler(async(req, res, next) => {
 // @route   PUT /ap1/v1/workers/:workerId/photo
 // @access  Private
 exports.uploadWorkerPhoto = asyncHandler(async (req, res, next) => {
-    const worker = await Worker.findById(req.params.workerId);
+    let worker = await Worker.findById(req.params.workerId);
 
     if (!worker) {
         return next(
@@ -170,36 +178,42 @@ exports.uploadWorkerPhoto = asyncHandler(async (req, res, next) => {
         )
     };
     
-    if (!req.files) {
+    if (!req.file) {
         return next (
             new ErrorResponse('Please upload an image', 400)
         );
     };
 
-    const file = req.files.file;
-  
-
-    if (!file.mimetype.startsWith('image')) {
+    if (!req.file.mimetype.startsWith('image')) {
         return next (
             new ErrorResponse('Please upload an image', 404)
         )
     };
 
-    file.name = `photo_${req.params.workerId}${path.parse(file.name).ext}`;
+    req.file.name = `photo_${req.params.workerId}${path.parse(req.file.originalname).ext}`;
 
     const params = {
         Bucket: process.env.BUCKET_NAME,
-        Key: file.name,
-        body: file.data,
-        ContentType: file.mimetype,
+        Key: req.file.name,
+        Body: req.file.buffer,
+        ContentType: req.file.mimetype,
     };
     
-    try {
-        const data = await s3Client.send(new PutObjectCommand(params));
-        console.log(data);
-      
-    } catch (err) {
-        console.log("Error", err);
-    }
+    const command = new PutObjectCommand(params);
+    const data = await s3Client.send(command);
+    
+    if (!data) {
+        return next (
+            new ErrorResponse('Something went wrong', 500)
+        );
+    };
 
+    worker = await Worker.findByIdAndUpdate(req.params.workerId, {
+        photo: `https://home-services-s3.s3.eu-north-1.amazonaws.com/${req.file.name}`
+    }, {
+        new: true,
+        runValidators: true
+    })
+
+    res.status(200).json({success: true, data: worker});
 });

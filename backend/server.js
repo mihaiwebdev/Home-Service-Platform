@@ -3,7 +3,6 @@ const path = require('path');
 const connectDB = require('./config/db');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-const fileUpload = require('express-fileupload');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const xss = require('xss-clean');
@@ -41,7 +40,6 @@ app.use(cookieParser());
 if (NODE_ENV === 'development')
     app.use(morgan('dev'));
 
-app.use(fileUpload());
 app.use(mongoSanitize());
 app.use(helmet());
 app.use(xss());
@@ -58,7 +56,7 @@ app.use('/api/v1/schedules', schedules);
 app.use('/api/v1/contracts', contracts);
 
 // Serve Frontend
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
     app.use(express.static(path.join(__dirname, 'frontend/dist')));
     app.get('*', (req, res) => res.sendFile(__dirname, 'frontend' , 'dist', 'index.html'));

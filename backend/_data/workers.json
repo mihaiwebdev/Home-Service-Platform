@@ -6,7 +6,7 @@
         "address": "Strada Decebal 12, Targu-Mures Romania",
         "services": [{"service":"tuns-iarba", "price": 65}],
         "phone": "0734562123",
-        "photo": "sergiu.jpg"
+        "photo": "https://home-services-s3.s3.eu-north-1.amazonaws.com/sergiu.jpg"
     },
 
     {
@@ -16,7 +16,7 @@
         "address": "Strada Aleea Hateg 25, Targu-Mures Romania",
         "services": [{"service":"babysitting", "price": 100}],
         "phone": "0734262123",
-        "photo": "radu.jpg"
+        "photo": "https://home-services-s3.s3.eu-north-1.amazonaws.com/radu.jpg"
     },
 
     {
@@ -26,7 +26,7 @@
         "address": "Strada Furnicilor 5 Targu-Mures Romania",
         "services": [{"service":"curatenie", "price": 88}],
         "phone": "0734262133",
-        "photo": "sorina.jpg"
+        "photo": "https://home-services-s3.s3.eu-north-1.amazonaws.com/sorina.jpg"
     },
 
     {
@@ -36,7 +36,7 @@
         "address": "Sobarilor 38a Cluj-Napoca Romania",
         "services": [{"service":"tuns-iarba", "price": 150}],
         "phone": "0731262133",
-        "photo": "mihai.jpg"
+        "photo": "https://home-services-s3.s3.eu-north-1.amazonaws.com/photo_647b73027d12da0b8986dae3.jpg"
     },
 
     {
@@ -46,7 +46,7 @@
         "address": "Strada Aleea Carpati 30 Targu-Mures",
         "services": [{"service":"curatenie", "price": 99}],
         "phone": "0731262139",
-        "photo": "vlad.jpg"
+        "photo": "https://home-services-s3.s3.eu-north-1.amazonaws.com/vlad.jpg"
     },
 
     {
@@ -56,7 +56,7 @@
         "address": "Strada Sobarilor 38 Cluj-Napoca",
         "services": [{"service":"babysitting", "price": 100}],
         "phone": "0759417923",
-        "photo": "andreea.jpg"
+        "photo": "https://home-services-s3.s3.eu-north-1.amazonaws.com/andreea.jpg"
     },
 
     {
@@ -66,7 +66,7 @@
         "address": "Strada Motilor 5, Cluj-Napoca",
         "services": [{"service":"curatenie", "price": 44}],
         "phone": "0759467903",
-        "photo": "julia.jpg"
+        "photo": "https://home-services-s3.s3.eu-north-1.amazonaws.com/julia.jpg"
     },
 
     {
@@ -76,7 +76,7 @@
         "address": "Strada Aleea Valeriu Bologa 3, Cluj-Napoca",
         "services": [{"service":"curatenie", "price": 56}],
         "phone": "0752467923",
-        "photo": "john.jpg"
+        "photo": "https://home-services-s3.s3.eu-north-1.amazonaws.com/john.jpg"
     },
 
     {
@@ -86,6 +86,6 @@
         "address": "Constantin Brancusi 177, Cluj-Napoca",
         "services": [{"service":"babysitting", "price": 85}],
         "phone": "0599467923",
-        "photo": "ana.jpg"
+        "photo": "https://home-services-s3.s3.eu-north-1.amazonaws.com/ana.jpg"
     }
 ]

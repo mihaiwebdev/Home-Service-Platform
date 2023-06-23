@@ -91,7 +91,7 @@ const WorkerEditPage = () => {
         const file = e.target.files[0]
 
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append('image', file);
 
         const config = {
             headers: {
