@@ -5,23 +5,6 @@ const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('express-async-handler');
 const pagination = require('../utils/pagination');
 const { S3Client, PutObjectCommand } =  require('@aws-sdk/client-s3');
-// const aws = require('aws-sdk');
-
-const s3Client = new S3Client({ 
-    credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY,
-        secretAccessKey: process.env.AWS_SECRET_KEY
-    },
-    region: process.env.AWS_REGION 
-});
-
-// aws.config.update({
-//     credentials: {
-//         accessKeyId: process.env.AWS_ACCESS_KEY,
-//         secretAccessKey: process.env.AWS_SECRET_KEY
-//     },
-//     region: process.env.AWS_REGION 
-// });
 
 // @desc    Get workers
 // @route   GET /api/v1/workers
@@ -191,6 +174,14 @@ exports.uploadWorkerPhoto = asyncHandler(async (req, res, next) => {
     };
 
     req.file.name = `photo_${req.params.workerId}${path.parse(req.file.originalname).ext}`;
+
+    const s3Client = new S3Client({ 
+        credentials: {
+            accessKeyId: process.env.AWS_ACCESS_KEY,
+            secretAccessKey: process.env.AWS_SECRET_KEY
+        },
+        region: process.env.AWS_REGION 
+    });
 
     const params = {
         Bucket: process.env.BUCKET_NAME,

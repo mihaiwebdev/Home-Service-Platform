@@ -42,6 +42,12 @@ if (NODE_ENV === 'development')
 
 app.use(mongoSanitize());
 app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        'img-src': ["'self'", "home-services-s3.s3.eu-north-1.amazonaws.com"]
+    }
+}));
 app.use(xss());
 app.use(cors());
 
