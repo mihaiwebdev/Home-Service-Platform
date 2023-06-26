@@ -27,7 +27,7 @@ const WorkersResult = () => {
     useEffect(() => {
         if (data) {
             dispatch(setAvailableWorkers({...data}))
-        }
+        };
         
     }, [data, dispatch]);
 

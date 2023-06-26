@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useGetWorkerInfoQuery } from '../../slices/workers/workersApiSlice'
 import { useCreateContractMutation } from '../../slices/contracts/contractsApiSlice'
 import { setWorkerInfo } from '../../slices/workers/workersSlice'
-import { motion } from 'framer-motion'
 import { toast } from 'react-toastify'
 import ErrorMsg from '../../components/shared/ErrorMsg'
 import Rating from '../../components/worker/Rating'
@@ -34,11 +33,11 @@ const WorkerInfo = () => {
         };
         
         if (workerInfo && jobInfo) {
-            const service = workerInfo.services.find(item => item.service === jobInfo.service);
-            setPrice(service.price);
-        }
-
-    }, [dispatch, navigate, workerInfo, id, data])
+            const service = workerInfo.services.find(item => item.service === jobInfo.service);  
+            setPrice(service.price);            
+        };
+    
+    }, [dispatch, navigate, workerInfo, id, data, jobInfo])
 
 
     const reviews = [{author: 'Mihai', text:'A facut luna si bec', rating: 5}, 
@@ -72,7 +71,6 @@ const WorkerInfo = () => {
                 {isLoading ? < Loader /> : error ? <ErrorMsg message={error?.data?.message || error.error} />
                     : workerInfo && (
                     <>
-                        
                         <h1 className='font-bold text-2xl'>{workerInfo.user.name}</h1> 
                         <div className='absolute top-9 right-6'>
                             <Rating value={4.5} color={"#ffea00"} />
