@@ -66,7 +66,6 @@ module.exports = {
             },
             height: {
                 '100dvh': '100dvh',
-                '100dvw': '100dvw'
             }
         },
 

@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 const App = () => {
   return (
     
-    <div className='min-h-100dvh bg-lightLime overflow-hidden relative 3xl:container 2xl:mx-auto'>
+    <div className='bg-lightLime overflow-hidden relative 3xl:container 2xl:mx-auto'>
       <ToastContainer />
       
       <Navbar />
