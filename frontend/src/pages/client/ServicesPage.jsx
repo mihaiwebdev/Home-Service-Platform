@@ -30,7 +30,7 @@ const SearchPage = () => {
             <motion.img initial={{opacity: 0}} animate={{opacity: 1}} 
              transition={{duration: 1}}
              src={cleanHome} alt="clean-house" className='short:h-auto mx-auto object-cover 
-             h-72 md:max-w-3xl md:rounded-t-md md:h-auto rounded-t-sm' />
+             h-68 md:max-w-3xl md:rounded-t-md md:h-auto rounded-t-sm' />
 
             <motion.div  initial={{y: 500, opacity:0}}
              animate={{y: -24, opacity: 1,}}

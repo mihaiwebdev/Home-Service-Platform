@@ -44,7 +44,7 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="h-screen text-center flex flex-col items-center justify-end short:h-full short:pt-20">
+        <div className="h-screen bg-white text-center flex flex-col items-center justify-end short:h-full short:pt-20">
             <div>
                 <h1 className="font-bold text-2xl short2:text-xl">Loghează-te</h1>
                 <p className="font-semibold mt-2 px-2 short2:mt-0 short2:text-sm">Conectăm persoanele cu experiență în treburile casnice și pe cei care au nevoie de ajutor.</p>

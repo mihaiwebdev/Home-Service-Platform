@@ -14,7 +14,7 @@ const ProgramPage = () => {
 
     const navigate = useNavigate();
 
-    const { data, error:queryError, isLoading:queryLoading } = useGetWorkerScheduleQuery();
+    const { data, error:queryError, isLoading:queryLoading, refetch } = useGetWorkerScheduleQuery();
 
     const [setWorkerSchedule, {isLoading, error}] = useSetWorkerScheduleMutation();
 
@@ -23,8 +23,9 @@ const ProgramPage = () => {
         if (data) {
             data.data.map(item => setSelectedDates(state => [...state, new Date(item.date).toLocaleDateString("en-US")]))    
         };
+        refetch();
 
-    }, [data]);
+    }, [data, refetch]);
 
     const months = {
         0: 'Ianuarie',

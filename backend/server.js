@@ -64,8 +64,9 @@ app.use('/api/v1/contracts', contracts);
 // Serve Frontend
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
-    app.use(express.static(path.join(__dirname, 'frontend/dist')));
+    app.use(express.static(path.join(__dirname, 'frontend/dist'), { dotfiles: 'allow' }));
     app.get('*', (req, res) => res.sendFile(__dirname, 'frontend' , 'dist', 'index.html'));
+
 } else {
     app.get('/', (req, res) => res.send('Server is ready'));
 };

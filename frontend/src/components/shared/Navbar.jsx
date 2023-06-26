@@ -49,7 +49,7 @@ const Navbar = () => {
             bounce: 0.4,
             duration: 0.8
         }}
-         className="top-0 z-20 left-0 w-full absolute">
+         className="top-0 z-30 left-0 w-full absolute">
             <div className="pt-2 z-10 ps-4 font-bold absolute">
                 Logo <i className="fa-solid fa-broom text-2xl"></i>
             </div>

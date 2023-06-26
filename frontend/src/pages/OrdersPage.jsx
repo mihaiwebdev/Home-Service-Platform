@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useGetContractsQuery } from '../slices/contracts/contractsApiSlice'
 import { setContracts } from '../slices/contracts/contractsSlice'
@@ -9,10 +9,12 @@ import ErrorMsg from '../components/shared/ErrorMsg'
 const OrdersPage = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     
     const { userInfo } = useSelector(state => state.auth);
     const { availableContracts } = useSelector(state => state.contracts);
     const {data, isLoading, error, refetch} = useGetContractsQuery();  
+
 
     useEffect(() => {
         
@@ -23,6 +25,8 @@ const OrdersPage = () => {
    
     return (
         <div className='mt-24 px-4'>
+             <i onClick={() => navigate(-1)} className="fa-solid
+                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-6"></i>
             {isLoading ? <Loader /> : error && <ErrorMsg message={error?.data?.message || error.error} /> }
                 <h1 className='text-center font-bold text-2xl mb-8'>Comenzile tale</h1>
 

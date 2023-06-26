@@ -8,14 +8,14 @@ import 'react-toastify/dist/ReactToastify.css'
 const App = () => {
   return (
     
-    <div className='min-h-screen overflow-hidden relative 3xl:container 2xl:mx-auto'>
+    <div className='min-h-screen bg-lightLime overflow-hidden relative 3xl:container 2xl:mx-auto'>
       <ToastContainer />
       
       <Navbar />
 
       <Outlet />
       
-      <Navigation/>
+      {/* <Navigation/> */}
     </div>
   )
 }

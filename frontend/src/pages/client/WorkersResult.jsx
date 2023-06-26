@@ -64,7 +64,7 @@ const WorkersResult = () => {
                         <motion.img initial={{opacity: 0}} animate={{opacity:1}}
                             transition={{duration: 1.5}}
                             className='w-full h-28 object-cover rounded-md shadow-md'
-                        src={`src/assets/profiles/${worker.photo}`} alt="imagine" />
+                        src={worker.photo} alt="imagine" />
                     </div>
                     
                     <div className='me-4 ms-2 w-2/3'>

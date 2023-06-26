@@ -23,7 +23,6 @@ import OrdersPage from './pages/OrdersPage'
 import PrivateWorkerRoute from './components/worker/PrivateWorkerRoute'
 import WorkerProfilePage from './pages/worker/WorkerProfilePage'
 import WorkerEditPage from './pages/worker/WorkerEditPage'
-import WorkerOrdersPage from './pages/worker/WorkerOrdersPage'
 import WorkerHomePage from './pages/worker/WorkerHomePage'
 import ProgramPage from './pages/worker/ProgramPage'
 import './index.css'
@@ -53,7 +52,6 @@ const router = createBrowserRouter(
         {/* Worker Private Routes */}
         <Route path='/worker' element={<PrivateWorkerRoute />}>
           <Route path='' element={<WorkerHomePage />}/>
-          <Route path='orders' element={<WorkerOrdersPage />}/>
           <Route path='profile' element={<WorkerProfilePage />}/>
           <Route path='profile/edit' element={<WorkerEditPage />}/>
           <Route path='program' element={<ProgramPage />}/>
