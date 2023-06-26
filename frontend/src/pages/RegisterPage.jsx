@@ -53,7 +53,7 @@ const RegisterPage = () => {
     }
 
     return (
-        <div className="h-screen bg-white text-center flex flex-col items-center justify-end short:h-full short:pt-16">
+        <div className="h-100dvh bg-white text-center flex flex-col items-center justify-end short:h-full short:pt-16">
             <div className='short:mt-4'>
                 <h1 className="font-bold text-2xl short2:text-xl">Înregistrează-te</h1>
                 {role === 'client' ? (

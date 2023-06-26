@@ -57,7 +57,16 @@ module.exports = {
             },
 
             minHeight: {
-                '92%': '92vh'
+                '92%': '92dvh',
+                '93%': '93dvh',
+                '100dvh': '100dvh'
+            },
+            maxHeight: {
+                '100dvh': '100dvh'
+            },
+            height: {
+                '100dvh': '100dvh',
+                '100dvw': '100dvw'
             }
         },
 

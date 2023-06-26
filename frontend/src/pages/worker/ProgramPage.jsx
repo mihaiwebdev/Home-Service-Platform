@@ -78,7 +78,7 @@ const ProgramPage = () => {
 
     return (
         <div>
-            <Modal extraClass={'h-screen'}>
+            <Modal extraClass={'h-100dvh'}>
 
                 <div>
                     <i onClick={() => navigate(-1)} className="fa-solid

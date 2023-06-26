@@ -62,9 +62,9 @@ const Navbar = () => {
                 <div className={`hamburger-nav z-20  flex flex-col
                 items-end absolute top-0 right-0 ${isOpen ? 'show' : ''}`}>
 
-                    <div  className="nav-actions bg-lightLime flex flex-col justify-between h-full p-5">
+                    <div  className="nav-actions bg-lightLime flex flex-col justify-between p-5">
                         <div >
-                            <i className="cursor-pointer fa-solid fa-x absolute right-5 text-red text-xl"></i>
+                            <i className="cursor-pointer fa-solid fa-x absolute right-5 top-3 text-red text-xl p-2"></i>
                             <h1 className="font-semibold text-xl border-b border-gray pb-2 mb-8">Salut {userInfo && userInfo.name}</h1>
 
                             <ul >

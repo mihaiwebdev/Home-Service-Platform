@@ -10,7 +10,7 @@ const Welcomepage = () => {
 
     return (
         
-        <div className="pt-16 bg-white short:pt-8 h-screen relative md:pt-28">
+        <div className="pt-16 bg-white short:pt-8 h-100dvh relative md:pt-28">
             <motion.h1 initial={{opacity: 0}} animate={{opacity:1}}
             transition={{duration: 1.5}}
              className='font-sourcesanspro py-5 text-center text-dark

@@ -24,11 +24,11 @@ const OrdersPage = () => {
     }, [dispatch, refetch, data]);
    
     return (
-        <div className='mt-24 px-4'>
-             <i onClick={() => navigate(-1)} className="fa-solid
-                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-6"></i>
+        <div className='pt-16 px-4 h-100dvh'>
+             <i onClick={() => userInfo.role === 'worker' ? navigate(-1) : navigate('/services')} className="fa-solid
+                bg-lime rounded-full mt-10 py-2 px-3 fa-chevron-left absolute left-6"></i>
             {isLoading ? <Loader /> : error && <ErrorMsg message={error?.data?.message || error.error} /> }
-                <h1 className='text-center font-bold text-2xl mb-8'>Comenzile tale</h1>
+                <h1 className='mt-10 text-center font-bold text-2xl mb-8'>Comenzile tale</h1>
 
             {availableContracts && availableContracts.length < 1 && (
                 <div className='flex flex-col w-full'>

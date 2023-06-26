@@ -25,7 +25,7 @@ const SearchPage = () => {
     }, [services, data, dispatch])
     
     return (
-        <div className="pt-16 min-h-screen h-full">
+        <div className="pt-16 min-h-100dvh h-100dvh max-h-fit">
 
             <motion.img initial={{opacity: 0}} animate={{opacity: 1}} 
              transition={{duration: 1}}

@@ -38,7 +38,7 @@ const WorkersResult = () => {
             bounce: 0.4,
             duration: 0.8
          }}
-         className="py-20 min-h-screen px-2 h-full"
+         className="py-20 min-h-100dvh h-100dvh px-2"
         >    
             <div className='mb-2'>
                 <i onClick={() => navigate(-1)} className="fa-solid short2:mb-6 ms-4
