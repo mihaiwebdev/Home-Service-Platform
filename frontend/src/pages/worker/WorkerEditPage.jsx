@@ -140,7 +140,7 @@ const WorkerEditPage = () => {
 
     return (
 
-    <div>
+    <>
         <Modal extraClass={`pb-14 ${location.hash ? 'hidden' : ''}`}>
             <div className='relative w-full mb-4'>
                 <i onClick={() => navigate(-1)} className="fa-solid
@@ -289,7 +289,7 @@ const WorkerEditPage = () => {
         
         <ChangePw />
         <DeleteAcc />
-    </div>
+    </>
     )
 }
 

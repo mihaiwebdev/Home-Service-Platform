@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const WorkerHomePage = () => {
     return (
-        <div className="pt-24 px-4 h-100dvh max-h-max text-center">
+        <div className="pt-24 px-4 h-screen text-center">
             <h1 className="text-2xl font-bold">Fă-ți propriul program de lucru în domeniul treburilor casnice.</h1>
             <h1 className="mt-2 text-lg font-semibold"> Noi îți aducem clienții, tu îți aduci abilitățile.</h1>
             <div className='mt-10'>

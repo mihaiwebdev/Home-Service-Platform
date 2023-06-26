@@ -77,60 +77,60 @@ const ProgramPage = () => {
     };
 
     return (
-        <div>
-            <Modal extraClass={'h-100dvh'}>
+        
+        <Modal extraClass={'h-100dvh'}>
 
-                <div>
-                    <i onClick={() => navigate(-1)} className="fa-solid
-                     bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-6"></i>
-                    <h1 className='text-center font-bold text-xl mb-6'>
-                        Selecteaza zilele in care esti disponibil
-                    </h1>
-                    {queryError && <ErrorMsg message={queryError} />}
-                    {error && <ErrorMsg message={error?.data?.message || error.error} />}
+            <div>
+                <i onClick={() => navigate(-1)} className="fa-solid
+                    bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-6"></i>
+                <h1 className='text-center font-bold text-xl mb-6'>
+                    Selecteaza zilele in care esti disponibil
+                </h1>
+                {queryError && <ErrorMsg message={queryError} />}
+                {error && <ErrorMsg message={error?.data?.message || error.error} />}
 
-                    <p className='ms-2  font-semibold opacity-80'>- Cel putin 14 zile</p>
-                    <p className='ms-2 mb-4 font-semibold opacity-80'>- Selecteaza cat mai multe zile pentru cat mai multe oportunitati</p>
+                <p className='ms-2  font-semibold opacity-80'>- Cel putin 14 zile</p>
+                <p className='ms-2 mb-4 font-semibold opacity-80'>- Selecteaza cat mai multe zile pentru cat mai multe oportunitati</p>
 
-                    {queryLoading ? <Loader /> : (
+                {queryLoading ? <Loader /> : (
 
-                        <div className='shadow-xl border border-gray px-2 rounded-md'>
-                            <h1 className='text-center py-2 font-bold'>
-                            {months[today.getMonth()]} - {months[nextDays.getMonth()]}
-                            </h1>
-                            <div className='flex text-center bg-lime rounded-sm py-1
-                            font-semibold text-sm'>
-                            <p className='w-11'>Lun</p>
-                            <p className='w-11'>Mar</p>
-                            <p className='w-11'>Mie</p>
-                            <p className='w-11'>Joi</p>
-                            <p className='w-11'>Vin</p>
-                            <p className='w-11'>Sam</p>
-                            <p className='w-11'>Dum</p>
-                            </div>
-
-                            <div className='grid grid-cols-7 pb-2 font-semibold text-sm mt-2'>
-                                {calendarDates && calendarDates.map((date,idx) => (
-                                    <div key={idx} onClick={handleSelectDate} 
-                                    aria-label={date.toLocaleDateString("en-US")}
-                                    className={`p-1 flex items-center justify-center pointer
-                                    ${idx === 0 && 'bg-lightLime'} 
-                                    ${selectedDates.includes(date.toLocaleDateString("en-US")) ? 'bg-lime' : ''}`}>
-                                        {date.getDate()}
-                                    </div>
-                                ))}
-                            </div>
-
+                    <div className='shadow-xl border border-gray px-2 rounded-md'>
+                        <h1 className='text-center py-2 font-bold'>
+                        {months[today.getMonth()]} - {months[nextDays.getMonth()]}
+                        </h1>
+                        <div className='flex text-center bg-lime rounded-sm py-1
+                        font-semibold text-sm'>
+                        <p className='w-11'>Lun</p>
+                        <p className='w-11'>Mar</p>
+                        <p className='w-11'>Mie</p>
+                        <p className='w-11'>Joi</p>
+                        <p className='w-11'>Vin</p>
+                        <p className='w-11'>Sam</p>
+                        <p className='w-11'>Dum</p>
                         </div>
-                    )}
-                </div>
-                
-                {isLoading ? <Loader /> :(
-                    <button onClick={handleSubmit}
-                     className='mt-8 bg-lime font-bold shadow-xl py-2 px-12 rounded-md'>Salveaza</button>
+
+                        <div className='grid grid-cols-7 pb-2 font-semibold text-sm mt-2'>
+                            {calendarDates && calendarDates.map((date,idx) => (
+                                <div key={idx} onClick={handleSelectDate} 
+                                aria-label={date.toLocaleDateString("en-US")}
+                                className={`p-1 flex items-center justify-center pointer
+                                ${idx === 0 && 'bg-lightLime'} 
+                                ${selectedDates.includes(date.toLocaleDateString("en-US")) ? 'bg-lime' : ''}`}>
+                                    {date.getDate()}
+                                </div>
+                            ))}
+                        </div>
+
+                    </div>
                 )}
-            </Modal>
-        </div>
+            </div>
+            
+            {isLoading ? <Loader /> :(
+                <button onClick={handleSubmit}
+                    className='mt-8 bg-lime font-bold shadow-xl py-2 px-12 rounded-md'>Salveaza</button>
+            )}
+        </Modal>
+        
     )
 }
 
