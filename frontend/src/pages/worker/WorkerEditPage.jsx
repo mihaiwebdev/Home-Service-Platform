@@ -63,7 +63,7 @@ const WorkerEditPage = () => {
                 setDescription(workerInfo.description || '');
                 setProvidedServices(workerInfo.services && workerInfo.services.map(item => item.service))
                 setServicesWithPrice(workerInfo.services || []);
-                setImage(workerInfo.photo)
+                setImage(workerInfo.photo || '')
             }
         }
 
@@ -76,7 +76,7 @@ const WorkerEditPage = () => {
             setServicesWithPrice(state => [...state.filter(item => item.service !== e.target.value)]);
 
         } else {
-            setProvidedServices(state => [...state, e.target.value])
+            setProvidedServices(state => [...state, e.target.value]);
         }
     };
 
@@ -89,7 +89,7 @@ const WorkerEditPage = () => {
 
     const uploadPhotoHandler = async(e) => {
         const file = e.target.files[0]
-
+    
         const formData = new FormData();
         formData.append('image', file);
 
@@ -111,7 +111,7 @@ const WorkerEditPage = () => {
 
     const updateProfile = async (e) => {
         e.preventDefault();
-
+        
         const fullAddress = `${address}, ${city}, Romania`;
         
         const userData = {name, email}
@@ -119,8 +119,9 @@ const WorkerEditPage = () => {
             address: fullAddress, 
             services: servicesWithPrice,
         };
-
-        if (name && email && description && phone && address && services && image) {
+        
+        if (name && email && description && phone && address && image 
+            && servicesWithPrice.length > 0) {
             try {
                 const res = await updateUser(userData).unwrap();
                 const workerRes = await updateWorkerInfo(workerData).unwrap();
@@ -218,7 +219,7 @@ const WorkerEditPage = () => {
                                 font-semibold text-sm shadow'>  
                                 <input type='checkbox' id={`service-${service._id}`}
                                  checked={providedServices.includes(service.slug)}
-                                 className={`font-semibold mr-1 
+                                 className={`font-semibold mr-1
                                  py-1 rounded-full max-w-fit bg-lime text-sm`} value={service.slug}
                                  onChange={handleSelectServices}/>
                                 <label htmlFor={`service-${service._id}`}> {service.name} </label>

@@ -28,16 +28,18 @@ const WorkerInfo = () => {
     const [createContract, {isLoading:createLoading}] = useCreateContractMutation();
     
     useEffect(() => {
-        if (!workerInfo || workerInfo._id !== id && data) {
+        
+        if ((!workerInfo || workerInfo._id !== id) && data) {
             dispatch(setWorkerInfo({...data}))
         };
         
         if (workerInfo && jobInfo) {
             const service = workerInfo.services.find(item => item.service === jobInfo.service);  
             setPrice(service.price);            
+            
         };
     
-    }, [dispatch, navigate, workerInfo, id, data, jobInfo])
+    }, [dispatch, navigate, setPrice, workerInfo, id, data, jobInfo])
 
 
     const reviews = [{author: 'Mihai', text:'A facut luna si bec', rating: 5}, 

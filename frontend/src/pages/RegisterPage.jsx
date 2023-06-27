@@ -23,10 +23,14 @@ const RegisterPage = () => {
 
     useEffect(() => {
         if (userInfo) {
-            navigate('/services')
+            if (role === 'client')  {
+                navigate('/services')
+            } else {
+                navigate('/worker/profile/edit');
+            };
         }
 
-    }, [navigate, userInfo])
+    }, [navigate, userInfo, role])
 
     const handleForm = async(e) => {
         e.preventDefault();
@@ -42,9 +46,6 @@ const RegisterPage = () => {
             try {
                 const res = await register(data).unwrap();
                 dispatch(setCredentials({...res}));
-
-                role === 'worker' ? navigate('/worker/profile/edit')
-                 : navigate('/services');
     
             } catch (err) {
                 toast.error(err?.data?.message || err.error);
@@ -53,7 +54,7 @@ const RegisterPage = () => {
     }
 
     return (
-        <div className="min-h-100dvh h-screen max-h-max bg-white text-center flex flex-col items-center justify-end short:h-full short:pt-16">
+        <div className="h-100dvh max-h-max bg-white text-center flex flex-col items-center justify-end short:h-full short:pt-16">
             <div className='short:mt-4'>
                 <h1 className="font-bold text-2xl short2:text-xl">Înregistrează-te</h1>
                 {role === 'client' ? (

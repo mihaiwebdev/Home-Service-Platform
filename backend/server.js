@@ -62,7 +62,7 @@ app.use('/api/v1/schedules', schedules);
 app.use('/api/v1/contracts', contracts);
 
 // Serve Frontend
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'development') {
     const __dirname = path.resolve();
     app.use(express.static(path.join(__dirname, 'frontend/dist')));
     app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html')));

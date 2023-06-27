@@ -20,7 +20,7 @@ const WorkerHomePage = () => {
 
                 <Link to='/worker/profile'  className='bg-green w-36 rounded-sm text-white flex flex-col px-6
                  justify-center items-center'>
-                    <h1 className='text-xl'>Seteaza</h1>
+                    <h1 className='text-xl'>Creeaza</h1>
                     <h1 className='text-xl'>Profilul</h1>
                 </Link>
             </div>

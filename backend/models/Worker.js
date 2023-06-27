@@ -11,21 +11,22 @@ const WorkerSchema = mongoose.Schema({
 
     description: {
         type: String,
+        default: ''
     },
 
     photo: {
         type: String,
-        default: 'no-photo.jpg'
     },
 
     averageRating: {
         type: Number,
         min: [1, 'Rating must be at least 1'],
-        max: [5, 'Rating can not be more than 5']
+        max: [5, 'Rating can not be more than 5'],
     },
 
     address: {
         type: String,
+        default: ''
     },
 
     location: {
@@ -48,12 +49,14 @@ const WorkerSchema = mongoose.Schema({
 
     idPhoto: {
         type: String,
+        default: ''
     },
 
     phone: {
         type: String,
         match: [/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
-                'Adauga un numar de telefon valid']
+                'Adauga un numar de telefon valid'],
+        default: ''
     },
 
     services: [{

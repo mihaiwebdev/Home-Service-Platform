@@ -70,9 +70,11 @@ const WorkerProfilePage = () => {
 
                         <div className='w-full mt-2 border-b border-gray pb-4'>
                             <p className='font-bold opacity-70'>Adresa:</p>
-                            <p className='text-sm font-semibold'>
-                                {workerInfo.location.street + ', ' + workerInfo.location.city}
-                            </p>
+                            {workerInfo.location && (
+                                <p className='text-sm font-semibold'>
+                                    {workerInfo.location.street + ', ' + workerInfo.location.city}
+                                </p>
+                            )}
                         </div>
 
                         <div className='w-full mt-2 border-b border-gray pb-4'>

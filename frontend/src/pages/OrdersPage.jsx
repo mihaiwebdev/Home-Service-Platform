@@ -32,11 +32,17 @@ const OrdersPage = () => {
 
             {availableContracts && availableContracts.length < 1 && (
                 <div className='flex flex-col w-full'>
-                    <p className='font-semibold mx-auto mb-4'>Momentan nu ai nicio comanda</p>
+                    <p className='font-semibold mx-auto mb-4 text-lg'>Momentan nu ai nicio comanda</p>
                     {userInfo.role === 'client' ? (
                         <Link to='/services' className='rounded-sm mx-auto font-semibold bg-dark text-white p-2'>Fa o comanda</Link>
                     ) : (
-                        <Link to='/worker/program' className='rounded-sm mx-auto font-semibold bg-dark text-white p-2'>Selecteaza-ti programul</Link>                        
+                        <>  
+                            <p className='px-4 mb-4 font-semibold text-center'>Asigura-te ca ai un program selectat si un profil bine pus la punct pentru a obtine
+                                cat mai multe comenzi.
+                            </p>
+                            <Link to='/worker/program' className='rounded-sm mx-auto font-semibold bg-dark text-white p-2'>Selecteaza-ti programul</Link>                        
+                            <Link to='/worker/profile/edit' className='rounded-sm mx-auto font-semibold bg-green text-white p-2 mt-4'>Creeaza-ti profilul</Link>                        
+                        </>
                     )}
 
                 </div>
