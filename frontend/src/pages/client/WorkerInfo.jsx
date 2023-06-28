@@ -78,7 +78,7 @@ const WorkerInfo = () => {
                             <Rating value={4.5} color={"#ffea00"} />
                         </div>
                         
-                        <div className='flex w-full mt-6 items-center justify-center bg-lightLime rounded-sm shadow'>
+                        <div className='flex w-full mt-12 items-center justify-center bg-lightLime rounded-sm shadow'>
                             <div className='w-2/4'>
                                 <img src={workerInfo.photo} alt={'fotografie-profil'} 
                                 className='rounded-s h-52 w-full shadow object-cover object-top'/>

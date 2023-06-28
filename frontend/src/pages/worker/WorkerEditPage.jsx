@@ -119,8 +119,9 @@ const WorkerEditPage = () => {
             address: fullAddress, 
             services: servicesWithPrice,
         };
+        console.log(servicesWithPrice)
         
-        if (name && email && description && phone && address && image 
+        if (name && email && description && phone && address 
             && servicesWithPrice.length > 0) {
             try {
                 const res = await updateUser(userData).unwrap();
@@ -254,7 +255,7 @@ const WorkerEditPage = () => {
 
                 <div className='flex flex-col items-start mt-4 w-full ms-2'>
                     <label htmlFor="photo" className='font-semibold'>Fotografie</label>
-                    <input type="text" required placeholder='Adauga o fotografie de profil' disabled
+                    <input type="text" placeholder='Adauga o fotografie de profil' disabled
                      className='w-full bg-white mb-1' value={image}/>
                     <input type="file" onChange={uploadPhotoHandler} id='photo'/>
                 </div>
