@@ -16,8 +16,18 @@ export const contractsApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    closeContract: builder.mutation({
+      query: (contractId) => ({
+        url: `${CONTRACTS_URL}/${contractId}`,
+        method: "PUT",
+        body: { isCompleted: true },
+      }),
+    }),
   }),
 });
 
-export const { useCreateContractMutation, useGetContractsQuery } =
-  contractsApiSlice;
+export const {
+  useCreateContractMutation,
+  useGetContractsQuery,
+  useCloseContractMutation,
+} = contractsApiSlice;

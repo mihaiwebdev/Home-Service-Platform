@@ -1,6 +1,7 @@
 import { apiSlice } from "../apiSlice";
 const WORKERS_URL = "/api/v1/workers";
 const SCHEDULE_URL = "/api/v1/schedules";
+const REVIEW_URL = "/api/v1/reviews";
 
 export const workersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -36,6 +37,13 @@ export const workersApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    createReview: builder.mutation({
+      query: (data) => ({
+        url: REVIEW_URL,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -45,4 +53,5 @@ export const {
   useUpdateWorkerInfoMutation,
   useGetWorkerScheduleQuery,
   useSetWorkerScheduleMutation,
+  useCreateReviewMutation,
 } = workersApiSlice;

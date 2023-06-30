@@ -1,7 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetContractsQuery } from "../slices/contracts/contractsApiSlice";
+import {
+  useGetContractsQuery,
+  useCloseContractMutation,
+} from "../slices/contracts/contractsApiSlice";
 import { setContracts } from "../slices/contracts/contractsSlice";
 import Loader from "../components/shared/Loader";
 import ErrorMsg from "../components/shared/ErrorMsg";
@@ -10,6 +13,7 @@ const OrdersPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  const [closedContract, setClosedContract] = useState("");
 
   const { userInfo } = useSelector((state) => state.auth);
   const { availableContracts } = useSelector((state) => state.contracts);
@@ -17,12 +21,23 @@ const OrdersPage = () => {
     location.search.split("?page=")[1] || 1
   );
 
+  const [closeContract, { isLoading: closeContractLoading }] =
+    useCloseContractMutation();
+
   useEffect(() => {
     dispatch(setContracts({ ...data }));
     refetch();
-  }, [dispatch, refetch, data]);
+  }, [dispatch, refetch, data, closedContract]);
 
-  const closeContract = () => {};
+  const handleCloseContract = async (id) => {
+    if (window.confirm("Esti sigur ca doresti sa inchei contractul?")) {
+      const res = await closeContract(id);
+
+      if (res.data.success) {
+        setClosedContract(id);
+      }
+    }
+  };
 
   return (
     <div className="pt-16 px-4 min-h-100dvh">
@@ -33,7 +48,7 @@ const OrdersPage = () => {
         className="fa-solid
                 bg-lime rounded-full mt-10 py-2 px-3 fa-chevron-left absolute left-6"
       ></i>
-      {isLoading ? (
+      {isLoading || closeContractLoading ? (
         <Loader />
       ) : (
         error && <ErrorMsg message={error?.data?.message || error.error} />
@@ -115,25 +130,29 @@ const OrdersPage = () => {
                 <div className="flex justify-between">
                   {contract.isCompleted ? (
                     <Link
-                      to={`?review=${contract.worker}`}
+                      to={`review/${contract.worker}`}
                       className="bg-lime 
                     p-1 rounded-sm font-semibold px-4 mt-2"
                     >
                       Adauga un review
                     </Link>
                   ) : (
-                    <Link
-                      to={`/workers/${contract.worker}`}
-                      className="bg-lime 
+                    <>
+                      <Link
+                        to={`/workers/${contract.worker}`}
+                        className="bg-lime 
                         p-2 rounded-sm font-semibold px-4 mt-2"
-                    >
-                      Vezi profilul <i className="fa-regular fa-user"></i>
-                    </Link>
+                      >
+                        Vezi profilul <i className="fa-regular fa-user"></i>
+                      </Link>
+                      <button
+                        onClick={() => handleCloseContract(contract._id)}
+                        className="block mt-4 bg-myYellow px-2 py-1 font-semibold rounded-sm"
+                      >
+                        Inchide contractul <i className="fa-solid fa-xmark"></i>
+                      </button>
+                    </>
                   )}
-
-                  <button className="block mt-4 bg-myYellow px-2 py-1 font-semibold rounded-sm">
-                    Inchide contractul <i className="fa-solid fa-xmark"></i>
-                  </button>
                 </div>
               </>
             ) : (
@@ -154,7 +173,7 @@ const OrdersPage = () => {
                 )}
 
                 <button
-                  onClick={closeContract}
+                  onClick={() => handleCloseContract(contract._id)}
                   className="block mt-4 bg-myYellow px-2 py-1 font-semibold rounded-sm"
                 >
                   Inchide contractul <i className="fa-solid fa-check"></i>

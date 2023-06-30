@@ -69,8 +69,6 @@ exports.getAvailableWorkers = asyncHandler(async (req, res, next) => {
     }
   }
 
-  console.log(req.query.page);
-
   const result = pagination(availableWorkers, req.query.page);
 
   res.status(200).json(result);
@@ -80,15 +78,10 @@ exports.getAvailableWorkers = asyncHandler(async (req, res, next) => {
 // @route   GET /api/v1/workers/:workerId
 // @access  Public
 exports.getWorker = asyncHandler(async (req, res, next) => {
-  const worker = await Worker.findById(req.params.workerId)
-    .populate({
-      path: "services",
-      select: "name",
-    })
-    .populate({
-      path: "user",
-      select: "name",
-    });
+  const worker = await Worker.findById(req.params.workerId).populate({
+    path: "user",
+    select: "name",
+  });
 
   if (!worker) {
     return next(new ErrorResponse("Profile not found", 404));
