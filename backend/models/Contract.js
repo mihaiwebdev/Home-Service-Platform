@@ -1,51 +1,55 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const ContractSchema = new mongoose.Schema({
-    service: String,
+  service: String,
 
-    price: Number,
+  price: Number,
 
-    client: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User',
-        required: true
-    },
+  client: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: true,
+  },
 
-    message: String,
-    
-    worker: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Worker',
-    },
-    
-    workerPhone: String,
+  message: String,
 
-    date: {
-        type: Date,
-        required: true
-    },
+  worker: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Worker",
+  },
 
-    hour: {
-        type: Number
-    },
-    address: String,
-    addressDetail: String,
+  workerPhone: String,
+  clientPhone: String,
 
-    isActive: {
-        type: Boolean,
-        default: true
-    },
+  date: {
+    type: Date,
+    required: true,
+  },
 
-    isCompleted: {
-        type: Boolean,
-        default: false
-    },
+  hour: {
+    type: Number,
+  },
+  address: String,
+  addressDetail: String,
 
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
 
+  isCompleted: {
+    type: Boolean,
+    default: false,
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  hasReview: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-module.exports = mongoose.model('Contract', ContractSchema);
+module.exports = mongoose.model("Contract", ContractSchema);

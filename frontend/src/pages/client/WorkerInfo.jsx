@@ -2,13 +2,16 @@ import Modal from "../../components/shared/Modal";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useGetWorkerInfoQuery } from "../../slices/workers/workersApiSlice";
+import {
+  useGetWorkerInfoQuery,
+  useGetReviewsQuery,
+} from "../../slices/workers/workersApiSlice";
 import { useCreateContractMutation } from "../../slices/contracts/contractsApiSlice";
 import { setWorkerInfo } from "../../slices/workers/workersSlice";
 import { toast } from "react-toastify";
+import Reviews from "../worker/Reviews";
 import ErrorMsg from "../../components/shared/ErrorMsg";
 import Rating from "../../components/worker/Rating";
-import Reviews from "../../components/worker/Reviews";
 import Loader from "../../components/shared/Loader";
 
 const WorkerInfo = () => {
@@ -24,6 +27,11 @@ const WorkerInfo = () => {
   const { workerInfo } = useSelector((state) => state.worker);
   const { jobInfo } = useSelector((state) => state.contracts);
   const { data, error, isLoading } = useGetWorkerInfoQuery(id);
+  const {
+    data: reviews,
+    error: reviewsErr,
+    isLoading: reviewsLoading,
+  } = useGetReviewsQuery(id);
 
   const [createContract, { isLoading: createLoading }] =
     useCreateContractMutation();
@@ -52,7 +60,7 @@ const WorkerInfo = () => {
     };
 
     try {
-      const res = await createContract(contractData).unwrap();
+      await createContract(contractData).unwrap();
       toast.success(`L-ai angajat pe ${workerInfo.user.name}`);
 
       navigate("/orders");
@@ -77,7 +85,7 @@ const WorkerInfo = () => {
           <>
             <h1 className="font-bold text-2xl">{workerInfo.user.name}</h1>
             <div className="absolute top-9 right-6">
-              <Rating value={4.5} color={"#ffea00"} />
+              <Rating value={workerInfo.averageRating} color={"#ffea00"} />
             </div>
 
             <div className="flex w-full mt-12 items-center justify-center bg-lightLime rounded-sm shadow">
@@ -115,12 +123,21 @@ const WorkerInfo = () => {
                 ))}
               </div>
             </div>
-
-            <div className="w-full mt-2 mb-6">
-              <h2 className="text-lg font-bold opacity-70 mb-2">Review-uri:</h2>
-              {/* <Reviews reviews={workerInfo.reviews} /> */}
-            </div>
-
+            {reviewsLoading ? (
+              <Loader />
+            ) : reviewsErr ? (
+              <ErrorMsg message={reviewsErr} />
+            ) : (
+              reviews &&
+              reviews.data.length > 0 && (
+                <div className="w-full mt-2 mb-6">
+                  <h2 className="text-lg font-bold opacity-70 mb-2">
+                    Review-uri:
+                  </h2>
+                  <Reviews reviews={reviews.data} />
+                </div>
+              )
+            )}
             {jobInfo && (
               <div className="w-full mt-2 mb-12">
                 <textarea

@@ -44,6 +44,12 @@ export const workersApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getReviews: builder.query({
+      query: (id) => ({
+        url: `${REVIEW_URL}/${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -54,4 +60,5 @@ export const {
   useGetWorkerScheduleQuery,
   useSetWorkerScheduleMutation,
   useCreateReviewMutation,
+  useGetReviewsQuery,
 } = workersApiSlice;

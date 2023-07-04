@@ -6,6 +6,8 @@ import {
   useCloseContractMutation,
 } from "../slices/contracts/contractsApiSlice";
 import { setContracts } from "../slices/contracts/contractsSlice";
+import { toast } from "react-toastify";
+import Modal from "../components/shared/Modal";
 import Loader from "../components/shared/Loader";
 import ErrorMsg from "../components/shared/ErrorMsg";
 
@@ -21,6 +23,9 @@ const OrdersPage = () => {
     location.search.split("?page=")[1] || 1
   );
 
+  console.log(data);
+  const closeContractId = location.hash.split("#")[1];
+
   const [closeContract, { isLoading: closeContractLoading }] =
     useCloseContractMutation();
 
@@ -30,17 +35,17 @@ const OrdersPage = () => {
   }, [dispatch, refetch, data, closedContract]);
 
   const handleCloseContract = async (id) => {
-    if (window.confirm("Esti sigur ca doresti sa inchei contractul?")) {
-      const res = await closeContract(id);
+    const res = await closeContract(id);
 
-      if (res.data.success) {
-        setClosedContract(id);
-      }
+    if (res.data.success) {
+      setClosedContract(id);
+      toast.success("Contractul a fost inchis!");
+      navigate(-1);
     }
   };
 
   return (
-    <div className="pt-16 px-4 min-h-100dvh">
+    <div className="pt-16 px-4 min-h-100dvh relative">
       <i
         onClick={() =>
           userInfo.role === "worker" ? navigate(-1) : navigate("/services")
@@ -71,7 +76,7 @@ const OrdersPage = () => {
             </Link>
           ) : (
             <>
-              <p className="px-4 mb-4 font-semibold text-center">
+              <p className="px-4 mb-4 font-semibold text-center bg-myYellow rounded-sm py-2">
                 Asigura-te ca ai un program selectat si un profil bine pus la
                 punct pentru a obtine cat mai multe comenzi.
               </p>
@@ -128,7 +133,7 @@ const OrdersPage = () => {
                   <span className="text-lg">{contract.workerPhone}</span>
                 </p>
                 <div className="flex justify-between">
-                  {contract.isCompleted ? (
+                  {contract.isCompleted && !contract.hasReview && (
                     <Link
                       to={`review/${contract.worker}`}
                       className="bg-lime 
@@ -136,7 +141,9 @@ const OrdersPage = () => {
                     >
                       Adauga un review
                     </Link>
-                  ) : (
+                  )}
+
+                  {!contract.isCompleted && (
                     <>
                       <Link
                         to={`/workers/${contract.worker}`}
@@ -146,7 +153,7 @@ const OrdersPage = () => {
                         Vezi profilul <i className="fa-regular fa-user"></i>
                       </Link>
                       <button
-                        onClick={() => handleCloseContract(contract._id)}
+                        onClick={() => navigate(`#${contract._id}`)}
                         className="block mt-4 bg-myYellow px-2 py-1 font-semibold rounded-sm"
                       >
                         Inchide contractul <i className="fa-solid fa-xmark"></i>
@@ -162,7 +169,7 @@ const OrdersPage = () => {
                   <span className="font-semibold">
                     Numar telefon client:{" "}
                   </span>{" "}
-                  <span className="text-lg">????</span>
+                  <span className="text-lg">{contract.clientPhone}</span>
                 </p>
                 {contract.message && (
                   <p className="mb-4">
@@ -181,7 +188,7 @@ const OrdersPage = () => {
               </>
             )}
             <p
-              className={`mt-2 ms-1 text-center ${
+              className={`mt-2 ms-1 text-center rounded-sm ${
                 contract.isCompleted ? "bg-lime" : "bg-limeMatch"
               }  px-2 `}
             >
@@ -193,8 +200,8 @@ const OrdersPage = () => {
           </div>
         ))}
 
-      {data && data.pagination && (
-        <div className="flex justify-center mt-2">
+      {data && data.pagination && data.pagination.totalPages > 0 && (
+        <div className="flex justify-center mt-6">
           <button
             onClick={() =>
               navigate(`/orders?page=${data.pagination.previous.page}`)
@@ -222,6 +229,40 @@ const OrdersPage = () => {
           </button>
         </div>
       )}
+
+      <Modal
+        extraClass={`${
+          !closeContractId ? "hidden" : ""
+        } absolute bottom-0 left-0`}
+      >
+        <i
+          onClick={() => navigate(-1)}
+          className="fa-solid
+                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-8 "
+        ></i>
+        <h1 className="text-lg font-bold">Inchide contractul</h1>
+        <p className="mt-6 font-semibold">
+          Esti sigur ca doresti sa inchei contractul?
+        </p>
+
+        <div className="flex mt-4">
+          <button
+            className="px-3 mr-4 py-2.5 tracking-wide text-sm bg-gray
+          text-dark w-2/4 font-bold rounded-full shadow-xl"
+            onClick={() => navigate(-1)}
+          >
+            Anulati
+          </button>
+
+          <button
+            onClick={() => handleCloseContract(closeContractId)}
+            className="px-3 py-2.5 tracking-wide text-sm bg-red
+          text-white w-2/4 font-bold rounded-full shadow-xl"
+          >
+            Inchide
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };
