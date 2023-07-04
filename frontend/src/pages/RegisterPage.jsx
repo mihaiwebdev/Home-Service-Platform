@@ -74,7 +74,7 @@ const RegisterPage = () => {
 
       <form
         onSubmit={handleForm}
-        className="bg-lime shadow-3xl pb-20 rounded-t-3xl w-full flex flex-col items-center mt-6 h-3/4 short:mt-4 short2:pb-10"
+        className="h-fit max-h-fit bg-lime shadow-3xl pb-20 rounded-t-3xl w-full flex flex-col items-center mt-6 h-3/4 short:mt-4 short2:pb-10"
       >
         <div className="flex justify-around w-full">
           <div
