@@ -49,7 +49,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-100dvh max-h-max bg-white text-center flex flex-col items-center justify-end short:h-full pt-10">
+    <div className="min-h-100dvh h-full max-h-max bg-white text-center flex flex-col items-center justify-end pt-20">
       <div className="short:mt-4">
         <h1 className="font-bold text-2xl short2:text-xl">Înregistrează-te</h1>
         {role === "client" ? (
