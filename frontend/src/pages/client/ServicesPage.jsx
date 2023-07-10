@@ -4,21 +4,50 @@ import { useSelector, useDispatch } from "react-redux";
 import { useGetServicesQuery } from "../../slices/services/servicesApiSlice";
 import { setServices } from "../../slices/services/servicesSlice";
 import { motion } from "framer-motion";
+import { useUpdateUserMutation } from "../../slices/usersApiSlice";
+import { setCredentials } from "../../slices/authSlice";
 import ErrorMsg from "../../components/shared/ErrorMsg";
 import Loader from "../../components/shared/Loader";
 import cleanHome from "../../assets/clean-home.jpg";
+import { getMessaging, getToken } from "firebase/messaging";
 
 const SearchPage = () => {
   const { services } = useSelector((state) => state.service);
 
   const { data, error, isLoading } = useGetServicesQuery();
+  const [updateUser] = useUpdateUserMutation();
 
   const dispatch = useDispatch();
+
+  const allowNotification = async () => {
+    const permission = await Notification.requestPermission();
+
+    if (permission === "granted") {
+      const messaging = getMessaging();
+
+      const permissionToken = await getToken(messaging, {
+        vapidKey:
+          "BMUv2bI6LAkq6mYGqueH1Flzr8lLlyxHVjtLfHZL2C3e_hH3LxegqiM8P1ERdikNToShz2JwBit0H--ovf7yG0s",
+      });
+
+      try {
+        const res = await updateUser({ permission, permissionToken }).unwrap();
+        dispatch(setCredentials(res));
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      console.log(permission);
+      // Say that they can't hire for a job
+    }
+  };
 
   useEffect(() => {
     if (!services) {
       dispatch(setServices({ ...data }));
     }
+
+    allowNotification();
   }, [services, data, dispatch]);
 
   return (

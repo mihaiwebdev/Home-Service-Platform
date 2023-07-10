@@ -25,6 +25,8 @@ const WorkerSchema = mongoose.Schema(
       max: [5, "Rating can not be more than 5"],
     },
 
+    completedJobs: Number,
+
     address: {
       type: String,
       default: "",

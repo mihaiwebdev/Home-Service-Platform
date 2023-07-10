@@ -110,11 +110,7 @@ const WorkerInfo = () => {
                   <p
                     key={idx}
                     className={`font-semibold mx-2 px-2 py-1 rounded-full
-                                        max-w-fit ${
-                                          idx % 2 === 0
-                                            ? "bg-lime"
-                                            : "bg-lightLime"
-                                        }
+                                        max-w-fit bg-lime
                                         text-sm`}
                   >
                     {service.service[0].toUpperCase() +

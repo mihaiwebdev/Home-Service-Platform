@@ -48,7 +48,7 @@ const router = createBrowserRouter(
         <Route path="/schedule" element={<SchedulePage />} />
         <Route path="/workers" element={<WorkersResult />} />
         <Route path="/workers/:id" element={<WorkerInfo />} />
-        <Route path="/orders/review/:id" element={<ReviewPage />} />
+        <Route path="/orders/:id/review" element={<ReviewPage />} />
       </Route>
 
       {/* Worker Private Routes */}

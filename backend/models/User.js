@@ -19,6 +19,8 @@ const UserSchema = new mongoose.Schema({
     ],
     unique: true,
   },
+  permission: String,
+  permissionToken: String,
 
   role: {
     type: String,

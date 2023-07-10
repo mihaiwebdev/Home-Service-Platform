@@ -23,7 +23,6 @@ const OrdersPage = () => {
     location.search.split("?page=")[1] || 1
   );
 
-  console.log(data);
   const closeContractId = location.hash.split("#")[1];
 
   const [closeContract, { isLoading: closeContractLoading }] =
@@ -44,8 +43,10 @@ const OrdersPage = () => {
     }
   };
 
+  const rejectContract = () => {};
+
   return (
-    <div className="pt-16 px-4 min-h-100dvh relative">
+    <div className="pt-16 px-4 min-h-100dvh relative ">
       <i
         onClick={() =>
           userInfo.role === "worker" ? navigate(-1) : navigate("/services")
@@ -109,7 +110,13 @@ const OrdersPage = () => {
                 {new Date(contract.date).toLocaleDateString()}
               </p>
               <p className="font-semibold text-lg">Ora {contract.hour}:00</p>
-              <i className="fa-solid fa-edit ml-auto text-myYellow"></i>
+
+              {!contract.isCompleted && (
+                <i
+                  className="fa-solid fa-xmark ml-auto mr-1 text-red text-xl px-2 py-1"
+                  onClick={rejectContract}
+                ></i>
+              )}
             </div>
             <p className="font-semibold text-lg">
               {" "}
@@ -133,58 +140,46 @@ const OrdersPage = () => {
                   <span className="text-lg">{contract.workerPhone}</span>
                 </p>
                 <div className="flex justify-between">
+                  <Link
+                    to={`/workers/${contract.worker}`}
+                    className="bg-gray 
+                        h-fit  p-1 rounded-sm font-semibold px-4 mt-3"
+                  >
+                    Vezi profilul <i className="fa-regular fa-user"></i>
+                  </Link>
                   {contract.isCompleted && !contract.hasReview && (
                     <Link
-                      to={`review/${contract.worker}`}
+                      to={`${contract._id}/review`}
                       className="bg-lime 
-                    p-1 rounded-sm font-semibold px-4 mt-2"
+                    p-1 rounded-sm font-semibold px-4 h-fit mt-3 text-center "
                     >
-                      Adauga un review
+                      Adauga review{" "}
+                      <i className="fa-solid fa-edit ml-auto ms-1"></i>
                     </Link>
-                  )}
-
-                  {!contract.isCompleted && (
-                    <>
-                      <Link
-                        to={`/workers/${contract.worker}`}
-                        className="bg-lime 
-                        p-2 rounded-sm font-semibold px-4 mt-2"
-                      >
-                        Vezi profilul <i className="fa-regular fa-user"></i>
-                      </Link>
-                      <button
-                        onClick={() => navigate(`#${contract._id}`)}
-                        className="block mt-4 bg-myYellow px-2 py-1 font-semibold rounded-sm"
-                      >
-                        Inchide contractul <i className="fa-solid fa-xmark"></i>
-                      </button>
-                    </>
                   )}
                 </div>
               </>
             ) : (
               <>
                 <p>
-                  {" "}
-                  <span className="font-semibold">
-                    Numar telefon client:{" "}
-                  </span>{" "}
+                  <span className="font-semibold">Numar telefon client:</span>
                   <span className="text-lg">{contract.clientPhone}</span>
                 </p>
                 {contract.message && (
                   <p className="mb-4">
-                    {" "}
-                    <span className="font-semibold">Mesaj: </span>{" "}
+                    <span className="font-semibold">Mesaj: </span>
                     <span className="text-sm">{contract.message}</span>
                   </p>
                 )}
 
-                <button
-                  onClick={() => handleCloseContract(contract._id)}
-                  className="block mt-4 bg-myYellow px-2 py-1 font-semibold rounded-sm"
-                >
-                  Inchide contractul <i className="fa-solid fa-check"></i>
-                </button>
+                {!contract.isCompleted && (
+                  <button
+                    onClick={() => handleCloseContract(contract._id)}
+                    className="block mt-4 bg-myYellow px-2 py-1 font-semibold rounded-sm"
+                  >
+                    Finalizare <i className="fa-solid fa-xmark ms-1"></i>
+                  </button>
+                )}
               </>
             )}
             <p
@@ -201,7 +196,7 @@ const OrdersPage = () => {
         ))}
 
       {data && data.pagination && data.pagination.totalPages > 0 && (
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-6 pb-10">
           <button
             onClick={() =>
               navigate(`/orders?page=${data.pagination.previous.page}`)

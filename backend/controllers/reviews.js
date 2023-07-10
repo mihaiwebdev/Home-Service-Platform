@@ -8,19 +8,23 @@ const Contract = require("../models/Contract");
 // @route   POST /api/v1/reviews
 // @access  Private
 exports.createReview = asyncHandler(async (req, res, next) => {
-  const worker = await Worker.findById(req.body.worker);
+  const contract = await Contract.findById(req.body.contractId);
+
+  const worker = await Worker.findById(contract.worker);
 
   if (!worker) {
     return next(new ErrorResponse("Worker not found", 404));
   }
 
-  const review = await Review.create(req.body);
-  const contract = await Contract.findOneAndUpdate(
-    { client: req.user._id },
-    {
-      hasReview: true,
-    }
-  );
+  const review = await Review.create({
+    text: req.body.text,
+    rating: req.body.rating,
+    client: contract.client,
+    worker: contract.worker,
+  });
+
+  contract.hasReview = true;
+  await contract.save();
 
   res.status(201).json({ success: true, data: review });
 });
@@ -35,10 +39,12 @@ exports.getReviews = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse("Worker not found", 404));
   }
 
-  const reviews = await Review.find({ worker: worker }).populate({
-    path: "client",
-    select: "name",
-  });
+  const reviews = await Review.find({ worker: worker })
+    .sort("-createdAt")
+    .populate({
+      path: "client",
+      select: "name",
+    });
 
   res.status(201).json({ success: true, data: reviews });
 });

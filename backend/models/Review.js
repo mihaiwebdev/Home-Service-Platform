@@ -28,9 +28,6 @@ const ReviewSchema = new mongoose.Schema({
   },
 });
 
-// Prevent user from submitting more than one review per bootcamp
-ReviewSchema.index({ worker: 1, client: 1 }, { unique: true });
-
 // Statics method for avg rating
 ReviewSchema.statics.getAverageRating = async function (workerId) {
   const obj = await this.aggregate([

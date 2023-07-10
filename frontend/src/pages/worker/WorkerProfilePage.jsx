@@ -35,7 +35,7 @@ const WorkerProfilePage = () => {
   return (
     <Modal extraClass={"relative pb-20"}>
       <i
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/worker")}
         className="fa-solid
                 bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-6"
       ></i>
@@ -52,7 +52,7 @@ const WorkerProfilePage = () => {
             </h1>
 
             <div className="absolute top-9 right-6">
-              <Rating value={4.5} color={"#ffea00"} />
+              <Rating value={workerInfo.averageRating} color={"#ffea00"} />
             </div>
 
             <div className="mt-4 mb-2 h-52 w-full flex items-center justify-center">

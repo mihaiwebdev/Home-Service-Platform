@@ -10,11 +10,15 @@ exports.getContracts = asyncHandler(async (req, res, next) => {
   let contracts;
 
   if (req.user.role === "client") {
-    contracts = await Contract.find({ client: req.user._id }).sort("createdAt");
+    contracts = await Contract.find({ client: req.user._id }).sort(
+      "-createdAt"
+    );
   }
 
   if (req.user.role === "worker") {
-    contracts = await Contract.find({ worker: req.user._id }).sort("createdAt");
+    contracts = await Contract.find({ worker: req.user._id }).sort(
+      "-createdAt"
+    );
   }
 
   if (!contracts) {

@@ -20,6 +20,7 @@ const ContractSchema = new mongoose.Schema({
 
   workerPhone: String,
   clientPhone: String,
+  rejected: String,
 
   date: {
     type: Date,
