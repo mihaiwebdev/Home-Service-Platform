@@ -53,7 +53,6 @@ const ProgramPage = () => {
     10: "Noiembrie",
     11: "Decembrie",
   };
-  const days = ["Lun", "Mar", "Mie", "Joi", "Vin", "Sam", "Dum"];
 
   const getDatesInRage = (today, nextDays) => {
     const currentDate = new Date(today);
@@ -119,35 +118,40 @@ const ProgramPage = () => {
               className="flex text-center bg-lime rounded-sm py-1
                         font-semibold text-sm"
             >
-              {calendarDates &&
-                days.map((day, dayIdx) => (
-                  <div key={dayIdx}>
-                    <p className="w-11">{day}</p>
+              <p className="w-11">Lun</p>
+              <p className="w-11">Mar</p>
+              <p className="w-11">Mie</p>
+              <p className="w-11">Joi</p>
+              <p className="w-11">Vin</p>
+              <p className="w-11">Sam</p>
+              <p className="w-11">Dum</p>
+            </div>
 
-                    {calendarDates.map(
-                      (date, idx) =>
-                        date.getDay() === dayIdx && (
-                          <div
-                            key={idx}
-                            onClick={handleSelectDate}
-                            aria-label={date.toLocaleDateString("en-US")}
-                            className={`p-1 flex items-center justify-center pointer
-                                      ${
-                                        idx === 0 &&
-                                        "bg-lightLime font-semibold text-sm"
-                                      } 
-                                      ${
-                                        selectedDates.includes(
-                                          date.toLocaleDateString("en-US")
-                                        )
-                                          ? "bg-lime"
-                                          : ""
-                                      }`}
-                          >
-                            {date.getDate()}
-                          </div>
-                        )
-                    )}
+            <div className="grid grid-cols-7 pb-2 font-semibold text-sm mt-2">
+              {calendarDates &&
+                [...Array(calendarDates[0].getDay() - 1).keys()].map((num) => (
+                  <div
+                    key={num}
+                    className="p-1 flex items-center justify-center"
+                  ></div>
+                ))}
+              {calendarDates &&
+                calendarDates.map((date, idx) => (
+                  <div
+                    key={idx}
+                    onClick={handleSelectDate}
+                    aria-label={date.toLocaleDateString("en-US")}
+                    className={`p-1 flex items-center justify-center pointer
+                                ${idx === 0 && "bg-lightLime"} 
+                                ${
+                                  selectedDates.includes(
+                                    date.toLocaleDateString("en-US")
+                                  )
+                                    ? "bg-lime"
+                                    : ""
+                                }`}
+                  >
+                    {date.getDate()}
                   </div>
                 ))}
             </div>

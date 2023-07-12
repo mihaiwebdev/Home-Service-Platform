@@ -1,15 +1,15 @@
 .hamburger {
     cursor: pointer;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
     position: absolute;
     z-index: 2;
-    height: 30px;
+    height: 35px;
     display: flex;
     align-items: center;
     
     .hamburger-line {
-        background: #212529;
+        background: #fff;
         width: 25px;
         height: 2px;
     }
@@ -17,21 +17,21 @@
     .hamburger-line::before {
         content: '';
         position: absolute;
-        top: 7px;
-        right: 0;
+        top: 9px;
+        right: 6px;
         width: 14px;
         height: 2px;
-        background: #212529;
+        background: #fff;
     }
 
     .hamburger-line::after {
         content: '';
         position: absolute;
-        bottom: 7px;
-        right: 0;
+        bottom: 8px;
+        right: 6px;
         width: 18px;
         height: 2px;
-        background: #212529;
+        background: #fff;
     }
 }
 
@@ -58,7 +58,7 @@
         .nav-actions {
             opacity: 1;
             width: 70%;
-            border-radius: 10px 0 0 10px;
+            border-radius: 15px 0 0 15px;
             transform: translateX(0);
         }
     }

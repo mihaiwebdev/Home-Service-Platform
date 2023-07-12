@@ -59,9 +59,9 @@ const Navbar = () => {
         bounce: 0.4,
         duration: 0.8,
       }}
-      className="top-0 z-30 left-0 w-full absolute"
+      className="top-0 z-30 left-0 w-full absolute font-raleway"
     >
-      <div className="pt-2 z-10 ps-4 font-bold absolute">
+      <div className="pt-2 z-10 ps-4 font-bold absolute text-white">
         Logo <i className="fa-solid fa-broom text-2xl"></i>
       </div>
 
@@ -69,22 +69,24 @@ const Navbar = () => {
         onClick={toggleNav}
         className={location.pathname === "/worker/profile/edit" ? "hidden" : ""}
       >
-        <div className="hamburger">
+        <div className="hamburger px-1.5">
           <div className="hamburger-line"></div>
         </div>
 
         <div
-          className={`hamburger-nav z-20  flex flex-col
+          className={`hamburger-nav z-50  flex flex-col
                 items-end absolute top-0 right-0 ${isOpen ? "show" : ""}`}
         >
-          <div className="nav-actions bg-lightLime flex flex-col justify-between p-5">
-            <div>
-              <i className="cursor-pointer fa-solid fa-x absolute right-5 top-3 text-red text-xl p-2"></i>
-              <h1 className="font-semibold text-xl border-b border-gray pb-2 mb-8">
-                Salut {userInfo && userInfo.name}
-              </h1>
+          <div className="nav-actions bg-white flex flex-col justify-between">
+            <div className="h-auto ">
+              <div className="bg-white shadow text-dark p-5 rounded-tl-md">
+                <i className="cursor-pointer fa-solid fa-x absolute right-5 top-3 text-red text-xl p-2"></i>
+                <h1 className="font-semibold text-xl">
+                  Salut {userInfo && userInfo.name}
+                </h1>
+              </div>
 
-              <ul>
+              <ul className=" mt-6 rounded-t-md pt-6 px-2 ">
                 <Link
                   to={
                     userInfo && userInfo.role === "worker"
@@ -93,31 +95,31 @@ const Navbar = () => {
                   }
                   className="font-semibold"
                 >
-                  <li>
-                    <i className="text-dark mr-2 bg-lime mb-3 rounded-full px-2 py-1 fa-solid fa-house text-base"></i>{" "}
+                  <li className="text-md shadow  font-bold py-1.5 mb-6 bg-primary border text-white border-primary rounded-md text-center flex items-center ps-8">
+                    <i className="text-white mr-4 text-xl fa-solid fa-house text-base"></i>{" "}
                     Acasă
                   </li>
                 </Link>
               </ul>
 
               {!userInfo ? (
-                <ul>
+                <ul className=" rouded-b-md px-2">
                   <Link to="/login" className="font-semibold">
-                    <li>
-                      <i className="text-dark mr-2 bg-lime mb-3 rounded-full px-2 py-1 fa-solid fa-arrow-right-to-bracket text-base"></i>{" "}
+                    <li className="text-md shadow font-bold py-1.5 mb-6 bg-primary text-white  border border-primary  rounded-md text-center flex items-center ps-8">
+                      <i className="text-white mr-4 text-xl fa-solid fa-arrow-right-to-bracket text-base"></i>{" "}
                       Logare
                     </li>
                   </Link>
 
                   <Link to="/register" className="font-semibold">
-                    <li>
-                      <i className="text-dark mr-2 bg-lime mb-3 rounded-full px-1.5 py-1 fa-solid fa-user-plus text-base"></i>{" "}
+                    <li className="text-md shadow font-bold py-1.5 mb-6 bg-primary text-white border border-primary rounded-md text-center flex items-center ps-8">
+                      <i className="text-white mr-4 text-xl fa-solid fa-user-plus text-base"></i>{" "}
                       Înregistrare
                     </li>
                   </Link>
                 </ul>
               ) : (
-                <ul className="flex h-full flex-col">
+                <ul className="flex  flex-col  px-2">
                   <Link
                     to={
                       userInfo.role === "worker"
@@ -126,28 +128,28 @@ const Navbar = () => {
                     }
                     className="font-semibold"
                   >
-                    <li>
-                      <i className="text-dark mr-2 bg-lime mb-3 rounded-full px-2.5 py-1 fa-regular fa-user text-base"></i>{" "}
+                    <li className="text-md shadow font-bold py-1.5 mb-6 bg-primary text-white rounded-md bordprimary order-dark text-center flex items-center ps-8">
+                      <i className="text-white mr-4 text-xl fa-regular fa-user text-base"></i>{" "}
                       Profil
                     </li>
                   </Link>
 
                   {userInfo.role === "worker" && (
                     <Link to="/worker/program" className="font-semibold">
-                      <li>
-                        <i className="text-dark mr-2 bg-lime mb-3 rounded-full py-1 px-2 fa-regular fa-calendar-days text-base"></i>{" "}
-                        Program
+                      <li className="text-md shadow font-bold py-1.5 mb-4 bg-primary text-white  border border-primary  rounded-md flex items-center ps-8">
+                        <i className="text-white mr-4 text-xl fa-regular fa-calendar-days text-base"></i>{" "}
+                        Calendar
                       </li>
                     </Link>
                   )}
 
                   <Link to="/orders" className="font-semibold">
-                    <li>
+                    <li className="text-md shadow font-bold py-1.5 mb-4 bg-primary text-white  border border-primary  rounded-md text-center flex items-center ps-7">
                       <i
-                        className={`text-dark mr-2 bg-lime mb-3 rounded-full py-1 px-2 fa-solid 
+                        className={`text-white mr-4 text-xl fa-solid
                                              ${
                                                userInfo.role === "worker"
-                                                 ? "fa-file-invoice-dollar px-2.5"
+                                                 ? "fa-file-invoice-dollar "
                                                  : "fa-cart-shopping"
                                              } text-base`}
                       ></i>
@@ -155,30 +157,29 @@ const Navbar = () => {
                     </li>
                   </Link>
 
-                  <li onClick={logoutUser} className="font-semibold mt-2">
-                    <i className=" text-dark mr-2 bg-lime mb-3 rounded-full px-2 py-1 fa-solid fa-arrow-right-from-bracket text-base"></i>{" "}
+                  <li
+                    onClick={logoutUser}
+                    className="font-semibold text-dark me-2 mt-8 ms-auto"
+                  >
+                    <i className=" text-dark mb-2 pe-2 fa-solid fa-arrow-right-from-bracket text-base"></i>{" "}
                     Ieși din cont
                   </li>
                 </ul>
               )}
             </div>
 
-            <div className="border-t pt-1 border-gray">
-              <li>
-                <Link to="/" className="opacity-70">
-                  Termeni
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="opacity-70">
-                  Confidențialitate
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="opacity-70">
-                  Ajutor
-                </Link>
-              </li>
+            <div className="pt-1 p-8 bg-white text-dark shadow flex flex-col pt-2">
+              <Link to="/" className="opacity-90">
+                Termeni
+              </Link>
+
+              <Link to="/" className="opacity-90">
+                Confidențialitate
+              </Link>
+
+              <Link to="/" className="opacity-90">
+                Ajutor
+              </Link>
             </div>
           </div>
         </div>

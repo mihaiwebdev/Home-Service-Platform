@@ -8,6 +8,7 @@
     padding: 10px;
     font-weight: 600;
     margin: 0 10px;
+
     
 
     .react-calendar__navigation {
@@ -24,7 +25,8 @@
 
     .react-calendar__month-view {
         .react-calendar__month-view__weekdays {
-           background: #cef068;
+           background: #483EFF;
+           color: #fff;
            border-radius: 5px;
            font-size: 14px;
            padding: 2px 0;
@@ -52,6 +54,7 @@ abbr:where([title]) {
 }
 
 .react-calendar__tile--active {
-    background-color: #cef068!important;
+    background-color: #483EFF!important;
     border-radius: 5px;
+    color: #fff;
 }

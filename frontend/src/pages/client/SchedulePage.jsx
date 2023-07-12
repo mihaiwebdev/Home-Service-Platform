@@ -97,10 +97,10 @@ const SchedulePage = () => {
           <i
             onClick={() => navigate(-1)}
             className="fa-solid short2:mb-6 ms-4
-                        bg-lime rounded-full py-2 px-3 fa-chevron-left left-8 "
+                        bg-primary text-white rounded-full py-2 px-3 fa-chevron-left left-8 "
           ></i>
         </div>
-        <h1 className="ms-6 border-lime text-lg font-bold">
+        <h1 className="ms-6 text-lg font-bold">
           Adauga locatia pentru {service}
         </h1>
       </div>
@@ -121,8 +121,8 @@ const SchedulePage = () => {
               value={city}
               required
               onChange={(e) => setCity(e.target.value)}
-              className="bg-lightLime w-full opacity-80 border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
+              className="w-full opacity-80 border-b 
+                        border-dark text-sm pb-1 pl-2 focus:outline-none"
               placeholder="Introdu orasul tau"
             />
           </div>
@@ -229,14 +229,14 @@ const SchedulePage = () => {
             id="hour"
             required
             className="py-1.5 px-6
-                    rounded-sm shadow-md font-semibold bg-lime focus:outline-none"
+                    rounded-sm shadow-md bg-primary text-white font-semibold  focus:outline-none"
             onChange={(e) => setHour(parseInt(e.target.value))}
           >
             <option value="">hh/mm</option>
             {hoursArr.map((hour) => (
               <option
                 key={hour}
-                className="font-semibold bg-lightLime"
+                className={`font-semibold bg-white text-dark`}
                 value={hour}
               >
                 {hour}:00 {hour < 12 ? "AM" : "PM"}

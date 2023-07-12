@@ -1,13 +1,17 @@
 @import './styles/hamburger.css';
 @import './styles/loader.css';
 @import './styles/calendar.css';
+@import './styles/header.css';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    font-family: 'Source Sans Pro', 'sans-serif';
-    background-color: #faf8f3;
+    font-family: 'Ubuntu', 'sans-serif';
+
+    background-color: #EFF5FF;
     min-height: 100dvh;
     height: 100dvh;
     max-height: fit-content;

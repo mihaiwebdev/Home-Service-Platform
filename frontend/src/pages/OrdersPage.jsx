@@ -49,7 +49,9 @@ const OrdersPage = () => {
     <div className="pt-16 px-4 min-h-100dvh relative ">
       <i
         onClick={() =>
-          userInfo.role === "worker" ? navigate(-1) : navigate("/services")
+          userInfo.role === "worker"
+            ? navigate("/worker")
+            : navigate("/services")
         }
         className="fa-solid
                 bg-lime rounded-full mt-10 py-2 px-3 fa-chevron-left absolute left-6"
@@ -100,8 +102,11 @@ const OrdersPage = () => {
 
       {availableContracts &&
         availableContracts.map((contract) => (
-          <div key={contract._id} className="mb-6 pb-4 shadow p-1 rounded-sm">
-            <div className="flex items-center border-b border-gray flex-wrap">
+          <div
+            key={contract._id}
+            className="mb-6 pb-4 bg-white text-dark rounded-sm  border border-gray"
+          >
+            <div className="flex items-center flex items-center justify-center py-1 text-white bg-primary rounded-t-sm flex-wrap">
               <p className="font-bold text-xl mr-4 text-myYellow">
                 {contract.service &&
                   contract.service[0].toUpperCase() + contract.service.slice(1)}
@@ -118,80 +123,79 @@ const OrdersPage = () => {
                 ></i>
               )}
             </div>
-            <p className="font-semibold text-lg">
-              {" "}
-              Pret: {contract.price} RON / ora
-            </p>
-            <p>
-              <span className="font-semibold">Adresa:</span> {contract.address}
-            </p>
-            <p>
-              <span className="font-semibold">Detalii adresa: </span>{" "}
-              {contract.addressDetail}
-            </p>
+            <div className="px-2">
+              <p className="font-semibold  bg-third text-center rounded-sm text-dark text-lg mt-2">
+                {" "}
+                Pret: {contract.price} RON / ora
+              </p>
+              <p>
+                <span className="font-semibold">Adresa:</span>{" "}
+                {contract.address}
+              </p>
+              <p>
+                <span className="font-semibold">Detalii adresa: </span>{" "}
+                {contract.addressDetail}
+              </p>
 
-            {userInfo.role === "client" ? (
-              <>
-                <p className="mb-2">
-                  {" "}
-                  <span className="font-semibold">
-                    Numar telefon angajat:{" "}
-                  </span>{" "}
-                  <span className="text-lg">{contract.workerPhone}</span>
-                </p>
-                <div className="flex justify-between">
-                  <Link
-                    to={`/workers/${contract.worker}`}
-                    className="bg-gray 
-                        h-fit  p-1 rounded-sm font-semibold px-4 mt-3"
-                  >
-                    Vezi profilul <i className="fa-regular fa-user"></i>
-                  </Link>
-                  {contract.isCompleted && !contract.hasReview && (
-                    <Link
-                      to={`${contract._id}/review`}
-                      className="bg-lime 
-                    p-1 rounded-sm font-semibold px-4 h-fit mt-3 text-center "
-                    >
-                      Adauga review{" "}
-                      <i className="fa-solid fa-edit ml-auto ms-1"></i>
-                    </Link>
-                  )}
-                </div>
-              </>
-            ) : (
-              <>
-                <p>
-                  <span className="font-semibold">Numar telefon client:</span>
-                  <span className="text-lg">{contract.clientPhone}</span>
-                </p>
-                {contract.message && (
-                  <p className="mb-4">
-                    <span className="font-semibold">Mesaj: </span>
-                    <span className="text-sm">{contract.message}</span>
+              {userInfo.role === "client" ? (
+                <>
+                  <p className="mb-2">
+                    {" "}
+                    <span className="font-semibold">
+                      Numar telefon angajat:{" "}
+                    </span>{" "}
+                    <span className="text-lg">{contract.workerPhone}</span>
                   </p>
-                )}
+                  <div className="flex justify-between">
+                    <Link
+                      to={`/workers/${contract.worker}`}
+                      className="bg-primary text-white 
+                        h-fit  p-1 rounded-sm font-semibold px-4 mt-3"
+                    >
+                      Vezi profilul <i className="fa-regular fa-user"></i>
+                    </Link>
+                    {contract.isCompleted && !contract.hasReview && (
+                      <Link
+                        to={`${contract._id}/review`}
+                        className=" 
+                    p-1 rounded-sm font-semibold px-4 h-fit mt-3 text-center "
+                      >
+                        Adauga review{" "}
+                        <i className="fa-solid fa-edit ml-auto ms-1"></i>
+                      </Link>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p>
+                    <span className="font-semibold">Numar telefon client:</span>
+                    <span className="text-lg">{contract.clientPhone}</span>
+                  </p>
+                  {contract.message && (
+                    <p className="mb-4">
+                      <span className="font-semibold">Mesaj: </span>
+                      <span className="text-sm">{contract.message}</span>
+                    </p>
+                  )}
 
-                {!contract.isCompleted && (
-                  <button
-                    onClick={() => handleCloseContract(contract._id)}
-                    className="block mt-4 bg-myYellow px-2 py-1 font-semibold rounded-sm"
-                  >
-                    Finalizare <i className="fa-solid fa-xmark ms-1"></i>
-                  </button>
-                )}
-              </>
-            )}
-            <p
-              className={`mt-2 ms-1 text-center rounded-sm ${
-                contract.isCompleted ? "bg-lime" : "bg-limeMatch"
-              }  px-2 `}
-            >
-              Status:{" "}
-              <span className="font-bold">
-                {contract.isCompleted ? "Finalizat" : "In decurs"}{" "}
-              </span>
-            </p>
+                  {!contract.isCompleted && (
+                    <button
+                      onClick={() => handleCloseContract(contract._id)}
+                      className="block mt-4 bg-myYellow px-2 py-1 font-semibold rounded-sm"
+                    >
+                      Finalizare <i className="fa-solid fa-xmark ms-1"></i>
+                    </button>
+                  )}
+                </>
+              )}
+              <p className={`mt-2 ms-1 text-center rounded-sm px-2 `}>
+                Status:{" "}
+                <span className="font-bold">
+                  {contract.isCompleted ? "Finalizat" : "In decurs"}{" "}
+                </span>
+              </p>
+            </div>
           </div>
         ))}
 

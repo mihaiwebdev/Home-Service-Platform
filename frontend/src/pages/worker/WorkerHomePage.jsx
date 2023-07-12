@@ -1,45 +1,70 @@
 import { Link } from "react-router-dom";
+import Modal from "../../components/shared/Modal";
+import graph from "../../assets/graph.png";
+import calendar from "../../assets/calendar.png";
+import userAvatar from "../../assets/user-avatar.png";
+import houseCleaning from "../../assets/house-cleaning.png";
+import Pattern from "../../components/shared/Pattern";
 
 const WorkerHomePage = () => {
   return (
-    <div className="pt-24 px-4 h-screen text-center">
-      <h1 className="text-2xl font-bold">
-        Fă-ți propriul program de lucru în domeniul treburilor casnice.
+    <div className="pt-20 h-screen text-center">
+      <h1 className="text-2xl font-bold px-4">
+        Fă-ți propriul program de lucru în domeniul treburilor casnice
+        <img
+          className="inline-block ms-2"
+          width={40}
+          height={40}
+          src={houseCleaning}
+          alt="clean-house"
+        />{" "}
       </h1>
-      <h1 className="mt-2 text-lg font-semibold">
+
+      <h1 className="mt-2 text-lg font-semibold rounded-sm">
         {" "}
         Noi îți aducem clienții, tu îți aduci abilitățile.
       </h1>
-      <div className="mt-10">
-        <p className="mb-6 text-lg">Adauga-ti disponibilitatea acum!</p>
-        <Link
-          to="/worker/program"
-          className="bg-lime py-3 px-8 shadow-xl
-                 font-bold rounded-sm"
-        >
-          Programator
-        </Link>
-      </div>
+      <Modal extraClass={"mt-8  bg-purple px-0"}>
+        <div className="w-full">
+          <Link
+            to="/worker/program"
+            className="bg-white border border-gray rounded-md  flex px-6 shadow-md
+          justify-around items-center w-full py-1"
+          >
+            <img src={calendar} width={80} height={80} alt="calendar" />
+            <div className="flex items-center">
+              <h1 className=" font-bold text-xl me-2">Calendar</h1>
+              <i className="fa-solid text-xs fa-chevron-right px-2 py-1 bg-lime rounded-full "></i>
+            </div>
+          </Link>
 
-      <div className="mt-20 flex justify-around rounded-sm h-20">
-        <Link
-          to="/orders"
-          className="bg-myGreen  w-36 rounded-sm text-white flex flex-col px-6
-                 justify-center items-center"
-        >
-          <h1 className="text-xl">Verifica</h1>
-          <h1 className="text-xl">comenzile</h1>
-        </Link>
+          <Link
+            to="/orders"
+            className="bg-white border border-gray rounded-md flex px-6 shadow-md
+                 justify-around items-center w-full my-6 py-1"
+          >
+            <div className="flex items-center">
+              <h1 className=" font-bold text-xl me-2">Comenzi</h1>
+              <i className="fa-solid text-xs fa-chevron-right px-2 py-1 bg-lime rounded-full "></i>
+            </div>
+            <img src={graph} alt="comenzi" width={80} height={80} />
+          </Link>
 
-        <Link
-          to="/worker/profile"
-          className="bg-darkGreen w-36 rounded-sm text-white flex flex-col px-6
-                 justify-center items-center"
-        >
-          <h1 className="text-xl">Creeaza</h1>
-          <h1 className="text-xl">Profilul</h1>
-        </Link>
-      </div>
+          <Link
+            to="/worker/profile"
+            className="bg-white border border-gray rounded-md  flex px-6 shadow-md
+          justify-around items-center w-full py-1"
+          >
+            <img src={userAvatar} alt="comenzi" width={80} height={80} />
+            <div className="flex items-center">
+              <h1 className=" font-bold text-xl me-2">Profil</h1>
+              <i className="fa-solid text-xs fa-chevron-right px-2 py-1 bg-lime rounded-full "></i>
+            </div>
+          </Link>
+        </div>
+      </Modal>
+
+      <Pattern />
     </div>
   );
 };

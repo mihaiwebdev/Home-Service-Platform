@@ -74,7 +74,7 @@ const WorkerInfo = () => {
       <i
         onClick={() => navigate(-1)}
         className="fa-solid
-                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-8 "
+                bg-primary text-white rounded-full py-2 px-3 fa-chevron-left absolute left-8 "
       ></i>
       {isLoading ? (
         <Loader />

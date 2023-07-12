@@ -14,7 +14,7 @@ const App = () => {
   }, [firebaseConfig]);
 
   return (
-    <div className="bg-lightLime overflow-hidden relative 3xl:container 2xl:mx-auto">
+    <div className="overflow-hidden relative 3xl:container 2xl:mx-auto">
       <ToastContainer
         autoClose={3000}
         pauseOnFocusLoss={false}

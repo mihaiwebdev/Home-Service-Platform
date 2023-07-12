@@ -50,7 +50,7 @@ const WorkersResult = () => {
         <i
           onClick={() => navigate(-1)}
           className="fa-solid short2:mb-6 ms-4
-                    bg-lime rounded-full py-2 px-3 fa-chevron-left left-8 "
+                    bg-primary text-white rounded-full py-2 px-3 fa-chevron-left left-8 "
         ></i>
       </div>
 
