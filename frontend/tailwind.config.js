@@ -6,7 +6,8 @@ module.exports = {
     "./src/pages/LoginPage.jsx",
     "./src/pages/RegisterPage.jsx",
     "./src/pages/client/ServicesPage.jsx",
-    "./src/pages/client/SchedulePage.jsx",
+    "./src/pages/client/SelectLocation.jsx",
+    "./src/pages/client/SelectDate.jsx",
     "./src/pages/client/ProfilePage.jsx",
     "./src/pages/client/WorkersResult.jsx",
     "./src/pages/client/WorkerInfo.jsx",
@@ -40,7 +41,9 @@ module.exports = {
       red: "#e63946",
       darkRed: "#d90429",
       grayWhite: "#D6D9E6",
+      lightGray: "#F8F9FF",
       bodyColor: "#EFF5FF",
+      black: "#333",
     },
 
     fontFamily: {
@@ -76,6 +79,7 @@ module.exports = {
     },
 
     borderRadius: {
+      xs: "4px",
       full: "9999px",
       sm: "7px",
       md: "15px",

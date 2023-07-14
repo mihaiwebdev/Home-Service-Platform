@@ -7,9 +7,6 @@
     border: 1px solid #ddd;
     padding: 10px;
     font-weight: 600;
-    margin: 0 10px;
-
-    
 
     .react-calendar__navigation {
         display: flex;

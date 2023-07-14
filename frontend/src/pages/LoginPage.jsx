@@ -39,10 +39,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="h-100dvh bg-white text-center flex flex-col items-center justify-end short:h-full short:pt-20">
+    <div className="h-100dvh bg-white text-center  flex flex-col items-center justify-end short:h-full short:pt-20">
       <div>
         <h1 className="font-bold text-2xl short2:text-xl">Loghează-te</h1>
-        <p className="font-semibold mt-2 px-2 short2:mt-0 short2:text-sm">
+        <p className="font-semibold font-raleway mt-2 px-2 short2:mt-0 short2:text-sm ">
           Conectăm persoanele cu experiență în treburile casnice și pe cei care
           au nevoie de ajutor.
         </p>
@@ -50,11 +50,11 @@ const LoginPage = () => {
 
       <form
         onSubmit={submitHandler}
-        className="bg-primary pt-6 text-white shadow-3xl rounded-t-3xl w-full mt-6 h-3/4 short:mt-4 short2:pb-24"
+        className="bg-primary pt-6 font-raleway text-white shadow-3xl rounded-t-3xl w-full mt-6 h-3/4 short:mt-4 short2:pb-24"
       >
         <div className="w-full z-20 max-w-3xl flex flex-col items-center mx-auto">
           <div className="flex flex-col items-start mt-3 w-5/6">
-            <label htmlFor="email" className="font-semibold mb-1 ms-2">
+            <label htmlFor="email" className="font-semibold mb-1">
               Adresa ta email
             </label>
             <div className="w-full relative">
@@ -64,14 +64,14 @@ const LoginPage = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full placeholder-white bg-primary rounded-md p-2.5 pl-10 focus:outline-none border border-third focus:border-pink"
+                className="w-full placeholder-white bg-primary rounded-xs p-2.5 pl-10 focus:outline-none border border-third focus:border-pink"
                 placeholder="Introdu email-ul"
               />
             </div>
           </div>
 
           <div className="flex flex-col items-start mt-3 w-5/6">
-            <label htmlFor="password" className="font-semibold ms-2">
+            <label htmlFor="password" className="font-semibold ">
               Parola
             </label>
             <div className="w-full relative">
@@ -81,7 +81,7 @@ const LoginPage = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-primary placeholder-white rounded-md p-2.5 pl-10 focus:outline-none border border-third focus:border-pink"
+                className="w-full bg-primary placeholder-white rounded-xs p-2.5 pl-10 focus:outline-none border border-third focus:border-pink"
                 placeholder="Introdu parola"
               />
             </div>
@@ -93,7 +93,7 @@ const LoginPage = () => {
             <input
               type="submit"
               disabled={!email && !password ? true : false}
-              className="disabled:opacity-75 z-20 mt-8 p-3 bg-dark text-white w-5/6 rounded-full"
+              className="disabled:opacity-75 z-20 mt-8 p-3 bg-orange text-dark font-semibold  w-5/6 rounded-full"
               value={"Continuă"}
             />
           )}

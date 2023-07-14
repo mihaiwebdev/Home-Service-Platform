@@ -1,6 +1,17 @@
+import { useLocation } from "react-router-dom";
+
 const Header = () => {
+  const location = useLocation();
+
+  console.log(location.pathname);
   return (
-    <div className="header bg-primary">
+    <div
+      className={`header bg-primary ${
+        location.pathname === "/login" || location.pathname === "/register"
+          ? "hidden"
+          : ""
+      }`}
+    >
       <div className="orange-circle"></div>
       <div className="purple-oval"></div>
       <svg

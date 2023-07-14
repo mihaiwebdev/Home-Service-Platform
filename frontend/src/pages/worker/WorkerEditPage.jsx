@@ -159,7 +159,7 @@ const WorkerEditPage = () => {
   };
 
   return (
-    <>
+    <div className="mx-5">
       <Modal extraClass={`pb-14 ${location.hash ? "hidden" : ""}`}>
         <div className="relative w-full mb-4">
           <i
@@ -170,9 +170,11 @@ const WorkerEditPage = () => {
                 ? "hidden"
                 : ""
             }
-                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-0 `}
+                bg-primary text-white rounded-full py-2 px-3 fa-chevron-left absolute left-0 `}
           ></i>
-          <h1 className="text-center font-bold text-xl">Editeaza Profilul</h1>
+          <h1 className="text-center font-bold text-2xl short:text-lg">
+            Editeaza Profilul
+          </h1>
         </div>
 
         {error && <ErrorMsg message={error.data.message || error.error} />}
@@ -180,107 +182,106 @@ const WorkerEditPage = () => {
 
         <form
           onSubmit={updateProfile}
-          className="w-full max-w-3xl flex 
+          className="w-full  flex font-raleway
             flex-col items-center mx-auto relative"
         >
-          <div className="flex flex-col items-start mt-8 w-full short:mt-4">
-            <label htmlFor="name" className="font-semibold ms-2 ">
+          <div className="flex flex-col items-start mt-2 w-full short:mt-4">
+            <label htmlFor="name" className="font-semibold  text-sm ">
               Nume
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-2.5 text-gray"></i>
               <input
                 type="text"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="bg-white w-full opacity-80 border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
+                className="bg-white w-full border p-2 ps-4 rounded-xs
+                        border-gray text-sm focus:outline-none text-black font-semibold"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4">
-            <label htmlFor="email" className="font-semibold ms-2 ">
+          <div className="flex flex-col items-start mt-3.5 w-full short:mt-4">
+            <label htmlFor="email" className="font-semibold  text-sm ">
               Email
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-2.5 text-gray"></i>
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-white w-full opacity-80 border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none text-black font-semibold"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4">
-            <label htmlFor="city" className="font-semibold ms-2 ">
+          <div className="flex flex-col items-start mt-3.5 w-full short:mt-4">
+            <label htmlFor="city" className="font-semibold  text-sm ">
               Oras
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-2.5 text-gray"></i>
               <input
                 type="text"
                 value={city}
                 required
                 onChange={(e) => setCity(e.target.value)}
-                className="w-full opacity-80 border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none text-black font-semibold"
                 placeholder="Introdu orasul tau"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4">
-            <label htmlFor="adress" className="font-semibold ms-2 ">
+          <div className="flex flex-col items-start mt-3.5 w-full short:mt-4">
+            <label htmlFor="adress" className="font-semibold  text-sm  ">
               Adresa
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-2.5 text-gray"></i>
               <input
                 type="text"
                 value={address}
-                required
                 onChange={(e) => setAddress(e.target.value)}
-                className="bg-white w-full opacity-80 border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none text-black font-semibold"
                 placeholder="Strada si numar"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4">
-            <label htmlFor="phoneNumber" className="font-semibold ms-2 ">
-              Numar telefon
+          <div className="flex flex-col items-start mt-3.5 w-full short:mt-4">
+            <label htmlFor="phoneNum" className="font-semibold  text-sm ">
+              Numar Telefon
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-2.5 text-gray"></i>
               <input
-                type="number"
+                type="text"
                 value={phone}
-                required
                 onChange={(e) => setPhone(e.target.value)}
-                className="bg-white w-full opacity-80 border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
-                placeholder="0712345678"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none text-black font-semibold"
+                placeholder="ex: 0712345678"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4">
-            <h2 className="font-semibold ">
+          <div className="flex flex-col items-start mt-4 w-full short:mt-4">
+            <h2 className="font-bold text-dark mx-auto  bg-lightGray p-2 rounded-xs">
               Selecteaza serviciile pe care le oferi
             </h2>
+
             <div className="flex flex-wrap mt-2">
               {services &&
                 services.map((service) => (
                   <div
                     key={service._id}
-                    className="flex mr-1 bg-lime rounded-sm px-2 py-1 mb-2
+                    className="flex mr-1 bg-orange rounded-sm px-2 py-1 mb-2
                                 font-semibold text-sm shadow"
                   >
                     <input
@@ -311,7 +312,7 @@ const WorkerEditPage = () => {
                 <div key={idx} className="w-full">
                   <label
                     htmlFor={service}
-                    className="font-semibold ms-2 text-sm"
+                    className="font-semibold ms-2 text-sm text-darkGray font-bold"
                   >
                     Adauga Pret ({service})
                   </label>
@@ -330,7 +331,7 @@ const WorkerEditPage = () => {
             })}
 
           <div className="flex flex-col items-start mt-4 w-full ">
-            <label htmlFor="description" className="font-semibold ms-2">
+            <label htmlFor="description" className="font-semibold">
               Descriere
             </label>
             <div className="w-full relative">
@@ -339,8 +340,8 @@ const WorkerEditPage = () => {
                 value={description}
                 required
                 onChange={(e) => setDescription(e.target.value)}
-                className="bg-white w-full border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
+                className="bg-white w-full border-b font-semibold 
+                         border  border-gray  rounded-xs  p-2 text-sm pb-1 pl-2 focus:outline-none"
                 placeholder="Scrie ceva despre tine si experienta ta"
               />
             </div>
@@ -354,7 +355,7 @@ const WorkerEditPage = () => {
               type="text"
               placeholder="Adauga o fotografie de profil"
               disabled
-              className="w-full bg-white mb-1"
+              className="w-full bg-white mb-1 text-darkGray "
               defaultValue={image.split(".com/")[1]}
             />
             <input
@@ -365,29 +366,28 @@ const WorkerEditPage = () => {
             />
           </div>
 
-          <div
-            className="w-full flex flex-col mt-14 items-center bg-dark p-4 
-                    rounded-md relative mb-20"
+          <h2
+            className="py-1 font-bold mb-2 
+                    text-xl mt-8"
           >
-            <h2
-              className="bg-lime px-10 py-1 font-bold mb-2 
-                    text-sm absolute left-4 -top-4 rounded-sm"
-            >
-              Securitate
-            </h2>
-
+            Securitate
+          </h2>
+          <div
+            className="w-full flex flex-col items-center bg-secondary p-4 
+                    rounded-md relative"
+          >
             <Link
-              to="/worker/profile/edit#changepw"
-              className="text-white flex justify-between mt-5 mb-2 w-full items-center"
+              to="/profile#changepw"
+              className="text-white flex justify-between mt-2 mb-2 w-full items-center"
             >
               <h2>Modifica parola</h2>
               <i className="fa-solid fa-chevron-right"></i>
             </Link>
 
-            <hr className=" mt-1 text-lime w-full" />
+            <hr className=" mt-1 text-darkGray w-full" />
 
             <Link
-              to="/worker/profile/edit#deleteuser"
+              to="/profile#deleteuser"
               className="text-white mt-3 flex justify-between mb-2 w-full items-center"
             >
               <h2>Sterge cont</h2>
@@ -395,17 +395,14 @@ const WorkerEditPage = () => {
             </Link>
           </div>
 
-          {isLoading || updateWorkerLoading ? (
-            <div className="fixed bottom-10">
-              {" "}
-              <Loader />{" "}
-            </div>
+          {updateWorkerLoading || isLoading ? (
+            <Loader />
           ) : (
             <input
               type="submit"
               className="disabled:opacity-75 w-2/3 
-                        px-3 py-2.5 tracking-wide text-sm bg-lime text-dark mt-8 fixed
-                       border border-gray bottom-20 z-20 font-bold rounded-full shadow-3xl"
+                        px-3 py-2.5 tracking-wide text-sm bg-orange text-dark mt-8 mb-8 
+                       border border-gray z-10 font-bold rounded-full shadow-3xl"
               value={"SALVEAZA"}
             />
           )}
@@ -414,7 +411,7 @@ const WorkerEditPage = () => {
 
       <ChangePw />
       <DeleteAcc />
-    </>
+    </div>
   );
 };
 

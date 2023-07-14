@@ -61,7 +61,13 @@ const Navbar = () => {
       }}
       className="top-0 z-30 left-0 w-full absolute font-raleway"
     >
-      <div className="pt-2 z-10 ps-4 font-bold absolute text-white">
+      <div
+        className={`pt-2 z-10 ps-4 font-bold absolute ${
+          location.pathname === "/register" || location.pathname === "/login"
+            ? "text-black"
+            : "text-white"
+        }`}
+      >
         Logo <i className="fa-solid fa-broom text-2xl"></i>
       </div>
 
@@ -69,7 +75,7 @@ const Navbar = () => {
         onClick={toggleNav}
         className={location.pathname === "/worker/profile/edit" ? "hidden" : ""}
       >
-        <div className="hamburger px-1.5">
+        <div className="hamburger">
           <div className="hamburger-line"></div>
         </div>
 
@@ -168,7 +174,7 @@ const Navbar = () => {
               )}
             </div>
 
-            <div className="pt-1 p-8 bg-white text-dark shadow flex flex-col pt-2">
+            <div className="pt-1 p-4 bg-white text-dark shadow flex flex-col pt-2">
               <Link to="/" className="opacity-90">
                 Termeni
               </Link>

@@ -18,7 +18,7 @@
         content: '';
         position: absolute;
         top: 9px;
-        right: 6px;
+        right: 0px;
         width: 14px;
         height: 2px;
         background: #fff;
@@ -28,7 +28,7 @@
         content: '';
         position: absolute;
         bottom: 8px;
-        right: 6px;
+        right: 0px;
         width: 18px;
         height: 2px;
         background: #fff;

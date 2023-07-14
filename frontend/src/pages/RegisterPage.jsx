@@ -52,7 +52,7 @@ const RegisterPage = () => {
       <div className="short:mt-4">
         <h1 className="font-bold text-2xl short2:text-xl">Înregistrează-te</h1>
         {role === "client" ? (
-          <p className="font-semibold mt-2 short2:mt-0 short2:text-sm px-2">
+          <p className="font-semibold mt-2 short2:mt-0 short2:text-sm px-2 font-raleway">
             Ai nevoie de ajutor în treburile casnice?{" "}
             <span className="block">
               Alătură-te comunității noastre pentru a găsi soluții adaptate
@@ -73,7 +73,7 @@ const RegisterPage = () => {
 
       <form
         onSubmit={handleForm}
-        className="h-fit max-h-fit text-white bg-primary shadow-3xl pb-20 rounded-t-3xl w-full flex flex-col items-center mt-6 h-3/4 short:mt-4 short2:pb-10"
+        className="h-fit max-h-fit font-raleway text-white bg-primary shadow-3xl pb-20 rounded-t-3xl w-full flex flex-col items-center mt-6 h-3/4 short:mt-4 short2:pb-10"
       >
         <div className="flex justify-around w-full">
           <div
@@ -99,7 +99,7 @@ const RegisterPage = () => {
             <input
               type="radio"
               name="user-role"
-              className="w-full h-full cursor-pointer  opacity-0 absolute top-0 left-0"
+              className="w-full h-full cursor-pointer opacity-0 absolute top-0 left-0"
               value="worker"
               onClick={(e) => setRole(e.target.value)}
             />
@@ -111,7 +111,7 @@ const RegisterPage = () => {
 
         <div className="w-full z-20 max-w-3xl flex flex-col items-center mx-auto">
           <div className="flex flex-col items-start mt-8 w-5/6 short:mt-4">
-            <label htmlFor="name" className="font-semibold mb-1 ms-2">
+            <label htmlFor="name" className="font-semibold mb-1 ">
               Numele tău
             </label>
             <div className="w-full relative">
@@ -121,14 +121,14 @@ const RegisterPage = () => {
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full placeholder-white bg-primary rounded-md p-2.5 pl-10 focus:outline-none border border-third focus:border-pink"
+                className="w-full placeholder-white bg-primary rounded-xs p-2.5 pl-10 focus:outline-none border border-third focus:border-pink"
                 placeholder="Adaugă-ți numele"
               />
             </div>
           </div>
 
           <div className="flex flex-col items-start mt-3 w-5/6">
-            <label htmlFor="email" className="font-semibold mb-1 ms-2">
+            <label htmlFor="email" className="font-semibold mb-1 ">
               Adresa ta email
             </label>
             <div className="w-full relative">
@@ -138,17 +138,17 @@ const RegisterPage = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full placeholder-white bg-primary rounded-md p-2.5 pl-10 focus:outline-none border border-third focus:border-pink"
+                className="w-full placeholder-white bg-primary rounded-xs p-2.5 pl-10 focus:outline-none border border-third focus:border-pink"
                 placeholder="Introdu email-ul"
               />
             </div>
           </div>
 
           <div className="flex flex-col items-start mt-3 w-5/6">
-            <label htmlFor="password" className="font-semibold ms-2">
+            <label htmlFor="password" className="font-semibold ">
               Parola
             </label>
-            <small className="ms-2 mb-1"> * minim 6 caractere</small>
+            <small className=" mb-1"> * minim 6 caractere</small>
             <div className="w-full relative">
               <i className="fa-solid text-white fa-lock absolute left-4 top-3.5"></i>
               <input
@@ -156,17 +156,14 @@ const RegisterPage = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-primary placeholder-white rounded-md p-2.5 pl-10 focus:outline-none border border-third focus:border-pink"
+                className="w-full bg-primary placeholder-white rounded-xs p-2.5 pl-10 focus:outline-none border border-third focus:border-pink"
                 placeholder="Introdu parola"
               />
             </div>
           </div>
 
           <div className="flex flex-col items-start mt-3 w-5/6">
-            <label
-              htmlFor="confirm-password"
-              className="font-semibold mb-1 ms-2"
-            >
+            <label htmlFor="confirm-password" className="font-semibold mb-1 ">
               Confirmă Parola
             </label>
             <div className="w-full relative">
@@ -176,7 +173,7 @@ const RegisterPage = () => {
                 required
                 value={confirmPw}
                 onChange={(e) => setConfirmPw(e.target.value)}
-                className="w-full bg-primary placeholder-white rounded-md p-2.5 pl-10 focus:outline-none border border-third focus:border-pink"
+                className="w-full bg-primary placeholder-white rounded-xs p-2.5 pl-10 focus:outline-none border border-third focus:border-pink"
                 placeholder="Reintrodu parola"
               />
             </div>

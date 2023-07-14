@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/shared/Navbar";
+import Header from "./components/shared/Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
@@ -14,7 +15,7 @@ const App = () => {
   }, [firebaseConfig]);
 
   return (
-    <div className="overflow-hidden relative 3xl:container 2xl:mx-auto">
+    <div className="overflow-hidden min-h-100dvh relative 3xl:container 2xl:mx-auto">
       <ToastContainer
         autoClose={3000}
         pauseOnFocusLoss={false}
@@ -22,6 +23,7 @@ const App = () => {
       />
 
       <Navbar />
+      <Header />
 
       <Outlet />
     </div>

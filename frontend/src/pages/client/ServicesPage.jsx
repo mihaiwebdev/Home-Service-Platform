@@ -51,9 +51,7 @@ const SearchPage = () => {
   }, [services, data, dispatch]);
 
   return (
-    <div className="min-h-100dvh h-auto max-h-fit short2:h-auto ">
-      <Header />
-
+    <div className="">
       <motion.div
         initial={{ y: 500, opacity: 0 }}
         animate={{ y: -60, opacity: 1 }}

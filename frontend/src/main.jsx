@@ -17,7 +17,8 @@ import PrivateRoute from "./components/shared/PrivateRoute";
 import PrivateClientRoute from "./components/client/PrivateClientRoute";
 import ProfilePage from "./pages/client/ProfilePage.jsx";
 import ServicesPage from "./pages/client/ServicesPage.jsx";
-import SchedulePage from "./pages/client/SchedulePage.jsx";
+import SelectLocation from "./pages/client/SelectLocation.jsx";
+import SelectDate from "./pages/client/SelectDate";
 import WorkersResult from "./pages/client/WorkersResult";
 import WorkerInfo from "./pages/client/WorkerInfo";
 import ReviewPage from "./pages/client/ReviewPage";
@@ -45,7 +46,8 @@ const router = createBrowserRouter(
       <Route path="" element={<PrivateClientRoute />}>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/services" element={<ServicesPage />} />
-        <Route path="/schedule" element={<SchedulePage />} />
+        <Route path="/schedule" element={<SelectLocation />} />
+        <Route path="/schedule/date" element={<SelectDate />} />
         <Route path="/workers" element={<WorkersResult />} />
         <Route path="/workers/:id" element={<WorkerInfo />} />
         <Route path="/orders/:id/review" element={<ReviewPage />} />

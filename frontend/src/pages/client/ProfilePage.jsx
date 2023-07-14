@@ -65,145 +65,143 @@ const ProfilePage = () => {
   };
 
   return (
-    <div>
+    <div className="mx-4">
       <Modal extraClass={`pb-14 ${location.hash ? "hidden" : ""}`}>
         <div className="relative w-full mb-4">
           <i
             onClick={() => navigate(-1)}
             className="fa-solid
-                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-8 "
+                bg-primary text-white rounded-full py-2 px-3 fa-chevron-left absolute left-0 "
           ></i>
-          <h1 className="text-center font-bold text-xl">Profilul Tau</h1>
+          <h1 className="text-center font-bold text-2xl">Profilul Tau</h1>
         </div>
 
         <form
           onSubmit={updateProfile}
-          className="w-full max-w-3xl flex 
-            flex-col items-center mx-auto relative"
+          className="w-full flex 
+            flex-col items-center mx-auto relative font-raleway"
         >
-          <div className="flex flex-col items-start mt-8 w-full short:mt-4">
-            <label htmlFor="name" className="font-semibold ms-2 ">
+          <div className="flex flex-col items-start mt-2 w-full short:mt-4">
+            <label htmlFor="name" className="font-semibold  text-sm ">
               Nume
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-2.5 text-gray"></i>
               <input
                 type="text"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="bg-white w-full opacity-80 border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
+                className="bg-white w-full border p-2 ps-4 rounded-xs
+                        border-gray text-sm focus:outline-none text-black font-semibold"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4">
-            <label htmlFor="email" className="font-semibold ms-2 ">
+          <div className="flex flex-col items-start mt-3.5 w-full short:mt-4">
+            <label htmlFor="email" className="font-semibold  text-sm ">
               Email
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-2.5 text-gray"></i>
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-white w-full opacity-80 border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none text-black font-semibold"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4">
-            <label htmlFor="city" className="font-semibold ms-2 ">
+          <div className="flex flex-col items-start mt-3.5 w-full short:mt-4">
+            <label htmlFor="city" className="font-semibold  text-sm ">
               Oras
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-2.5 text-gray"></i>
               <input
                 type="text"
                 value={city}
                 required
                 onChange={(e) => setCity(e.target.value)}
-                className="w-full opacity-80 border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none text-black font-semibold"
                 placeholder="Introdu orasul tau"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4">
-            <label htmlFor="adress" className="font-semibold ms-2 ">
+          <div className="flex flex-col items-start mt-3.5 w-full short:mt-4">
+            <label htmlFor="adress" className="font-semibold  text-sm  ">
               Adresa
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-2.5 text-gray"></i>
               <input
                 type="text"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className="bg-white w-full opacity-80 border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none text-black font-semibold"
                 placeholder="Strada si numar"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4">
-            <label htmlFor="addressDetails" className="font-semibold ms-2">
+          <div className="flex flex-col items-start mt-3.5 w-full short:mt-4">
+            <label htmlFor="addressDetails" className="font-semibold  text-sm ">
               Detalii Adresa
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-2.5 text-gray"></i>
               <input
                 type="text"
                 value={addressDetail}
                 onChange={(e) => setAddressDetail(e.target.value)}
-                className="bg-white w-full opacity-80 border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none text-black font-semibold"
                 placeholder="Punct de reper, apartament, scara"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4">
-            <label htmlFor="phoneNum" className="font-semibold ms-2">
+          <div className="flex flex-col items-start mt-3.5 w-full short:mt-4">
+            <label htmlFor="phoneNum" className="font-semibold  text-sm ">
               Numar Telefon
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-2.5 text-gray"></i>
               <input
                 type="text"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="bg-white w-full opacity-80 border-b 
-                        border-lime text-sm pb-1 pl-2 focus:outline-none"
-                placeholder="0712345678"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none text-black font-semibold"
+                placeholder="ex: 0712345678"
               />
             </div>
           </div>
-
+          <h2
+            className="py-1 font-bold mb-2 
+                    text-xl mt-8"
+          >
+            Securitate
+          </h2>
           <div
-            className="w-full flex flex-col mt-14 items-center bg-dark p-4 
+            className="w-full flex flex-col items-center bg-secondary p-4 
                     rounded-md relative"
           >
-            <h2
-              className="bg-lime px-10 py-1 font-bold mb-2 
-                    text-sm absolute left-4 -top-4 rounded-sm"
-            >
-              Securitate
-            </h2>
-
             <Link
               to="/profile#changepw"
-              className="text-white flex justify-between mt-5 mb-2 w-full items-center"
+              className="text-white flex justify-between mt-2 mb-2 w-full items-center"
             >
               <h2>Modifica parola</h2>
               <i className="fa-solid fa-chevron-right"></i>
             </Link>
 
-            <hr className=" mt-1 text-lime w-full" />
+            <hr className=" mt-1 text-darkGray w-full" />
 
             <Link
               to="/profile#deleteuser"
@@ -220,7 +218,7 @@ const ProfilePage = () => {
             <input
               type="submit"
               className="disabled:opacity-75 w-2/3 
-                        px-3 py-2.5 tracking-wide text-sm bg-lime text-dark mt-8 mb-8 
+                        px-3 py-2.5 tracking-wide text-sm bg-orange text-dark mt-8 mb-8 
                        border border-gray z-10 font-bold rounded-full shadow-3xl"
               value={"SALVEAZA"}
             />
