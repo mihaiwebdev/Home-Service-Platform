@@ -92,7 +92,7 @@ const OrdersPage = () => {
                 </Link>
                 <Link
                   to="/worker/profile/edit"
-                  className="rounded-sm mx-auto font-semibold bg-orange text-dark p-2 mt-4"
+                  className="rounded-sm mx-auto font-semibold mb-4 bg-orange text-dark p-2 mt-4"
                 >
                   Creeaza-ti profilul
                 </Link>

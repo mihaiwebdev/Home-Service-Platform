@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
 import Modal from "../../components/shared/Modal";
-import graph from "../../assets/graph.png";
-import calendar from "../../assets/calendar.png";
-import userAvatar from "../../assets/user-avatar.png";
 import houseCleaning from "../../assets/house-cleaning.png";
 
 const WorkerHomePage = () => {
@@ -10,7 +7,7 @@ const WorkerHomePage = () => {
     <>
       <div className="mx-5">
         <Modal>
-          <h1 className="text-2xl font-bold text-center short2:text-xl short2:font-raleway">
+          <h1 className="text-2xl font-bold text-center font-raleway short2:text-lg">
             Fă-ți propriul program de lucru în domeniul treburilor casnice
             <img
               className="inline-block ms-2"
@@ -21,7 +18,7 @@ const WorkerHomePage = () => {
             />{" "}
           </h1>
 
-          <h1 className="text-lg font-semibold rounded-sm font-raleway text-darkGray mb-4 mt-2 short2:text-base">
+          <h1 className="font-semibold rounded-sm font-raleway text-darkGray mb-4 mt-2 text-base">
             {" "}
             Noi îți aducem clienții, tu îți aduci abilitățile.
           </h1>
@@ -32,7 +29,9 @@ const WorkerHomePage = () => {
           justify-around items-center w-full py-1"
             >
               <img
-                src={calendar}
+                src={
+                  "https://home-services-s3.s3.eu-north-1.amazonaws.com/calendar.png"
+                }
                 alt="calendar"
                 className="
               h-20 w-20 short2:h-16 short2:w-16"
@@ -57,7 +56,9 @@ const WorkerHomePage = () => {
                 <i className="fa-solid text-xs fa-chevron-right px-2 py-1 bg-lime rounded-full "></i>
               </div>
               <img
-                src={graph}
+                src={
+                  "https://home-services-s3.s3.eu-north-1.amazonaws.com/graph.png"
+                }
                 alt="calendar"
                 className="
               h-20 w-20 short2:h-16 short2:w-16"
@@ -70,7 +71,9 @@ const WorkerHomePage = () => {
           justify-around items-center w-full py-1"
             >
               <img
-                src={userAvatar}
+                src={
+                  "https://home-services-s3.s3.eu-north-1.amazonaws.com/user-avatar.png"
+                }
                 alt="calendar"
                 className="
               h-20 w-20 short2:h-16 short2:w-16"

@@ -91,24 +91,25 @@ const ProgramPage = () => {
   return (
     <>
       <div className="mx-5 short:mx-0 short:mb-10">
-        <Modal>
-          <h1 className="text-center font-bold text-2xl mb-6 short:text-lg short:mb-2">
+        <Modal extraClass={"short2:pt-0"}>
+          <h1 className="text-center short2:mt-4 font-bold text-2xl mb-6 short2:mb-2 short2:text-lg short2:font-raleway short:mb-2">
             Selecteaza zilele in care esti disponibil
           </h1>
           {queryError && <ErrorMsg message={queryError} />}
           {error && <ErrorMsg message={error?.data?.message || error.error} />}
 
-          <p className="ms-2  font-semibold text-darkGray font-raleway short:text-center">
-            - Cel putin 14 zile
-          </p>
-          <p className="ms-2 mb-4 font-semibold text-darkGray font-raleway short:text-center">
-            - Selecteaza cat mai multe zile pentru cat mai multe oportunitati
-          </p>
-
+          <div className="short2:text-sm mt-2">
+            <p className="ms-2 font-semibold text-darkGray font-raleway short:text-center text-start ">
+              - Cel putin 14 zile
+            </p>
+            <p className="ms-2 mb-4 font-semibold text-darkGray font-raleway short:text-center">
+              - Selecteaza cat mai multe zile pentru cat mai multe oportunitati
+            </p>
+          </div>
           {queryLoading ? (
             <Loader />
           ) : (
-            <div className="shadow-xl mb-4 border border-gray px-2 rounded-md font-raleway short:mb-0">
+            <div className="mb-4 border-t border-gray px-2 font-raleway short:mb-0">
               <h1 className="text-center py-2 font-bold">
                 {months[today.getMonth()]} - {months[nextDays.getMonth()]}
               </h1>

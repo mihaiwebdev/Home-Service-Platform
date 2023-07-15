@@ -272,7 +272,7 @@ const WorkerEditPage = () => {
           </div>
 
           <div className="flex flex-col items-start mt-4 w-full short:mt-4">
-            <h2 className="font-bold text-dark mx-auto  bg-lightGray p-2 rounded-xs">
+            <h2 className="font-bold text-dark w-full border-l-2 border-primary bg-lightGray p-2 rounded-r-xs">
               Selecteaza serviciile pe care le oferi
             </h2>
 
@@ -281,14 +281,14 @@ const WorkerEditPage = () => {
                 services.map((service) => (
                   <div
                     key={service._id}
-                    className="flex mr-1 bg-orange rounded-sm px-2 py-1 mb-2
+                    className="flex mr-1 border border-gray rounded-sm px-2 py-1 mb-2
                                 font-semibold text-sm shadow"
                   >
                     <input
                       type="checkbox"
                       id={`service-${service._id}`}
                       checked={providedServices.includes(service.slug)}
-                      className={`font-semibold mr-1
+                      className={`font-semibold mr-1 relative z-20 bg-white
                                  py-1 rounded-full max-w-fit text-sm`}
                       value={service.slug}
                       onChange={handleSelectServices}
@@ -355,7 +355,7 @@ const WorkerEditPage = () => {
               type="text"
               placeholder="Adauga o fotografie de profil"
               disabled
-              className="w-full bg-white mb-1 text-darkGray "
+              className="w-full bg-white mb-1 text-darkGray font-semibold"
               defaultValue={image.split(".com/")[1]}
             />
             <input

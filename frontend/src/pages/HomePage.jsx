@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import busyWomanImg from "../assets/busy-woman.png";
-import cleanHouseImg from "../assets/house-cleaning.png";
+import cleaning from "../assets/cleaning4.jpg";
 import Modal from "../components/shared/Modal";
 import { motion } from "framer-motion";
 
@@ -18,24 +17,17 @@ const Welcomepage = () => {
           className=" text-center text-dark
                 font-bold  text-2xl short:text-xl"
         >
-          Eliberează-te de sarcinile{" "}
-          <img
-            className="inline-block short:hidden"
-            width={40}
-            height={40}
-            src={cleanHouseImg}
-            alt="clean-house"
-          />{" "}
-          casnice
+          Eliberează-te de sarcinile casnice
         </motion.h1>
-        <img
-          className="mt-8 mx-auto short2:mt-2 short2:w-4/5 sm:w-2/3
-                    md:object-contain md:w-4/5 md:h-3/5 lg:w-1/2 lg:h-4/6 lg:mt-12"
-          src={busyWomanImg}
-          alt="woman-cleaning"
-        />
+        <div className="h-62 ">
+          <img
+            className="h-full object-contain"
+            src={cleaning}
+            alt="woman-cleaning"
+          />
+        </div>
         <div className="">
-          <h1 className="text-center mt-4 text-xl font-bold font-raleway short2:text-base">
+          <h1 className="text-center text-xl font-bold font-raleway short2:text-base">
             Servicii de curățenie și întreținere la doar un clic distanță
           </h1>
           <h1 className="text-darkGray text-center text-sm mt-2 hidden font-sourcesanspro font-semibold short2:text-lg">
