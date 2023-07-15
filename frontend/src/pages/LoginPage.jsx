@@ -39,10 +39,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="h-100dvh bg-white text-center  flex flex-col items-center justify-end short:h-full short:pt-20">
+    <div className="h-100dvh text-center  flex flex-col items-center justify-end short:h-full short:pt-20">
       <div>
         <h1 className="font-bold text-2xl short2:text-xl">Loghează-te</h1>
-        <p className="font-semibold font-raleway mt-2 px-2 short2:mt-0 short2:text-sm ">
+        <p className="font-semibold font-raleway mt-2 px-4 short2:mt-0 short2:text-sm ">
           Conectăm persoanele cu experiență în treburile casnice și pe cei care
           au nevoie de ajutor.
         </p>

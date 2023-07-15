@@ -74,7 +74,7 @@ const OrdersPage = () => {
             {userInfo.role === "client" ? (
               <Link
                 to="/services"
-                className="rounded-sm mx-auto font-semibold bg-dark text-white p-2"
+                className="rounded-sm mx-auto font-semibold bg-dark text-white p-2 mb-8"
               >
                 Fa o comanda
               </Link>
@@ -107,7 +107,7 @@ const OrdersPage = () => {
               key={contract._id}
               className="mb-6 pb-4 bg-lightGray flex flex-col text-dark rounded-sm font-raleway shadow px-1 short:px-0 "
             >
-              {!contract.isCompleted && (
+              {!contract.isCompleted && userInfo.role === "worker" && (
                 <i
                   className="fa-solid fa-xmark ml-auto mr-1 text-red text-xl px-2 py-1"
                   onClick={rejectContract}

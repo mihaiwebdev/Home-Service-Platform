@@ -138,10 +138,10 @@ const WorkerInfo = () => {
                 )
               )}
               {jobInfo && (
-                <div className="w-full mt-2 mb-12">
+                <div className="w-full mt-2">
                   <textarea
-                    className="w-full border-b border-gray p-2 shadow-sm rounded-md 
-                                bg-lightLime focus:outline-none"
+                    className="w-full border border-gray p-2 shadow-sm rounded-md 
+                                 focus:outline-none"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Adauga detalii pentru lucrator"
@@ -155,8 +155,8 @@ const WorkerInfo = () => {
                 jobInfo && (
                   <button
                     onClick={handleProposal}
-                    className="bg-lime py-2 px-12 rounded-full
-                             font-bold shadow-xl mt-4 fixed z-10 bottom-20"
+                    className="bg-primary font-raleway text-white  py-2 px-12 rounded-full
+                             font-bold shadow-xl mt-4 mb-8"
                   >
                     Angajeaza
                   </button>

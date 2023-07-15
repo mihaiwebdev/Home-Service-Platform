@@ -57,8 +57,8 @@ const SelectDate = () => {
   return (
     <>
       <motion.div
-        initial={{ x: 200, y: -70 }}
-        animate={{ x: 0, y: -70 }}
+        initial={{ x: 200, y: -100 }}
+        animate={{ x: 0, y: -100 }}
         transition={{
           type: "spring",
           bounce: 0.4,

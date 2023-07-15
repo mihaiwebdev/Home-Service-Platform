@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Modal from "../../components/shared/Modal";
-import houseCleaning from "../../assets/house-cleaning.png";
 
 const WorkerHomePage = () => {
   return (
@@ -9,13 +8,6 @@ const WorkerHomePage = () => {
         <Modal>
           <h1 className="text-2xl font-bold text-center font-raleway short2:text-lg">
             Fă-ți propriul program de lucru în domeniul treburilor casnice
-            <img
-              className="inline-block ms-2"
-              width={40}
-              height={40}
-              src={houseCleaning}
-              alt="clean-house"
-            />{" "}
           </h1>
 
           <h1 className="font-semibold rounded-sm font-raleway text-darkGray mb-4 mt-2 text-base">

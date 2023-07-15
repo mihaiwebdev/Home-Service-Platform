@@ -9,7 +9,7 @@
     align-items: center;
     
     .hamburger-line {
-        background: #fff;
+        
         width: 25px;
         height: 2px;
     }
@@ -21,7 +21,7 @@
         right: 0px;
         width: 14px;
         height: 2px;
-        background: #fff;
+        background: inherit;
     }
 
     .hamburger-line::after {
@@ -31,7 +31,7 @@
         right: 0px;
         width: 18px;
         height: 2px;
-        background: #fff;
+        background: inherit;
     }
 }
 

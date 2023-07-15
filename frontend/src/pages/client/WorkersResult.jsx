@@ -38,14 +38,15 @@ const WorkersResult = () => {
   return (
     <div>
       <motion.div
-        initial={{ x: 200, y: -70 }}
-        animate={{ x: 0, y: -70 }}
+        initial={{ x: 200, y: -100 }}
+        animate={{ x: 0, y: -100 }}
         transition={{
           type: "spring",
           bounce: 0.4,
           duration: 0.8,
         }}
-        className="py-10 shadow-lg px-2 relative z-20 mx-4 rounded-md bg-white"
+        className="py-4 shadow-lg px-2 relative z-20 mx-4 rounded-md bg-white font-raleway
+        "
       >
         <div className="px-2 mb-8">
           <div className="flex items-center justify-between">
@@ -87,9 +88,7 @@ const WorkersResult = () => {
                 <Link
                   to={`${worker._id}`}
                   key={worker._id}
-                  className={`${
-                    idx === 0 && "border-t"
-                  } flex p-4 py-6 border-b border-gray w-full relative`}
+                  className={` flex p-4 py-6 border-t border-gray w-full relative`}
                 >
                   <div className="w-24">
                     <motion.img
@@ -107,13 +106,9 @@ const WorkersResult = () => {
                       <h2 className="me-2 font-bold text-xl tracking-wide">
                         {worker.user.name}
                       </h2>
-                      <div className="relative">
-                        <i className="fa-solid fa-certificate text-lime fa-lg"></i>
-                        <i className="fa-solid fa-check absolute text-xs left-1 text-bold top-1 text-white"></i>
-                      </div>
                     </div>
 
-                    <p className="text-sm opacity-80">
+                    <p className="text-sm text-darkGray font-semibold">
                       {worker.description.slice(0, 100)}...
                     </p>
                   </div>

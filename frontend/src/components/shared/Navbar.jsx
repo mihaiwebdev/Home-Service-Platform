@@ -76,7 +76,14 @@ const Navbar = () => {
         className={location.pathname === "/worker/profile/edit" ? "hidden" : ""}
       >
         <div className="hamburger">
-          <div className="hamburger-line"></div>
+          <div
+            className={`hamburger-line ${
+              location.pathname === "/register" ||
+              location.pathname === "/register"
+                ? "bg-black"
+                : "bg-white"
+            }`}
+          ></div>
         </div>
 
         <div

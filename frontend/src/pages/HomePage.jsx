@@ -19,13 +19,9 @@ const Welcomepage = () => {
         >
           Eliberează-te de sarcinile casnice
         </motion.h1>
-        <div className="h-62 ">
-          <img
-            className="h-full object-contain"
-            src={cleaning}
-            alt="woman-cleaning"
-          />
-        </div>
+
+        <img className="object-contain" src={cleaning} alt="woman-cleaning" />
+
         <div className="">
           <h1 className="text-center text-xl font-bold font-raleway short2:text-base">
             Servicii de curățenie și întreținere la doar un clic distanță

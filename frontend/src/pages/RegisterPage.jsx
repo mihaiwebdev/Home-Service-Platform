@@ -48,7 +48,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-100dvh h-full max-h-max bg-white text-center flex flex-col items-center justify-end pt-20">
+    <div className="min-h-100dvh h-full max-h-max text-center flex flex-col items-center justify-end pt-20">
       <div className="short:mt-4">
         <h1 className="font-bold text-2xl short2:text-xl">Înregistrează-te</h1>
         {role === "client" ? (
@@ -60,7 +60,7 @@ const RegisterPage = () => {
             </span>
           </p>
         ) : (
-          <p className="font-semibold mt-2 short2:mt-0 short2:text-sm px-2">
+          <p className="font-semibold mt-2 short2:mt-0 short2:text-sm px-2 font-raleway">
             Fă-ți propriul program de lucru
             <span className="block">în domeniul treburilor casnice.</span>
             <span className="block">
@@ -184,7 +184,7 @@ const RegisterPage = () => {
             <input
               type="submit"
               disabled={email && password && confirmPw && name ? false : true}
-              className="z-20 disabled:opacity-75 mt-8 p-3 bg-dark text-white w-5/6 rounded-full"
+              className="z-20 disabled:opacity-75 mt-8 p-3 bg-dark shadow text-white w-5/6 rounded-full"
               value={"Continuă"}
             />
           )}

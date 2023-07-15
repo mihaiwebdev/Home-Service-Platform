@@ -53,7 +53,7 @@ const SearchPage = () => {
   return (
     <motion.div
       initial={{ y: 500, opacity: 0 }}
-      animate={{ y: -60, opacity: 1 }}
+      animate={{ y: -100, opacity: 1 }}
       transition={{
         type: "spring",
         bounce: 0.4,
