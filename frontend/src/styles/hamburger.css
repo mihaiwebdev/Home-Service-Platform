@@ -1,7 +1,7 @@
 .hamburger {
     cursor: pointer;
     top: 10px;
-    right: 10px;
+    right: 20px;
     position: absolute;
     z-index: 2;
     height: 35px;

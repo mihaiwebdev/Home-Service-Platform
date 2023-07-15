@@ -58,7 +58,7 @@ const WorkerHomePage = () => {
               </div>
               <img
                 src={graph}
-                alt="comenzi"
+                alt="calendar"
                 className="
               h-20 w-20 short2:h-16 short2:w-16"
               />
@@ -71,7 +71,7 @@ const WorkerHomePage = () => {
             >
               <img
                 src={userAvatar}
-                alt="comenzi"
+                alt="calendar"
                 className="
               h-20 w-20 short2:h-16 short2:w-16"
               />

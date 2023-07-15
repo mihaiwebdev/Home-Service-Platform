@@ -377,7 +377,7 @@ const WorkerEditPage = () => {
                     rounded-md relative"
           >
             <Link
-              to="/profile#changepw"
+              to="/worker/profile/edit#changepw"
               className="text-white flex justify-between mt-2 mb-2 w-full items-center"
             >
               <h2>Modifica parola</h2>
@@ -387,7 +387,7 @@ const WorkerEditPage = () => {
             <hr className=" mt-1 text-darkGray w-full" />
 
             <Link
-              to="/profile#deleteuser"
+              to="/worker/profile/edit#deleteuser"
               className="text-white mt-3 flex justify-between mb-2 w-full items-center"
             >
               <h2>Sterge cont</h2>

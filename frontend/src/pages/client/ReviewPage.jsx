@@ -38,21 +38,19 @@ const ReviewPage = () => {
   };
 
   return (
-    <Modal>
-      <>
+    <div className="mx-5">
+      <Modal>
         <div className="relative w-full mb-4">
           <i
             onClick={() => navigate("/orders")}
             className="fa-solid
-                bg-lime rounded-full py-2 px-3 fa-chevron-left absolute left-2 "
+                bg-primary text-white rounded-full py-2 px-3 fa-chevron-left absolute left-2 "
           ></i>
 
-          <h1 className="text-center font-bold text-xl">
-            <span>Adauga review</span>
-          </h1>
+          <h1 className="text-center font-bold text-2xl">Adauga review</h1>
         </div>
 
-        <form className="w-full" onSubmit={handleSubmit}>
+        <form className="w-full font-raleway" onSubmit={handleSubmit}>
           <div className="flex flex-col">
             <label htmlFor="message" className="font-semibold text-lg mt-4">
               Text:
@@ -62,8 +60,8 @@ const ReviewPage = () => {
               id="message"
               cols="30"
               rows="4"
-              className="bg-limeMatch rounded-sm p-2 outline-none
-            focus-within:shadow-lg focus:outline-limeMatch"
+              className="rounded-sm p-2 outline-none border border-gray
+            focus-within:shadow-lg focus:border-primary"
               placeholder="Scrie un review"
               value={text}
               onChange={(e) => setText(e.target.value)}
@@ -95,13 +93,13 @@ const ReviewPage = () => {
           ) : (
             <input
               type="submit"
-              className="py-2 px-4 w-full bg-lime rounded-sm mt-4 font-semibold"
+              className="py-2 px-4 w-full bg-pink mb-8 text-white rounded-sm mt-6 font-semibold"
               value={"Trimite"}
             />
           )}
         </form>
-      </>
-    </Modal>
+      </Modal>
+    </div>
   );
 };
 

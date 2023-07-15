@@ -108,7 +108,7 @@ const WorkerProfilePage = () => {
                     {workerInfo.services.map((service, idx) => (
                       <div
                         key={idx}
-                        className="mb-1 bg-primary text-white flex 
+                        className="mb-1 bg-primary flex text-white pb-1
                                             rounded-sm border border-gray mx-1 px-1 flex-col 
                                             items-center justify-center"
                       >

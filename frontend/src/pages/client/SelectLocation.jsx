@@ -82,73 +82,73 @@ const SelectLocation = () => {
           className="w-full flex flex-col 
             items-center px-2 pb-4"
         >
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4 font-raleway">
-            <label htmlFor="city" className="font-semibold ms-2 ">
+          <div className="flex flex-col items-start mt-3 w-full short:mt-4 font-raleway">
+            <label htmlFor="city" className="font-semibold text-sm ">
               Oras
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-3 text-gray"></i>
               <input
                 type="text"
                 value={city}
                 required
                 onChange={(e) => setCity(e.target.value)}
-                className="text-black pt-2 w-full opacity-80 border-b 
-                        border-darkGray text-sm pb-1 pl-2 font-semibold focus:outline-none focus:border-primary"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none focus:border-primary text-black font-semibold"
                 placeholder="Introdu orasul tau"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4 font-raleway">
-            <label htmlFor="address" className="font-semibold ms-2 ">
+          <div className="flex flex-col items-start mt-3 w-full short:mt-4 font-raleway">
+            <label htmlFor="address" className="font-semibold text-sm  ">
               Adresa
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-3 text-gray"></i>
               <input
                 type="text"
                 value={address}
                 required
                 onChange={(e) => setAddress(e.target.value)}
-                className="text-black pt-2 w-full opacity-80 border-b 
-                        border-darkGray text-sm pb-1 pl-2 font-semibold focus:outline-none focus:border-primary"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none focus:border-primary text-black font-semibold"
                 placeholder="Strada si numar"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4 font-raleway">
-            <label htmlFor="addressDetails" className="font-semibold ms-2">
+          <div className="flex flex-col items-start mt-3 w-full short:mt-4 font-raleway">
+            <label htmlFor="addressDetails" className="font-semibold text-sm">
               Detalii Adresa
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-3 text-gray"></i>
               <input
                 type="text"
                 value={addressDetail}
                 required
                 onChange={(e) => setAddressDetail(e.target.value)}
-                className="text-black pt-2 w-full opacity-80 border-b 
-                        border-darkGray text-sm pb-1 pl-2 font-semibold focus:outline-none focus:border-primary"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none focus:border-primary text-black font-semibold"
                 placeholder="Punct de reper, apartament, scara"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start mt-6 w-full short:mt-4 font-raleway">
-            <label htmlFor="phone" className="font-semibold ms-2">
+          <div className="flex flex-col items-start mt-3 w-full short:mt-4 font-raleway">
+            <label htmlFor="phone" className="font-semibold text-sm">
               Numar telefon
             </label>
             <div className="w-full relative">
-              <i className="fa-regular fa-edit absolute right-4 top-1"></i>
+              <i className="fa-regular fa-edit absolute right-4 top-3 text-gray"></i>
               <input
                 type="text"
                 value={phoneNum}
                 required
                 onChange={(e) => setPhoneNum(e.target.value)}
-                className="pt-2 text-black w-full opacity-80 border-b text-black
-                        border-darkGray text-sm pb-1 pl-2 font-semibold focus:outline-none focus:border-primary"
+                className="bg-white w-full border p-2 rounded-xs ps-4
+                border-gray text-sm focus:outline-none focus:border-primary text-black font-semibold"
                 placeholder="0712345678"
               />
             </div>
@@ -156,20 +156,19 @@ const SelectLocation = () => {
         </form>
       </motion.div>
 
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div
-          className="mt-auto absolute bottom-0 bg-white h-20
+      <div
+        className="mt-auto absolute bottom-0 bg-white h-20
             short:py-1 w-full flex items-center justify-end"
+      >
+        <Link
+          to={"/services"}
+          className="me-auto ms-4 text-darkGray font-bold font-raleway text-lg"
         >
-          <Link
-            to={"/services"}
-            className="me-auto ms-4 text-darkGray font-bold font-raleway text-lg"
-          >
-            Înapoi
-          </Link>
-
+          Înapoi
+        </Link>
+        {isLoading ? (
+          <Loader />
+        ) : (
           <input
             onClick={handleSubmit}
             type="submit"
@@ -179,8 +178,8 @@ const SelectLocation = () => {
                 font-raleway h-12 px-3 bg-dark rounded-sm me-4"
             value={"Selecteaza data"}
           />
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };

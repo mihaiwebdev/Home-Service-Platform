@@ -62,7 +62,7 @@ const Navbar = () => {
       className="top-0 z-30 left-0 w-full absolute font-raleway"
     >
       <div
-        className={`pt-2 z-10 ps-4 font-bold absolute ${
+        className={`pt-2 z-10 ps-6 font-bold absolute ${
           location.pathname === "/register" || location.pathname === "/login"
             ? "text-black"
             : "text-white"
